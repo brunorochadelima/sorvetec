@@ -9,7 +9,9 @@ import { lazy, Suspense } from "react";
 import IntegratedForm from "components/FormRdStation";
 import Footer from "components/footer/Footer";
 import SliderDepoimento from "./sliders/SliderDepoimento";
+import BotaoFlutuante from "components/BotaoFlutuante";
 //const SliderDepoimento = lazy(() => import("./sliders/SliderDepoimento"));
+
 
 export default function Home() {
   return (
@@ -116,7 +118,7 @@ export default function Home() {
       <IntegratedForm />
       <br />
       <br />
-
+       <BotaoFlutuante/>
       <Footer />
     </>
   );

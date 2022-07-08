@@ -10,7 +10,8 @@ export default function Footer() {
       <div className={style.flex_container}>
         <div className={style.logos}>
           <Logo />
-          <SeloMultivisi />
+          <a href="https://www.multivisi.com.br/"><SeloMultivisi /></a>
+          
         </div>
         <div>
           <h3>Fale com a gente</h3>

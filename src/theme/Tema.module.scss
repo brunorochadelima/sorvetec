@@ -1,0 +1,74 @@
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+// Cores
+$dark: #46474B;
+$amarelo: #FFC048;
+$laranja_claro: #FFF8F0;
+$laranja: #FFE5D0;
+$rosa: #F280AA;
+
+//Textos 
+@mixin style_h1 {
+  font-size: 3.8rem;
+  color: $rosa;
+  margin: 1rem 0rem;
+
+  @media (max-width: 640px) {
+    font-size: 2.4rem;
+    text-align: center;
+  }
+}
+
+@mixin style_h2 {
+  font-size: 3.0rem;
+  color: $rosa;
+  margin: 1rem 0rem;
+
+  @media (max-width: 640px) {
+    font-size: 1.9rem;
+    text-align: center;
+  }
+}
+
+@mixin style_h3 {
+  font-size: 2.4rem;
+  color: $rosa;
+  margin: 1rem 0rem;
+
+  @media (max-width: 640px) {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+}
+
+
+
+

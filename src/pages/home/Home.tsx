@@ -8,8 +8,8 @@ import Button from "@mui/material/Button";
 import { lazy, Suspense } from "react";
 import IntegratedForm from "components/FormRdStation";
 import Footer from "components/footer/Footer";
-//import SliderDepoimento from "./sliders/SliderDepoimento";
-const SliderDepoimento = lazy(() => import("./sliders/SliderDepoimento"));
+import SliderDepoimento from "./sliders/SliderDepoimento";
+//const SliderDepoimento = lazy(() => import("./sliders/SliderDepoimento"));
 
 export default function Home() {
   return (
@@ -110,14 +110,14 @@ export default function Home() {
           cursus vestibulum, facilisi ac, sed faucibus.
         </p>
       </div>
-      <Suspense fallback={<div>Carregando videos...</div>}>
-        <SliderDepoimento />
-      </Suspense>
-      <br /><br />
+      <SliderDepoimento />
+      <br />
+      <br />
       <IntegratedForm />
-      <br /><br />
-      
-      <Footer/>
+      <br />
+      <br />
+
+      <Footer />
     </>
   );
 }

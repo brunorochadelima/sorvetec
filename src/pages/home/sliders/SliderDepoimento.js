@@ -17,7 +17,8 @@ export default function SliderDepoimento() {
   return (
     <>
       <Swiper
-        loading="lazy"
+        lazy={true}
+        preloadImages={false} 
         slidesPerView={1}
         cssMode={true}
         breakpoints={{
@@ -43,7 +44,7 @@ export default function SliderDepoimento() {
         className="container"
       >
         <SwiperSlide>
-          <iframe
+          <iframe className="swiper-lazy"
             width="100%"
             height="300"
             src="https://www.youtube.com/embed/__UWtcN86ck"
@@ -55,7 +56,7 @@ export default function SliderDepoimento() {
         </SwiperSlide>
 
         <SwiperSlide>
-          <iframe
+          <iframe className="swiper-lazy"
             width="100%"
             height="300"
             src="https://www.youtube.com/embed/__UWtcN86ck"
@@ -67,7 +68,7 @@ export default function SliderDepoimento() {
         </SwiperSlide>
 
         <SwiperSlide>
-          <iframe
+          <iframe className="swiper-lazy"
             width="100%"
             height="300"
             src="https://www.youtube.com/embed/__UWtcN86ck"
@@ -79,7 +80,7 @@ export default function SliderDepoimento() {
         </SwiperSlide>
 
         <SwiperSlide>
-          <iframe
+          <iframe className="swiper-lazy"
             width="100%"
             height="300"
             src="https://www.youtube.com/embed/__UWtcN86ck"

@@ -2,10 +2,6 @@ import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Carregamento lento de iframes
-import lazyframe from "lazyframe";
-
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -18,7 +14,6 @@ import "./sliderDepoimento.css";
 import { Autoplay, Pagination, Navigation } from "swiper";
 
 export default function SliderDepoimento() {
-  lazyframe(".lazyframe")
   return (
     <>
       <Swiper
@@ -49,7 +44,8 @@ export default function SliderDepoimento() {
         className="container"
       >
         <SwiperSlide>
-          <iframe className="swiper-lazy lazyframe"
+          <iframe className="swiper-lazy"
+            loading="lazy"
             width="100%"
             height="300"
             src="https://www.youtube.com/embed/__UWtcN86ck"
@@ -61,7 +57,8 @@ export default function SliderDepoimento() {
         </SwiperSlide>
 
         <SwiperSlide>
-          <iframe className="swiper-lazy lazyframe"
+          <iframe className="swiper-lazy"
+            loading="lazy"
             width="100%"
             height="300"
             src="https://www.youtube.com/embed/__UWtcN86ck"
@@ -73,7 +70,8 @@ export default function SliderDepoimento() {
         </SwiperSlide>
 
         <SwiperSlide>
-          <iframe className="swiper-lazy lazyframe"
+          <iframe className="swiper-lazy"
+            loading="lazy"
             width="100%"
             height="300"
             src="https://www.youtube.com/embed/__UWtcN86ck"
@@ -85,7 +83,8 @@ export default function SliderDepoimento() {
         </SwiperSlide>
 
         <SwiperSlide>
-          <iframe className="swiper-lazy lazyframe"
+          <iframe className="swiper-lazy"
+            loading="lazy"
             width="100%"
             height="300"
             src="https://www.youtube.com/embed/__UWtcN86ck"

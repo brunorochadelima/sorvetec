@@ -43,7 +43,7 @@ export default function CardProduto(props) {
   function calculaDesconto(props) {
     return (
       <div className={style.card__tag_desconto}>
-        -{(((price - promotional_price) / price) * 100).toFixed(2)}%
+        {(((price - promotional_price) / price) * 100).toFixed(2)}% de desconto
       </div>
     );
   }

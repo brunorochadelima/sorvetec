@@ -60,7 +60,7 @@ export default function CardProduto(props) {
 
       <p>
         ou {payment_option_details[2].plots}X de{" "}
-        {payment_option_details[2].value} à vista no cartão
+        {payment_option_details[2].value} no cartão
       </p>
     </div>
   );

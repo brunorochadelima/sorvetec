@@ -1,0 +1,52 @@
+@import "theme/Tema.module.scss";
+
+.card {
+  img {
+     height: 180px;
+     width: auto;
+     padding-bottom: 1.5rem;
+  }
+
+  padding: 0.5rem;
+  width: 280px;
+  
+  background-color: #fff;
+  text-align: center;
+  min-height: 380px;
+  border-radius: 12px;
+  font-size: 1rem;
+
+  &__tag_desconto{
+    background-color: #8BC34A;
+    padding: .5rem;
+    border-radius: 30px;
+    width: 60px;
+    
+  }
+
+  &__nome {
+    font-size: 1rem;
+    color: $dark;
+    font-weight: normal;
+  }
+
+  &__precoDe {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    text-decoration: line-through;
+  }
+
+  &__precoPor {
+    margin-top: 0.2rem;
+
+    span {
+      color: $rosa;
+      font-weight: bold;
+      font-size: 1.8rem;
+    }
+  }
+
+  p:last-child {
+    font-size: 1rem;
+  }
+}

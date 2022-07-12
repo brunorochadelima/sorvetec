@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
 import api from "api/api";
+import CardProduto from "components/cardProduto/CardProduto";
+import style from "./Catalogo.module.scss";
+import tema from "theme/Tema.module.scss";
 
 interface IProdutos {
   Product: any;
-  name: string;
+  id: number;
+  Products: any;
+  dados: any;
 }
 
 export default function Catalogo() {
   const [produtos, setprodutos] = useState<IProdutos[]>([]);
-  const [pagina, setpagina] = useState()
 
   useEffect(() => {
     api
-      .get("web_api/products", {
+      .get<IProdutos>("web_api/products", {
         params: {
           category_id: 421,
           available: 1,
@@ -22,23 +26,16 @@ export default function Catalogo() {
   }, []);
 
   return (
-    <div>
-      {produtos.map((produto) => (
-        <div key={produto.Product.id}>
-          <p>ID: {produto.Product.id}</p>
-          <p>{produto.Product.name}</p>
-          <p>De:  {produto.Product.price}</p>
-          <p>Por: {Number(produto.Product.promotional_price) > 0 ? produto.Product.promotional_price : " "}</p>
-          <p>ou {produto.Product.payment_option_details[2].plots}X de {produto.Product.payment_option_details[2].value}  à vista no cartão</p>
-          <hr />
-
-         {/* <img src={Products.Product.ProductImage[].http} alt="" /> */}
-        </div>
-      ))}
+    <div className={tema.container}>
+      <div className={style.grid_cards}>
+        {produtos.map((produto) => (
+          <div key={produto.Product.id}>
+            <CardProduto {...produto} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
 
 //https://www.multivisi.com.br/web_api/products?page=7
-{
-}

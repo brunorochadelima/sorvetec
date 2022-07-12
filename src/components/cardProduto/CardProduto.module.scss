@@ -11,6 +11,7 @@
   width: 280px;
   
   background-color: #fff;
+  border: 1px solid $laranja;
   text-align: center;
   min-height: 380px;
   border-radius: 12px;
@@ -21,7 +22,6 @@
     padding: .5rem;
     border-radius: 30px;
     width: 60px;
-    
   }
 
   &__nome {
@@ -48,5 +48,13 @@
 
   p:last-child {
     font-size: 1rem;
+  }
+
+  &:hover {
+    transition: .2s cubic-bezier(0.075, 0.82, 0.165, 1);
+   
+    cursor: pointer;
+    transform: scale(1.02);
+   
   }
 }

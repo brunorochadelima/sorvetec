@@ -1,25 +1,36 @@
-import api from 'api/api';
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import api from "api/api";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 export default function ProdutoDetalhes() {
-  
   const { id } = useParams();
-  
-  const [produto, setproduto] = useState([]);
+
+  const [name, setName] = useState();
+  const [price, setPrice] = useState();
+  const [description, setDescription] = useState();
 
   useEffect(() => {
     api
       .get(`web_api/products/${id}`)
-      .then((response) => setproduto(response.data.Product));
-  }, []);
+      .then((response) => {
+        setName(response.data.Product.name)
+        setPrice(response.data.Product.price)
+        setDescription(response.data.Product.description)
+      })
+      
+  }, [id]);
+
 
 
   return (
     <section>
-      <div>
-       detalhes do produto
-      </div>
+        <p>{name}</p>
+        <p>{price}</p>
+        <div>
+          {description}
+        </div>
+       
+     
     </section>
-  )
+  );
 }

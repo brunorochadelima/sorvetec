@@ -1,7 +1,10 @@
 @import "theme/Tema.module.scss";
 
 .descricao {
-  strong, h2, h2 span, b,
+  strong,
+  h2,
+  h2 span,
+  b,
   p span strong span,
   p strong span {
     color: $rosa !important;
@@ -20,11 +23,35 @@
       background-color: $laranja;
     }
 
-    & tr, td {
-      padding: .5rem;
+    & tr,
+    td {
+      padding: 0.5rem;
       border-radius: 0px;
     }
   }
+}
 
+.box_whatsapp {
+  h3 {
+    font-size: 2rem;
+    color: $dark;
+  }
 
+  a {
+    text-decoration: none
+  }
+
+  p {
+    background-color: #128c7e;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 12px;
+    width: fit-content;
+
+    &:hover {
+      transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+      cursor: pointer;
+      transform: scale(1.02);
+    }
+  }
 }

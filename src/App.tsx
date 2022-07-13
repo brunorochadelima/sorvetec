@@ -1,3 +1,4 @@
+import BotaoFlutuante from "components/BotaoFlutuante";
 import Footer from "components/footer/Footer";
 import ProdutoDetalhes from "components/produtoDetalhes/ProdutoDetalhes";
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="*" element={<Pagina404 />} />
       </Routes>
         <Footer />
+        <BotaoFlutuante/>
     </BrowserRouter>
   );
 }

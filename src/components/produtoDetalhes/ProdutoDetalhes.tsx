@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import parse from "html-react-parser";
 import tema from "theme/Tema.module.scss";
-import style from "./ProdutoDetalhes.module.scss"
+import style from "./ProdutoDetalhes.module.scss";
+import FormRdStation from "components/FormRdStation";
+import { BsWhatsapp, BsArrowUpRightCircle } from "react-icons/bs";
 
 export default function ProdutoDetalhes() {
   const { id } = useParams();
@@ -22,12 +24,21 @@ export default function ProdutoDetalhes() {
   const descriptionHtml = parse(`${description}`);
 
   return (
-    <section className={tema.container}>
-      <p>{name}</p>
-      <p>{price}</p>
-      <div className={style.descricao}>
-      {descriptionHtml}
-      </div>
-    </section>
+    <>
+      <section className={tema.container}>
+        <p>{name}</p>
+        <p>{price}</p>
+        <div className={style.descricao}>{descriptionHtml}</div>
+        <br />
+        <div className= {style.box_whatsapp}>
+          <h3>Ficou com alguma dúvida sobre o produto?</h3>
+          <a href="https://api.whatsapp.com/send?phone=553432570800&text=Ol%C3%A1%20Multivisi" target="_blank" rel="noreferrer">
+          <p>
+            <BsWhatsapp /> Chame a gente agora no WhatsApp
+          </p></a>
+        </div>
+      </section>
+      <FormRdStation />
+    </>
   );
 }

@@ -5,11 +5,9 @@ import sorveteExpresso from "assets/imagens/sorvete-expresso.png";
 import sorveteChapa from "assets/imagens/sorvete-chapa.png";
 import acai from "assets/imagens/acai.png";
 import Button from "@mui/material/Button";
-import { lazy, Suspense } from "react";
 import IntegratedForm from "components/FormRdStation";
-import Footer from "components/footer/Footer";
 import SliderDepoimento from "./sliders/SliderDepoimento";
-import BotaoFlutuante from "components/BotaoFlutuante";
+
 //const SliderDepoimento = lazy(() => import("./sliders/SliderDepoimento"));
 
 
@@ -113,7 +111,6 @@ export default function Home() {
       <IntegratedForm />
       <br />
       <br />
-       <BotaoFlutuante/>
     </>
   );
 }

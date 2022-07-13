@@ -1,0 +1,30 @@
+@import "theme/Tema.module.scss";
+
+.descricao {
+  strong, h2, h2 span, b,
+  p span strong span,
+  p strong span {
+    color: $rosa !important;
+  }
+
+  p {
+    color: $dark !important;
+  }
+
+  table {
+    border: 3px solid $laranja;
+    border-radius: 12px;
+    padding: 0.5rem;
+
+    & tbody tr:nth-child(odd) {
+      background-color: $laranja;
+    }
+
+    & tr, td {
+      padding: .5rem;
+      border-radius: 0px;
+    }
+  }
+
+
+}

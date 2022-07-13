@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function CardProduto(props) {
   const navigate = useNavigate();
-    
+
   // Desestruturação de propriedades
   const {
     Product: {
@@ -12,14 +12,19 @@ export default function CardProduto(props) {
       name,
       payment_option_details,
       ProductImage,
-      id
+      id,
     },
   } = props;
 
-
   // converter valores do produto para R$
-  const priceFormatado = Number(price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-  const promotional_priceFormatado = Number(promotional_price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  const priceFormatado = Number(price).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+  const promotional_priceFormatado = Number(promotional_price).toLocaleString(
+    "pt-BR",
+    { style: "currency", currency: "BRL" }
+  );
 
   //Função verifica se produto está com desconto para fazer a rendericação condicional dps preços
   function estaEmPromocao(props) {
@@ -38,7 +43,7 @@ export default function CardProduto(props) {
     }
     return (
       <p className={style.card__precoPor}>
-         <span>{priceFormatado}</span>
+        <span>{priceFormatado}</span>
       </p>
     );
   }
@@ -52,13 +57,10 @@ export default function CardProduto(props) {
     );
   }
 
-  
   // direciona para detalhes do produto
   function redirecionaParaDetalhes(produto) {
     navigate(`/catalogo/${produto}`, { state: { produto } });
   }
-
-
 
   return (
     <div className={style.card} onClick={() => redirecionaParaDetalhes(id)}>

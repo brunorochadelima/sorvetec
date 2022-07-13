@@ -19,10 +19,9 @@ export default function Home() {
       <div className={tema.container}>
         <div className={style.grid_container}>
           <div>
-            <h1>Srcu suscipit massa ly as aliquam</h1>
+            <h1>Empreenda com a Sorvetec</h1>
             <p>
-              At lacus vitae nulla sagittis scelerisque nisl. Pellentesque duis
-              cursus vestibulum, facilisi ac, sed faucibus.
+            A hora de se tornar dono(a) do seu próprio negócio finalmente chegou! 
             </p>
           </div>
           <div>
@@ -41,8 +40,7 @@ export default function Home() {
               Lucre com diversos tipos de sorvete
             </h2>
             <p>
-              At lacus vitae nulla sagittis scelerisque nisl. Pellentesque duis
-              cursus vestibulum, facilisi ac, sed faucibus.
+            As nossas máquinas possibilitam a variedade de cadárpio que a sua empresa precisa
             </p>
           </div>
 
@@ -69,8 +67,7 @@ export default function Home() {
             <div>
               <h3>Sorvete na chapa</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Facilisi morbi sit consectetur elit.
+              Use a sua imaginação e crie sabores incríveis de sorvete na chapa para conquistar o seu cliente.
               </p>
               <Button
                 variant="contained"
@@ -87,10 +84,9 @@ export default function Home() {
           <div className={style.tipos_sorvete__item}>
             <img src={acai} alt="sorvete expresso" />
             <div>
-              <h3>Açaí</h3>
+              <h3>Açaí expresso</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Facilisi morbi sit consectetur elit.
+              Fature bastante produzindo o seu próprio açaí expresso
               </p>
               <Button
                 variant="contained"
@@ -108,8 +104,7 @@ export default function Home() {
       <div className={style.titulo_centralizado}>
         <h2>O que nossos clientes dizem?</h2>
         <p>
-          At lacus vitae nulla sagittis scelerisque nisl. Pellentesque duis
-          cursus vestibulum, facilisi ac, sed faucibus.
+        Confira os depoimentos de pessoas que acreditaram na qualidade de nossas máquinas e se tornaram empreendedores de sucesso.
         </p>
       </div>
       <SliderDepoimento />

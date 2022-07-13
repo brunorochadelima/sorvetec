@@ -1,8 +1,9 @@
 import style from "./CardProduto.module.scss";
+import { useNavigate } from "react-router-dom";
 
 export default function CardProduto(props) {
-
-  
+  const navigate = useNavigate();
+    
   // Desestruturação de propriedades
   const {
     Product: {
@@ -11,9 +12,12 @@ export default function CardProduto(props) {
       name,
       payment_option_details,
       ProductImage,
+      id
     },
   } = props;
 
+
+  // converter valores do produto para R$
   const priceFormatado = Number(price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   const promotional_priceFormatado = Number(promotional_price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
@@ -48,8 +52,16 @@ export default function CardProduto(props) {
     );
   }
 
+  
+  // direciona para detalhes do produto
+  function redirecionaParaDetalhes(produto) {
+    navigate(`/catalogo/${produto}`, { state: { produto } });
+  }
+
+
+
   return (
-    <div className={style.card}>
+    <div className={style.card} onClick={() => redirecionaParaDetalhes(id)}>
       {promotional_price > 0 && calculaDesconto(props)}
 
       <img src={ProductImage[0].http} alt="" />

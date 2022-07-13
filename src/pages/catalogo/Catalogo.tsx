@@ -4,6 +4,7 @@ import CardProduto from "components/cardProduto/CardProduto";
 import style from "./Catalogo.module.scss";
 import tema from "theme/Tema.module.scss";
 
+
 interface IProdutos {
   Product: any;
   id: number;
@@ -12,7 +13,9 @@ interface IProdutos {
 }
 
 export default function Catalogo() {
+  type Produto = typeof produtos[0];
   const [produtos, setprodutos] = useState<IProdutos[]>([]);
+
 
   useEffect(() => {
     api
@@ -29,7 +32,10 @@ export default function Catalogo() {
     <div className={tema.container}>
       <div className={style.grid_cards}>
         {produtos.map((produto) => (
-          <div key={produto.Product.id}>
+          <div
+            key={produto.Product.id}
+            
+          >
             <CardProduto {...produto} />
           </div>
         ))}

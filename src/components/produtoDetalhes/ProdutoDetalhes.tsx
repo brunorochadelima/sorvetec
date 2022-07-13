@@ -2,6 +2,7 @@ import api from "api/api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import parse from "html-react-parser";
+import tema from "theme/Tema.module.scss";
 
 export default function ProdutoDetalhes() {
   const { id } = useParams();
@@ -21,10 +22,10 @@ export default function ProdutoDetalhes() {
   const descriptionHtml = parse(`${description}`);
 
   return (
-    <section>
+    <section className={tema.container}>
       <p>{name}</p>
       <p>{price}</p>
       {descriptionHtml}
     </section>
-  )
+  );
 }

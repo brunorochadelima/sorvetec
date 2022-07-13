@@ -1,6 +1,7 @@
 import api from "api/api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import parse from "html-react-parser";
 
 export default function ProdutoDetalhes() {
   const { id } = useParams();
@@ -10,27 +11,20 @@ export default function ProdutoDetalhes() {
   const [description, setDescription] = useState();
 
   useEffect(() => {
-    api
-      .get(`web_api/products/${id}`)
-      .then((response) => {
-        setName(response.data.Product.name)
-        setPrice(response.data.Product.price)
-        setDescription(response.data.Product.description)
-      })
-      
+    api.get(`web_api/products/${id}`).then((response) => {
+      setName(response.data.Product.name);
+      setPrice(response.data.Product.price);
+      setDescription(response.data.Product.description);
+    });
   }, [id]);
 
-
+  const descriptionHtml = parse(`${description}`);
 
   return (
     <section>
-        <p>{name}</p>
-        <p>{price}</p>
-        <div>
-          {description}
-        </div>
-       
-     
+      <p>{name}</p>
+      <p>{price}</p>
+      {descriptionHtml}
     </section>
-  );
+  )
 }

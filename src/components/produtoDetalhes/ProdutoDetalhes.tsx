@@ -6,7 +6,6 @@ import tema from "theme/Tema.module.scss";
 
 export default function ProdutoDetalhes() {
   const { id } = useParams();
-
   const [name, setName] = useState();
   const [price, setPrice] = useState();
   const [description, setDescription] = useState();

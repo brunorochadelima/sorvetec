@@ -45,7 +45,7 @@ export default function Home() {
           </div>
 
           <div className={style.tipos_sorvete__item}>
-            <img src={sorveteExpresso} alt="sorvete expresso" />
+            <img loading="lazy" src={sorveteExpresso} alt="sorvete expresso" />
             <div>
               <h3>Sorvete expresso</h3>
               <p>
@@ -79,11 +79,11 @@ export default function Home() {
                 Conheça as máquinas
               </Button>
             </div>
-            <img src={sorveteChapa} alt="sorvete na chapa" />
+            <img loading="lazy" src={sorveteChapa} alt="sorvete na chapa" />
           </div>
 
           <div className={style.tipos_sorvete__item}>
-            <img src={acai} alt="sorvete expresso" />
+            <img loading="lazy" src={acai} alt="sorvete expresso" />
             <div>
               <h3>Açaí expresso</h3>
               <p>Fature bastante produzindo o seu próprio açaí expresso</p>

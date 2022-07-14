@@ -1,6 +1,6 @@
 import BotaoFlutuante from "components/BotaoFlutuante";
 import Footer from "components/footer/Footer";
-import ProdutoDetalhes from "components/produtoDetalhes/ProdutoDetalhes";
+import ProdutoDetalhes from "pages/produtoDetalhes/ProdutoDetalhes";
 
 
 import Catalogo from "pages/catalogo/Catalogo";

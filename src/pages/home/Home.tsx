@@ -13,7 +13,6 @@ import SliderDepoimento from "./sliders/SliderDepoimento";
 export default function Home() {
   return (
     <main>
-
       <section className={tema.container}>
         <div className={style.grid_container}>
           <div>

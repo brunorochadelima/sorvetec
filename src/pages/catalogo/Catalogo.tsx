@@ -36,7 +36,7 @@ export default function Catalogo() {
           },
         })
         .then((response) => setProdutos(response.data.Products));
-        
+
       setLoading(false); //stop loading when data is fetched
     };
     getProdutos();

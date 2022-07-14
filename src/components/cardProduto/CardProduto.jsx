@@ -49,7 +49,7 @@ export default function CardProduto(props) {
   }
 
   // Calcula o desconto em %
-  function calculaDesconto(props) {
+  function calculaDesconto() {
     return (
       <div className={style.card__tag_desconto}>
         {(((price - promotional_price) / price) * 100).toFixed(2)}% de desconto
@@ -58,8 +58,8 @@ export default function CardProduto(props) {
   }
 
   // direciona para detalhes do produto
-  function redirecionaParaDetalhes(produto) {
-    navigate(`/catalogo/${produto}`, { state: { produto } });
+  function redirecionaParaDetalhes(produtoID) {
+    navigate(`/catalogo/${produtoID}`);
   }
 
   return (
@@ -67,7 +67,6 @@ export default function CardProduto(props) {
       {promotional_price > 0 && calculaDesconto(props)}
 
       <img src={ProductImage[0].http} alt="" />
-      {/* <p>ID: {props.Product.id}</p> */}
       <h2 className={style.card__nome}>{name}</h2>
 
       {estaEmPromocao(props)}

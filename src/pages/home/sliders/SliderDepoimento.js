@@ -1,4 +1,3 @@
-import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -11,14 +10,14 @@ import "swiper/css/navigation";
 import "./sliderDepoimento.css";
 
 // import required modules
-import { Autoplay, Pagination, Navigation } from "swiper";
+import {Pagination, Navigation } from "swiper";
 
 export default function SliderDepoimento() {
   return (
     <>
       <Swiper
         lazy={true}
-        preloadImages={false} 
+        preloadImages={false}
         slidesPerView={1}
         cssMode={true}
         breakpoints={{
@@ -40,11 +39,12 @@ export default function SliderDepoimento() {
           clickable: true,
         }}
         navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="container"
+        modules={[Pagination, Navigation]}
+        className="container_depoimentos"
       >
         <SwiperSlide>
-          <iframe className="swiper-lazy"
+          <iframe
+            className="swiper-lazy"
             loading="lazy"
             width="100%"
             height="300"
@@ -57,7 +57,8 @@ export default function SliderDepoimento() {
         </SwiperSlide>
 
         <SwiperSlide>
-          <iframe className="swiper-lazy"
+          <iframe
+            className="swiper-lazy"
             loading="lazy"
             width="100%"
             height="300"
@@ -70,7 +71,8 @@ export default function SliderDepoimento() {
         </SwiperSlide>
 
         <SwiperSlide>
-          <iframe className="swiper-lazy"
+          <iframe
+            className="swiper-lazy"
             loading="lazy"
             width="100%"
             height="300"
@@ -82,18 +84,6 @@ export default function SliderDepoimento() {
           ></iframe>
         </SwiperSlide>
 
-        <SwiperSlide>
-          <iframe className="swiper-lazy"
-            loading="lazy"
-            width="100%"
-            height="300"
-            src="https://www.youtube.com/embed/__UWtcN86ck"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </SwiperSlide>
       </Swiper>
     </>
   );

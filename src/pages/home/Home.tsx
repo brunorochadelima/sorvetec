@@ -121,8 +121,6 @@ export default function Home() {
           <IntegratedForm />
         </div>
       </div>
-      <br />
-      <br />
     </main>
   );
 }

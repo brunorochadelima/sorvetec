@@ -5,7 +5,10 @@ import parse from "html-react-parser";
 import tema from "theme/Tema.module.scss";
 import style from "./ProdutoDetalhes.module.scss";
 import FormRdStation from "components/FormRdStation";
-import { BsWhatsapp, BsArrowUpRightCircle } from "react-icons/bs";
+import { BsWhatsapp } from "react-icons/bs";
+import { FiShoppingCart } from "react-icons/fi";
+import Chip from "@mui/material/Chip";
+
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -14,58 +17,124 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Button } from "@mui/material";
 
 export default function ProdutoDetalhes() {
   const { id } = useParams();
   const [name, setName] = useState();
   const [price, setPrice] = useState();
+  const [promotional_price, setPromotional_price] = useState();
   const [description, setDescription] = useState();
   const [productImage, setProductImage] = useState<any[]>([]);
+  const [payment_option, setPayment_option] = useState();
+  const [availability, setAvailability] = useState();
 
   useEffect(() => {
     api.get(`web_api/products/${id}`).then((response) => {
       setName(response.data.Product.name);
       setPrice(response.data.Product.price);
+      setPromotional_price(response.data.Product.promotional_price);
       setDescription(response.data.Product.description);
       setProductImage(response.data.Product.ProductImage);
+      setPayment_option(response.data.Product.payment_option_html);
+      setAvailability(response.data.Product.availability);
     });
   }, [id]);
-
-  const descriptionHtml = parse(`${description}`);
 
   // mapeamos o array de objetos productImage e retornabdo apenas uma propriedade de cada item (o https)
   var imagens = productImage.map(function (item, indice) {
     return item.https;
   });
 
+  // converter valores do produto para R$
+  const priceFormatado = Number(price).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+  const promotional_priceFormatado = Number(promotional_price).toLocaleString(
+    "pt-BR",
+    { style: "currency", currency: "BRL" }
+  );
+
+  //Função verifica se produto está com desconto para fazer a rendericação condicional dos preços
+  function estaEmPromocao() {
+    if (promotional_price && promotional_price > 0) {
+      return (
+        <>
+          <p className={style.container_produto__price}>{priceFormatado}</p>
+          <p className={style.container_produto__promocional_price}>
+            <span>
+              {Number(promotional_price) > 0 ? promotional_priceFormatado : " "}
+            </span>
+          </p>
+        </>
+      );
+    }
+    return (
+      <p className={style.container_produto__promocional_price}>
+        <span>{priceFormatado}</span>
+      </p>
+    );
+  }
+
   return (
     <>
       <section className={tema.container}>
         {/* Slider fotos produto */}
-        <Swiper
-          slidesPerView={1}
-          spaceBetween={30}
-          loop={true}
-          pagination={{
-            clickable: true,
-          }}
-          navigation={true}
-          modules={[Pagination, Navigation]}
-          className="mySwiper"
-        >
-          {imagens.map((item, index) => (
-            <SwiperSlide key={index}>
-              <div>
-                <img src={item} alt={name} decoding="async"/>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
 
-        <p>{name}</p>
-        <p>{price}</p>
-        <div className={style.descricao}>{descriptionHtml}</div>
+        <div className={style.container_produto}>
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={30}
+            loop={true}
+            pagination={{
+              clickable: true,
+            }}
+            navigation={true}
+            modules={[Pagination, Navigation]}
+            className={style.mySwiper}
+          >
+            {imagens.map((item, index) => (
+              <SwiperSlide key={index}>
+                <div>
+                  <img src={item} alt={name} decoding="async" />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          <div className={style.container_produto__detalhes_produto}>
+            <Chip label={availability} />
+            <h1>{name}</h1>
+            <p className={style.container_produto__codigo}>CÓD: {id}</p>
+
+            {estaEmPromocao()}
+
+            <p className={style.container_produto__opcoes_pagamento}>
+              {parse(`${payment_option}`)}
+            </p>
+            <Button
+              sx={{ color: "white" }}
+              variant="contained"
+              size="large"
+              startIcon={<FiShoppingCart />}
+            >
+              Comprar
+            </Button>
+            <p>
+              Gostou? Conheça em nosso showroom,{" "}
+              <a href="https://www.multivisi.com.br/showroom" target="_blank">
+                agende aqui.
+              </a>
+            </p>
+          </div>
+        </div>
+
+        {/* Descrição do produto */}
+        <div className={style.descricao}>{parse(`${description}`)}</div>
         <br />
+
+        {/* Whatsapp */}
         <div className={style.box_whatsapp}>
           <h3>Ficou com dúvidas? Que tal nos chamar pelo WhatsApp? </h3>
           <a

@@ -26,7 +26,7 @@ export default function CardProduto(props) {
     { style: "currency", currency: "BRL" }
   );
 
-  //Função verifica se produto está com desconto para fazer a rendericação condicional dps preços
+  //Função verifica se produto está com desconto para fazer a rendericação condicional dos preços
   function estaEmPromocao(props) {
     if (promotional_price > 0) {
       return (

@@ -1,5 +1,49 @@
 @import "theme/Tema.module.scss";
 
+.container_produto {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem;
+  border-radius: 28px;
+  background-color: #fff;
+  margin-bottom: 5rem;
+
+  .mySwiper {
+    flex-basis: 50%;
+    @media (max-width: 800px) {
+      width: 100%;
+    }
+  }
+
+  &__detalhes_produto {
+    flex-basis: 50%;
+  }
+
+  &__codigo,
+  &__opcoes_pagamento {
+    font-size: 1rem;
+  }
+
+  &__price {
+    text-decoration: line-through;
+  }
+
+  &__promocional_price {
+    @include style_h3;
+    font-weight: bold;
+  }
+
+  h1 {
+    @include style_h3;
+    font-size: 1.75rem;
+  }
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
 .descricao {
   strong,
   h2,
@@ -38,7 +82,7 @@
   }
 
   a {
-    text-decoration: none
+    text-decoration: none;
   }
 
   p {

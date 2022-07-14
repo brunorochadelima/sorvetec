@@ -43,7 +43,7 @@ export default function Catalogo() {
   }, []);
 
   return (
-    <div className={tema.container}>
+    <section className={tema.container}>
       {loading && <IconLoading />}
       <div className={style.grid_cards}>
         {produtos.map((produto) => (
@@ -52,7 +52,7 @@ export default function Catalogo() {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

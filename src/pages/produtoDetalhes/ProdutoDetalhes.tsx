@@ -67,19 +67,18 @@ export default function ProdutoDetalhes() {
         <div className={style.descricao}>{descriptionHtml}</div>
         <br />
         <div className={style.box_whatsapp}>
-          <h3>Ficou com alguma dúvida sobre o produto?</h3>
+          <h3>Ficou com dúvidas? Que tal nos chamar pelo WhatsApp? </h3>
           <a
             href="https://api.whatsapp.com/send?phone=553432570800&text=Ol%C3%A1%20Multivisi"
             target="_blank"
             rel="noreferrer"
           >
             <p>
-              <BsWhatsapp /> Chame a gente agora no WhatsApp
+              <BsWhatsapp /> Entrar em contato pelo WhatsApp
             </p>
           </a>
         </div>
       </section>
-      <FormRdStation />
     </>
   );
 }

@@ -116,7 +116,11 @@ export default function Home() {
       {/* Formulário RdStation */}
       <br />
       <br />
-      <IntegratedForm />
+      <div style={{backgroundColor: "#FFC048"}}>
+        <div className={tema.container}>
+          <IntegratedForm />
+        </div>
+      </div>
       <br />
       <br />
     </main>

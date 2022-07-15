@@ -77,16 +77,15 @@ export default function ProdutoDetalhes() {
     );
   }
 
-
   // Adiciona ao carrinho
   function adicionarProdutoCarrinho() {
     api
       .post("web_api/cart/", {
         Cart: {
           session_id: price,
-          product_id: "3619",
-          quantity: "1",
-          variant_id: "0",
+          product_id: id,
+          quantity: 1,
+          variant_id: 0,
         },
       })
       .then((response) => {

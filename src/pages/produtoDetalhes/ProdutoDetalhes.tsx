@@ -21,12 +21,13 @@ import { Button } from "@mui/material";
 export default function ProdutoDetalhes() {
   const { id } = useParams();
   const [name, setName] = useState();
-  const [price, setPrice] = useState();
+  const [price, setPrice] = useState(" ");
   const [promotional_price, setPromotional_price] = useState();
   const [description, setDescription] = useState();
   const [productImage, setProductImage] = useState<any[]>([]);
   const [payment_option, setPayment_option] = useState();
   const [availability, setAvailability] = useState();
+  const [cart_url, setCart_url] = useState("");
 
   useEffect(() => {
     api.get(`web_api/products/${id}`).then((response) => {
@@ -76,6 +77,29 @@ export default function ProdutoDetalhes() {
     );
   }
 
+
+  // Adiciona ao carrinho
+  function adicionarProdutoCarrinho() {
+    api
+      .post("web_api/cart/", {
+        Cart: {
+          session_id: price,
+          product_id: "3619",
+          quantity: "1",
+          variant_id: "0",
+        },
+      })
+      .then((response) => {
+        setCart_url(response.data.cart_url);
+        openCkeckout();
+      });
+  }
+
+  // Redireciona para página do checkout
+  function openCkeckout() {
+    window.open(cart_url);
+  }
+
   return (
     <>
       <section className={tema.container}>
@@ -113,6 +137,7 @@ export default function ProdutoDetalhes() {
               {parse(`${payment_option}`)}
             </p>
             <Button
+              onClick={() => adicionarProdutoCarrinho()}
               sx={{ color: "white" }}
               variant="contained"
               size="large"

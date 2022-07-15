@@ -7,12 +7,14 @@ import acai from "assets/imagens/acai.png";
 import Button from "@mui/material/Button";
 import IntegratedForm from "components/FormRdStation";
 import SliderDepoimento from "./sliders/SliderDepoimento";
+import Header from "components/header/Header";
 
 //const SliderDepoimento = lazy(() => import("./sliders/SliderDepoimento"));
 
 export default function Home() {
   return (
     <main>
+      <Header/>
       <section className={tema.container}>
         <div className={style.grid_container}>
           <div>

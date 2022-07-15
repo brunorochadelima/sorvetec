@@ -41,7 +41,7 @@ export default function ProdutoDetalhes() {
     });
   }, [id]);
 
-  // mapeamos o array de objetos productImage e retornabdo apenas uma propriedade de cada item (o https)
+  // mapeia o array de objetos productImage e retorna apenas uma propriedade de cada item (o https)
   var imagens = productImage.map(function (item, indice) {
     return item.https;
   });
@@ -90,14 +90,16 @@ export default function ProdutoDetalhes() {
       })
       .then((response) => {
         setCart_url(response.data.cart_url);
-        openCkeckout();
       });
   }
 
-  // Redireciona para página do checkout
-  function openCkeckout() {
-    window.open(cart_url);
-  }
+  //Redireciona para checkout quando o hook cart_url recebe a url 
+  useEffect(() => {
+    if(cart_url.length > 0) {
+      window.location.href = cart_url
+    }
+  },[cart_url], )
+
 
   return (
     <>
@@ -135,14 +137,18 @@ export default function ProdutoDetalhes() {
             <p className={style.container_produto__opcoes_pagamento}>
               {parse(`${payment_option}`)}
             </p>
+           
             <Button
-              onClick={() => adicionarProdutoCarrinho()}
+              onClick={adicionarProdutoCarrinho}
               sx={{ color: "white" }}
               variant="contained"
               size="large"
               startIcon={<FiShoppingCart />}
             >
               Comprar
+            </Button>
+            <Button>
+              open
             </Button>
             <p>
               Gostou? Conheça em nosso showroom,{" "}

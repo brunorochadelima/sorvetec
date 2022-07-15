@@ -1,7 +1,10 @@
 import React from 'react'
 
 export default function Header() {
+
+  var largura = window.screen.availWidth
+
   return (
-    <div>Header</div>
+    <div>{largura}</div>
   )
 }

@@ -147,9 +147,6 @@ export default function ProdutoDetalhes() {
             >
               Comprar
             </Button>
-            <Button>
-              open
-            </Button>
             <p>
               Gostou? Conheça em nosso showroom,{" "}
               <a href="https://www.multivisi.com.br/showroom" target="_blank">

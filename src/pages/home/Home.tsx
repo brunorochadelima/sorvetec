@@ -14,7 +14,7 @@ import Header from "components/header/Header";
 export default function Home() {
   return (
     <main>
-      <Header/>
+      
       <section className={tema.container}>
         <div className={style.grid_container}>
           <div>

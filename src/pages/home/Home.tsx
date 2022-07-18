@@ -1,13 +1,13 @@
 import tema from "theme/Tema.module.scss";
-import maquinasSorvetec from "assets/imagens/maquinas-sorvetec-home.png";
+import maquinasSorvetec from "assets/imagens/maquinas-sorvetec-home.webp";
 import style from "pages/home/Home.module.scss";
-import sorveteExpresso from "assets/imagens/sorvete-expresso.png";
-import sorveteChapa from "assets/imagens/sorvete-chapa.png";
-import acai from "assets/imagens/acai.png";
+import sorveteExpresso from "assets/imagens/sorvete-expresso.webp";
+import sorveteChapa from "assets/imagens/sorvete-chapa.webp";
+import acai from "assets/imagens/acai.webp";
 import Button from "@mui/material/Button";
 import IntegratedForm from "components/FormRdStation";
 import SliderDepoimento from "./sliders/SliderDepoimento";
-import Header from "components/header/Header";
+
 
 //const SliderDepoimento = lazy(() => import("./sliders/SliderDepoimento"));
 

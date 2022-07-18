@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useCallback, useEffect, useState } from "react";
 import api from "api/api";
 import CardProduto from "components/cardProduto/CardProduto";
 import style from "./Catalogo.module.scss";
@@ -26,21 +26,44 @@ export default function Catalogo() {
   //     .then((response) => setprodutos(response.data.Products));
   // }, []);
 
-  useEffect(() => {
-    const getProdutos = async () => {
-      await api
-        .get(`web_api/products`, {
-          params: {
-            category_id: 421,
-            available: 1,
-          },
-        })
-        .then((response) => setProdutos(response.data.Products));
 
-      setLoading(false); //stop loading when data is fetched
-    };
+  // Função alternativa em caso de erro
+  // useEffect(() => {
+  //   const getProdutos =  async () => {
+  //     await api
+  //       .get(`web_api/products`, {
+  //         params: {
+  //           category_id: 421,
+  //           available: 1,
+  //         },
+  //       })
+  //       .then((response) => setProdutos(response.data.Products));
+
+  //     setLoading(false); //stop loading when data is fetched
+  //   };
+  //   getProdutos();
+  // }, []);
+
+  const getProdutos = useCallback(async()=> {
+    try{
+      await api
+      .get(`web_api/products`, {
+        params: {
+          category_id: 421,
+          available: 1,
+        },
+      }).then((response) => setProdutos(response.data.Products))
+    } catch (erro) {
+      console.log(erro);
+    } finally {
+      setLoading(false)
+    }
+  },[])
+
+  useEffect(() => {
     getProdutos();
-  }, []);
+  }, [getProdutos]);
+
 
   return (
     <section className={tema.container}>

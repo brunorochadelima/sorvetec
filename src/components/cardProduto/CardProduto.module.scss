@@ -2,14 +2,14 @@
 
 .card {
   img {
-     aspect-ratio: 1/1;
-     max-height: 180px;
-     padding-bottom: 1.5rem;
+    aspect-ratio: 1/1;
+    max-height: 180px;
+    padding-bottom: 1.5rem;
   }
 
   padding: 0.5rem;
   width: 280px;
-  
+
   background-color: #fff;
   border: 1px solid $laranja;
   text-align: center;
@@ -17,10 +17,10 @@
   border-radius: 12px;
   font-size: 1rem;
 
-  &__tag_desconto{
-    background-color: #7CB342;
+  &__tag_desconto {
+    background-color: #7cb342;
     color: #fff;
-    padding: .7rem;
+    padding: 0.7rem;
     border-radius: 30px;
     width: fit-content;
   }
@@ -52,7 +52,7 @@
   }
 
   &:hover {
-    transition: .2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
     cursor: pointer;
     transform: scale(1.02);
   }

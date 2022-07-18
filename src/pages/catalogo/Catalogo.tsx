@@ -1,4 +1,4 @@
-import React, { Suspense, useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState} from "react";
 import api from "api/api";
 import CardProduto from "components/cardProduto/CardProduto";
 import style from "./Catalogo.module.scss";
@@ -78,5 +78,8 @@ export default function Catalogo() {
     </section>
   );
 }
+
+
+
 
 //https://www.multivisi.com.br/web_api/products?page=7

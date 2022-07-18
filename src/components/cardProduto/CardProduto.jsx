@@ -1,7 +1,8 @@
 import style from "./CardProduto.module.scss";
 import { useNavigate } from "react-router-dom";
+import { memo } from "react";
 
-export default function CardProduto(props) {
+function CardProduto(props) {
   const navigate = useNavigate();
 
   // Desestruturação de propriedades
@@ -78,3 +79,5 @@ export default function CardProduto(props) {
     </div>
   );
 }
+
+export default memo(CardProduto);

@@ -72,8 +72,8 @@ export default function CardProduto(props) {
       {estaEmPromocao(props)}
 
       <p>
-        ou {payment_option_details[2].plots}X de{" "}
-        {payment_option_details[2].value} no cartão
+        ou {payment_option_details[1].plots}X de{" "}
+        {payment_option_details[1].value} no cartão
       </p>
     </div>
   );

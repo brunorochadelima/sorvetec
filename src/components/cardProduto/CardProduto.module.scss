@@ -2,8 +2,8 @@
 
 .card {
   img {
-     height: 180px;
-     width: auto;
+     aspect-ratio: 1/1;
+     max-height: 180px;
      padding-bottom: 1.5rem;
   }
 

@@ -23,8 +23,9 @@ p {
   }
 
   img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
   }
 }
 
@@ -70,7 +71,8 @@ p {
 
     img {
       max-width: 100%;
-      height: auto;
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
     }
 
     @media (max-width: 640px) {

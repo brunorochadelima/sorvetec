@@ -93,13 +93,12 @@ export default function ProdutoDetalhes() {
       });
   }
 
-  //Redireciona para checkout quando o hook cart_url recebe a url 
+  //Redireciona para checkout quando o hook cart_url recebe a url
   useEffect(() => {
-    if(cart_url.length > 0) {
-      window.location.href = cart_url
+    if (cart_url.length > 0) {
+      window.location.href = cart_url;
     }
-  },[cart_url], )
-
+  }, [cart_url]);
 
   return (
     <>
@@ -110,7 +109,7 @@ export default function ProdutoDetalhes() {
           <Swiper
             slidesPerView={1}
             spaceBetween={30}
-            loop={true}
+            loop={false}  
             pagination={{
               clickable: true,
             }}
@@ -120,9 +119,7 @@ export default function ProdutoDetalhes() {
           >
             {imagens.map((item, index) => (
               <SwiperSlide key={index}>
-                <div>
-                  <img src={item} alt={name} decoding="async" />
-                </div>
+                <img src={item} alt={name} decoding="async" />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -137,7 +134,7 @@ export default function ProdutoDetalhes() {
             <p className={style.container_produto__opcoes_pagamento}>
               {parse(`${payment_option}`)}
             </p>
-           
+
             <Button
               onClick={adicionarProdutoCarrinho}
               sx={{ color: "white" }}

@@ -12,7 +12,7 @@ import { InputAdornment, TextField } from "@mui/material";
 import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import api from "api/api";
-import { useState } from "react";
+import { memo, useState } from "react";
 import CardProduto from "components/cardProduto/CardProduto";
 import styles from "./Header.module.scss";
 
@@ -44,7 +44,7 @@ interface IProdutos {
   Products: any;
 }
 
-export default function Header() {
+function Header() {
   // Pesquisar Produto
   const [produtosFiltrados, setProdutosFiltrados] = useState<IProdutos[]>([]);
   const [query, setQuery] = useState("");
@@ -227,5 +227,7 @@ export default function Header() {
     </>
   );
 }
+
+export default memo(Header)
 
 // https://mui.com/pt/system/properties/

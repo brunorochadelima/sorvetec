@@ -14,6 +14,7 @@ const Catalogo = lazy(() => import("pages/catalogo/Catalogo"));
 function App() {
   return (
     <BrowserRouter>
+      <Header />
       <Suspense
         fallback={
           <div>
@@ -21,7 +22,6 @@ function App() {
           </div>
         }
       >
-        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/catalogo" element={<Catalogo />} />

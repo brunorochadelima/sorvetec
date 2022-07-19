@@ -8,6 +8,10 @@
   background-color: #fff;
   margin-bottom: 3rem;
 
+  img {
+    max-width: 100%;
+  }
+
   .mySwiper {
     flex-basis: 50%;
     @media (max-width: 800px) {

@@ -2,11 +2,13 @@ import BotaoFlutuante from "components/BotaoFlutuante";
 import Footer from "components/footer/Footer";
 import ProdutoDetalhes from "pages/produtoDetalhes/ProdutoDetalhes";
 
-import Catalogo from "pages/catalogo/Catalogo";
 import Home from "pages/home/Home";
 import Pagina404 from "pages/pagina404/Pagina404";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "components/header/Header";
+import { lazy } from "react";
+
+const Catalogo = lazy(() => import("pages/catalogo/Catalogo"))
 
 function App() {
   return (

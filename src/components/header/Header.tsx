@@ -22,6 +22,10 @@ const pages = [
     link: "/",
   },
   {
+    name: "Máquinas",
+    link: "/catalogo",
+  },
+  {
     name: "Calculadora de lucro",
     link: "/calculadora",
   },
@@ -32,10 +36,6 @@ const pages = [
   {
     name: "Sobre",
     link: "/sobre",
-  },
-  {
-    name: "Máquinas",
-    link: "/catalogo",
   },
 ];
 
@@ -201,7 +201,7 @@ function Header() {
               sx={{ backgroundColor: "white", borderRadius: 2, flexGrow: 1 }}
             >
               <TextField
-                placeholder="O que você procura?"
+                placeholder="O que você está procurando?"
                 type="search"
                 variant="outlined"
                 fullWidth
@@ -228,6 +228,6 @@ function Header() {
   );
 }
 
-export default memo(Header)
+export default memo(Header);
 
 // https://mui.com/pt/system/properties/

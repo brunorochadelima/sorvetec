@@ -20,8 +20,7 @@ export default function Home() {
           <div>
             <h1>Empreenda com a Sorvetec</h1>
             <p>
-              A hora de se tornar dono(a) do seu próprio negócio finalmente
-              chegou!
+            A hora de realizar o sonho de abrir a sua própria empresa finalmente chegou!
             </p>
           </div>
           <div>

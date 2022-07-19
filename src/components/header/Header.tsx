@@ -1,4 +1,3 @@
-import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -9,15 +8,13 @@ import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
 import { GrMenu } from "react-icons/gr";
 import { ReactComponent as Logo } from "assets/imagens/logo-sorvetec.svg";
-import { InputAdornment, Paper, TextField } from "@mui/material";
+import { InputAdornment, TextField } from "@mui/material";
 import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import api from "api/api";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CardProduto from "components/cardProduto/CardProduto";
-import { style } from "@mui/system";
 import styles from "./Header.module.scss";
-import tema from "theme/Tema.module.scss";
 
 const pages = [
   {
@@ -68,7 +65,7 @@ export default function Header() {
   }
 
   function resultadosBusca() {
-    if (mostarComponente) {
+    if (mostarComponente && query.length > 0) {
       return (
         <>
           <Box sx={{ my: 2 }}>
@@ -94,9 +91,7 @@ export default function Header() {
   }
 
   // Funções menu
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -163,7 +158,9 @@ export default function Header() {
                     style={{ textDecoration: "none" }}
                   >
                     <Typography>
-                      <MenuItem>{page.name}</MenuItem>{" "}
+                      <MenuItem onClick={() => setQuery("")}>
+                        {page.name}
+                      </MenuItem>{" "}
                     </Typography>
                   </Link>
                 ))}
@@ -189,7 +186,9 @@ export default function Header() {
                   style={{ textDecoration: "none" }}
                 >
                   <Typography sx={{ color: "white" }}>
-                    <MenuItem>{page.name}</MenuItem>{" "}
+                    <MenuItem onClick={() => setQuery("")}>
+                      {page.name}
+                    </MenuItem>{" "}
                   </Typography>
                 </Link>
               ))}

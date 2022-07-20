@@ -117,7 +117,9 @@ function Header() {
           >
             {/* Logo Desktop */}
             <Box sx={{ display: { xs: "none", md: "block" } }}>
-              <Link to="/"><Logo style={{ padding: "15px" }} /></Link>
+              <Link to="/">
+                <Logo style={{ padding: "15px" }} />
+              </Link>
             </Box>
 
             {/* Navegação Mobile */}
@@ -155,13 +157,11 @@ function Header() {
                   <Link
                     to={page.link}
                     key={page.name}
-                    style={{ textDecoration: "none" }}
+                    style={{ textDecoration: "none", color: "#46474B" }}
                   >
-                    <Typography>
-                      <MenuItem onClick={() => setQuery("")}>
-                        {page.name}
-                      </MenuItem>{" "}
-                    </Typography>
+                    <MenuItem onClick={() => setQuery("")}>
+                      {page.name}
+                    </MenuItem>{" "}
                   </Link>
                 ))}
               </Menu>
@@ -169,7 +169,9 @@ function Header() {
 
             {/* Logo mobile */}
             <Box sx={{ flexGrow: 1, display: { xs: "block", md: "none" } }}>
-             <Link to="/"><Logo /></Link> 
+              <Link to="/">
+                <Logo />
+              </Link>
             </Box>
 
             {/* Lins nav Desktop */}
@@ -183,13 +185,9 @@ function Header() {
                 <Link
                   to={page.link}
                   key={page.name}
-                  style={{ textDecoration: "none" }}
+                  style={{ textDecoration: "none", color: "#fff" }}
                 >
-                  <Typography sx={{ color: "white" }}>
-                    <MenuItem onClick={() => setQuery("")}>
-                      {page.name}
-                    </MenuItem>{" "}
-                  </Typography>
+                  <MenuItem onClick={() => setQuery("")}>{page.name}</MenuItem>{" "}
                 </Link>
               ))}
             </Box>
@@ -229,5 +227,3 @@ function Header() {
 }
 
 export default memo(Header);
-
-// https://mui.com/pt/system/properties/

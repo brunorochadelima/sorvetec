@@ -36,7 +36,7 @@ export default function QuemSomos() {
             <b> retorno de seu investimento</b> se dá de forma rápida e segura.
           </p>
           <p>
-            elas são as mais econômicas do país, permitindo alta rentabilidade
+            Elas são as mais econômicas do país, permitindo alta rentabilidade
             com o <b> melhor custo-benefício do mercado.</b> Tudo desenvolvido
             para que você tenha o máximo de eficiência e facilidade em sua
             empresa.

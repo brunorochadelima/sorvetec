@@ -117,7 +117,7 @@ function Header() {
           >
             {/* Logo Desktop */}
             <Box sx={{ display: { xs: "none", md: "block" } }}>
-              <Logo style={{ padding: "15px" }} />
+              <Link to="/"><Logo style={{ padding: "15px" }} /></Link>
             </Box>
 
             {/* Navegação Mobile */}
@@ -169,7 +169,7 @@ function Header() {
 
             {/* Logo mobile */}
             <Box sx={{ flexGrow: 1, display: { xs: "block", md: "none" } }}>
-              <Logo />
+             <Link to="/"><Logo /></Link> 
             </Box>
 
             {/* Lins nav Desktop */}

@@ -16,7 +16,7 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Button } from "@mui/material";
+import { Button, Paper, Typography } from "@mui/material";
 
 export default function ProdutoDetalhes() {
   const { id } = useParams();
@@ -62,6 +62,12 @@ export default function ProdutoDetalhes() {
       return (
         <>
           <p className={style.container_produto__price}>{priceFormatado}</p>
+          <Chip
+            label={`🡻 Economia de R$ ${
+              Number(price) - Number(promotional_price)
+            },00`}
+            color="success"
+          />
           <p className={style.container_produto__promocional_price}>
             <span>
               {Number(promotional_price) > 0 ? promotional_priceFormatado : " "}
@@ -109,7 +115,7 @@ export default function ProdutoDetalhes() {
           <Swiper
             slidesPerView={1}
             spaceBetween={30}
-            loop={false}  
+            loop={false}
             pagination={{
               clickable: true,
             }}
@@ -137,7 +143,13 @@ export default function ProdutoDetalhes() {
 
             <Button
               onClick={adicionarProdutoCarrinho}
-              sx={{ color: "white" }}
+              sx={{
+                color: "white",
+                width: "70%",
+                height: "60px",
+                "&:hover": { backgroundColor: "#6fa03b" },
+              }}
+              color="success"
               variant="contained"
               size="large"
               startIcon={<FiShoppingCart />}

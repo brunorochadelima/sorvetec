@@ -1,0 +1,32 @@
+@import "theme/Tema.module.scss";
+
+.quemsomos {
+  display: flex;
+  align-items: center;
+
+  &__imagem {
+    width: 100%;
+
+    img {
+      max-width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+    }
+  }
+
+  &__textos {
+    flex-shrink: 2.3;
+
+    h1 {
+      @include style_h1;
+      color: $rosa;
+    }
+  }
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    p {
+      text-align: left;
+    }
+  }
+}

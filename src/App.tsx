@@ -10,6 +10,8 @@ import Header from "components/header/Header";
 import { lazy, Suspense } from "react";
 import { BuscaProvider } from "context/Busca";
 import Busca from "pages/busca/Busca";
+import QuemSomos from "pages/quemSomos/QuemSomos";
+
 
 const Catalogo = lazy(() => import("pages/catalogo/Catalogo"));
 
@@ -31,6 +33,7 @@ function App() {
             <Route path="/catalogo" element={<Catalogo />} />
             <Route path="catalogo/:id" element={<ProdutoDetalhes />} />
             <Route path="/busca" element={<Busca />} />
+            <Route path="/quem-somos" element={<QuemSomos/>}/>
             <Route path="*" element={<Pagina404 />} />
           </Routes>
           <Footer />

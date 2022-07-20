@@ -11,10 +11,7 @@ import { ReactComponent as Logo } from "assets/imagens/logo-sorvetec.svg";
 import { InputAdornment, TextField } from "@mui/material";
 import { FiSearch } from "react-icons/fi";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import api from "api/api";
 import { memo, useContext, useState } from "react";
-import CardProduto from "components/cardProduto/CardProduto";
-import styles from "./Header.module.scss";
 import { BuscaContext } from "context/Busca";
 
 const pages = [
@@ -36,7 +33,7 @@ const pages = [
   },
   {
     name: "Sobre",
-    link: "/sobre",
+    link: "/quem-somos",
   },
 ];
 

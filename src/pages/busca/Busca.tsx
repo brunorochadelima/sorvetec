@@ -28,17 +28,16 @@ export default function Busca() {
   }, [query]);
 
   return (
-    <>
-      <Box sx={{ my: 2 }}>
-        <Typography variant="h6" color={"#46474B"} align="center">
-          Você buscou por: {query}
+    <Box sx={{ my: 2, minHeight: "100vh" }}>
+      <Typography variant="h6" color={"#46474B"} align="center">
+        Você buscou por: {query}
+      </Typography>
+      {produtosFiltrados.length === 0 && (
+        <Typography variant="h6" color={"orange"} align="center">
+          Ops! Não encontramos nenhum produto com o termo pesquisado
         </Typography>
-        {produtosFiltrados.length === 0 && (
-          <Typography variant="h6" color={"orange"} align="center">
-            Ops! Não encontramos nenhum produto com o termo pesquisado
-          </Typography>
-        )}
-      </Box>
+      )}
+      <br />
       <div className={tema.container}>
         <div className={style.grid_cards}>
           {produtosFiltrados.map((produto) => (
@@ -48,6 +47,6 @@ export default function Busca() {
           ))}
         </div>
       </div>
-    </>
+    </Box>
   );
 }

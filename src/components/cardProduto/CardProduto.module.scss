@@ -2,13 +2,14 @@
 
 .card {
   img {
-    aspect-ratio: 1/1;
-    max-height: 180px;
-    padding-bottom: 1.5rem;
+    width: 180px;
+    height: auto;
+    aspect-ratio: 1 / 1;
   }
 
   padding: 0.5rem;
   width: 280px;
+
 
   background-color: #fff;
   border: 1px solid $laranja;

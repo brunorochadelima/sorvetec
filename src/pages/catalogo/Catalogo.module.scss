@@ -1,8 +1,12 @@
 .grid_cards {
   display: grid;
-  grid-row-gap: .5rem;
-  grid-column-gap: .5rem;
-  place-items: center;
+  grid-row-gap: 0.5rem;
+  grid-column-gap: 0.5rem;
+  justify-items: center;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   padding-bottom: 2rem;
+}
+
+section {
+  min-height: 100vh;
 }

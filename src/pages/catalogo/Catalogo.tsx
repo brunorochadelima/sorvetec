@@ -67,6 +67,7 @@ export default function Catalogo() {
 
   return (
     <section className={tema.container}>
+     
       {loading && <IconLoading />}
       <div className={style.grid_cards}>
         {produtos.map((produto) => (

@@ -1,4 +1,4 @@
-@import "theme/Tema.module.scss";
+@import "theme/base.module";
 
 .container_produto {
   display: flex;
@@ -33,13 +33,8 @@
   }
 
   &__promocional_price {
-    @include style_h2;
+    @extend .titulo_h2;
     font-weight: bold;
-  }
-
-  h1 {
-    @include style_h3;
-    font-size: 1.75rem;
   }
 
   @media (max-width: 800px) {

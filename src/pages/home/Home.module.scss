@@ -1,4 +1,4 @@
-@import "theme/Tema.module.scss";
+@import "theme/base.module";
 
 body {
   background-color: $laranja_claro;
@@ -17,10 +17,6 @@ p {
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   place-items: center;
-
-  h1 {
-    @include style_h1;
-  }
 
   img {
     width: 100%;
@@ -48,9 +44,6 @@ p {
 }
 
 .titulo_centralizado {
-  h2 {
-    @include style_h2;
-  }
   text-align: center;
   max-width: 550px;
   margin-left: auto;
@@ -65,17 +58,13 @@ p {
     gap: 1rem;
     padding-bottom: 1rem;
 
-    h3 {
-      @include style_h3;
-    }
-
     img {
       max-width: 100%;
       aspect-ratio: 4 / 3;
       object-fit: contain;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 800px) {
       flex-direction: column;
       text-align: center;
     }
@@ -84,7 +73,7 @@ p {
 
 .tipos_sorvete__item--meio {
   @extend .tipos_sorvete__item;
-  @media (max-width: 640px) {
+  @media (max-width: 800px) {
     flex-direction: column-reverse;
   }
 }

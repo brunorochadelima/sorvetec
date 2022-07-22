@@ -1,0 +1,48 @@
+@import "./variaveis";
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 0.8rem;
+
+  @media (min-width: 640px) {
+    max-width: 640px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 768px;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 1024px;
+  }
+
+  @media (min-width: 1280px) {
+    max-width: 1280px;
+  }
+}
+
+//Títulos
+
+@mixin titulos($font_size_desktop, $font_size_mobile) {
+  font-size: $font_size_desktop;
+  color: $rosa;
+  margin: 1rem 0rem;
+
+  @media (max-width: 640px) {
+    font-size: $font_size_mobile;
+    text-align: center;
+  }
+}
+
+.titulo_h1 {
+  @include titulos($h1_desktop, $h1_mobile);
+}
+
+.titulo_h2 {
+  @include titulos($h2_desktop, $h2_mobile);
+}
+
+.titulo_h3 {
+  @include titulos($h3_desktop, $h3_mobile);
+}

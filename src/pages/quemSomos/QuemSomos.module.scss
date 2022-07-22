@@ -1,4 +1,4 @@
-@import "theme/Tema.module.scss";
+@import "theme/base.module";
 
 .quemsomos {
   display: flex;
@@ -17,11 +17,6 @@
 
   &__textos {
     flex-shrink: 2.3;
-
-    h1 {
-      @include style_h1;
-      color: $rosa;
-    }
   }
 
   @media (max-width: 640px) {

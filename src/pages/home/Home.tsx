@@ -1,4 +1,4 @@
-import tema from "theme/Tema.module.scss";
+import tema from "theme/_base.module.scss";
 import maquinasSorvetec from "assets/imagens/maquinas-sorvetec-home.webp";
 import style from "pages/home/Home.module.scss";
 import sorveteExpresso from "assets/imagens/sorvete-expresso.webp";
@@ -9,18 +9,18 @@ import Button from "@mui/material/Button";
 import { lazy } from "react";
 // import SliderDepoimento from "./sliders/SliderDepoimento";
 const SliderDepoimento = lazy(() => import("./sliders/SliderDepoimento"));
-const IntegratedForm  = lazy(() => import("components/FormRdStation"))
+const IntegratedForm = lazy(() => import("components/FormRdStation"));
 
 export default function Home() {
   return (
     <main>
-      
       <section className={tema.container}>
         <div className={style.grid_container}>
           <div>
-            <h1>Empreenda com a Sorvetec</h1>
+            <h1 className={tema.titulo_h1}>Empreenda com a Sorvetec</h1>
             <p>
-            A hora de realizar o sonho de abrir a sua própria empresa finalmente chegou!
+              A hora de realizar o sonho de abrir a sua própria empresa
+              finalmente chegou!
             </p>
           </div>
           <div>
@@ -36,7 +36,10 @@ export default function Home() {
       <section style={{ backgroundColor: "#FFE5D0" }}>
         <div className={tema.container}>
           <div className={style.titulo_centralizado}>
-            <h2 style={{ marginTop: 0, paddingTop: 20 }}>
+            <h2
+              className={tema.titulo_h2}
+              style={{ marginTop: 0, paddingTop: 20 }}
+            >
               Lucre com diversos tipos de sorvete
             </h2>
             <p>
@@ -48,7 +51,7 @@ export default function Home() {
           <div className={style.tipos_sorvete__item}>
             <img loading="lazy" src={sorveteExpresso} alt="sorvete expresso" />
             <div>
-              <h3>Sorvete expresso</h3>
+              <h3 className={tema.titulo_h3}>Sorvete expresso</h3>
               <p>
                 A sobremesa gelada preferida dos seus clientes, pois além de
                 super barata, fica pronta em instantes e é uma delícia.
@@ -66,7 +69,7 @@ export default function Home() {
 
           <div className={style["tipos_sorvete__item--meio"]}>
             <div>
-              <h3>Sorvete na chapa</h3>
+              <h3 className={tema.titulo_h3}>Sorvete na chapa</h3>
               <p>
                 Use a sua imaginação e crie sabores incríveis de sorvete na
                 chapa para conquistar o seu cliente.
@@ -86,7 +89,7 @@ export default function Home() {
           <div className={style.tipos_sorvete__item}>
             <img loading="lazy" src={acai} alt="sorvete expresso" />
             <div>
-              <h3>Açaí expresso</h3>
+              <h3 className={tema.titulo_h3}>Açaí expresso</h3>
               <p>Fature bastante produzindo o seu próprio açaí expresso</p>
               <Button
                 variant="contained"
@@ -105,7 +108,7 @@ export default function Home() {
       {/* Depoimentos */}
       <section>
         <div className={style.titulo_centralizado}>
-          <h2>O que nossos clientes dizem?</h2>
+          <h2 className={tema.titulo_h2}>O que nossos clientes dizem?</h2>
           <p>
             Confira os depoimentos de pessoas que acreditaram na qualidade de
             nossas máquinas e se tornaram empreendedores de sucesso.
@@ -117,7 +120,7 @@ export default function Home() {
       {/* Formulário RdStation */}
       <br />
       <br />
-      <div style={{backgroundColor: "#FFC048"}}>
+      <div style={{ backgroundColor: "#FFC048" }}>
         <div className={tema.container}>
           <IntegratedForm />
         </div>

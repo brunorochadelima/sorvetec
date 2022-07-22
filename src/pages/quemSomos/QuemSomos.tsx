@@ -1,6 +1,6 @@
 import React from "react";
 import sorvetes from "assets/imagens/sorvetes_sorvetec_quem_somos.webp";
-import tema from "theme/Tema.module.scss";
+import tema from "theme/_base.module.scss";
 import styles from "./QuemSomos.module.scss";
 
 export default function QuemSomos() {
@@ -11,7 +11,7 @@ export default function QuemSomos() {
           <img src={sorvetes} alt="sorvetes sorvetec" />
         </div>
         <div className={styles.quemsomos__textos}>
-          <h1>Quem Somos</h1>
+          <h1 className={tema.titulo_h1}>Quem Somos</h1>
           <p>
             A <b>Sorvetec</b> é uma marca do grupo Multivisi que acredita na
             tecnologia para desenvolver inovações no ramo de sorvetes.

@@ -1,4 +1,4 @@
-@import "theme/Tema.module.scss";
+@import "theme/base.module";
 
 .card {
   img {
@@ -9,7 +9,6 @@
 
   padding: 0.5rem;
   width: 280px;
-
 
   background-color: #fff;
   border: 1px solid $laranja;

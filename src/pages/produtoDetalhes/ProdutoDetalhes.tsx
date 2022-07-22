@@ -2,7 +2,7 @@ import api from "api/api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import parse from "html-react-parser";
-import tema from "theme/Tema.module.scss";
+import tema from "theme/_base.module.scss";
 import style from "./ProdutoDetalhes.module.scss";
 import { BsWhatsapp } from "react-icons/bs";
 import { FiShoppingCart } from "react-icons/fi";
@@ -16,7 +16,7 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Button, Paper, Typography } from "@mui/material";
+import { Button } from "@mui/material";
 
 export default function ProdutoDetalhes() {
   const { id } = useParams();
@@ -132,7 +132,7 @@ export default function ProdutoDetalhes() {
 
           <div className={style.container_produto__detalhes_produto}>
             <Chip label={availability} />
-            <h1>{name}</h1>
+            <h1 className={tema.titulo_h3}>{name}</h1>
             <p className={style.container_produto__codigo}>CÓD: {id}</p>
 
             {estaEmPromocao()}
@@ -158,7 +158,7 @@ export default function ProdutoDetalhes() {
             </Button>
             <p>
               Gostou? Conheça em nosso showroom,{" "}
-              <a href="https://www.multivisi.com.br/showroom" target="_blank">
+              <a href="https://www.multivisi.com.br/showroom" target="_blank" rel="noreferrer">
                 agende aqui.
               </a>
             </p>

@@ -77,9 +77,9 @@ function Header() {
           }}
         >
           {/* Logo Desktop */}
-          <Box sx={{ display: { xs: "none", md: "block" } }}>
+          <Box sx={{ py: 1, display: { xs: "none", md: "block" } }}>
             <Link to="/">
-              <Logo style={{ padding: "15px" }} />
+              <Logo />
             </Link>
           </Box>
 

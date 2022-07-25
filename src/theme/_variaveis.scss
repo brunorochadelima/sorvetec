@@ -11,11 +11,11 @@ $rosa: #F280AA;
 $h1_desktop: 3.833rem;
 $h1_mobile: 2.444rem;
 
-$h2_desktop: $h1_desktop / 1.25;
-$h2_mobile: $h1_mobile / 1.25;
+$h2_desktop: calc($h1_desktop / 1.25);
+$h2_mobile: calc($h1_mobile / 1.25);
 
-$h3_desktop: $h2_desktop / 1.25;
-$h3_mobile: $h2_mobile / 1.25;
+$h3_desktop: calc($h2_desktop / 1.25);
+$h3_mobile: calc($h2_mobile / 1.25);
 
 
 

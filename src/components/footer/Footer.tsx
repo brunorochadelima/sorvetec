@@ -1,7 +1,7 @@
 import React from "react";
 import { ReactComponent as Logo } from "assets/imagens/logo-sorvetec.svg";
 import { ReactComponent as SeloMultivisi } from "assets/imagens/selo-multivisi.svg";
-import tema from "theme/_base.module.scss";
+import tema from "theme/Base.module.scss";
 import style from "./Footer.module.scss";
 
 export default function Footer() {

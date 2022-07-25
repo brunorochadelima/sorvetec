@@ -6,15 +6,16 @@ $laranja: #FFE5D0;
 $rosa: #F280AA;
 
 
-//fontSize
-$h1_desktop: 3.8rem;
-$h1_mobile: 2.4rem;
+//fontSize Base Value: 18 Scale: 1.25
 
-$h2_desktop: 3rem;
-$h2_mobile: 1.9rem;
+$h1_desktop: 3.833rem;
+$h1_mobile: 2.444rem;
 
-$h3_desktop: 2.3rem;
-$h3_mobile: 1.5rem;
+$h2_desktop: $h1_desktop / 1.25;
+$h2_mobile: $h1_mobile / 1.25;
+
+$h3_desktop: $h2_desktop / 1.25;
+$h3_mobile: $h2_mobile / 1.25;
 
 
 

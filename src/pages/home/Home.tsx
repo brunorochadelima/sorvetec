@@ -1,4 +1,4 @@
-import tema from "theme/_base.module.scss";
+import tema from "theme/Base.module.scss";
 import maquinasSorvetec from "assets/imagens/maquinas-sorvetec-home.webp";
 import style from "pages/home/Home.module.scss";
 import sorveteExpresso from "assets/imagens/sorvete-expresso.webp";

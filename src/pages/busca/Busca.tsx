@@ -4,7 +4,7 @@ import CardProduto from "components/cardProduto/CardProduto";
 import { BuscaContext } from "context/Busca";
 import React, { useContext, useEffect, useState } from "react";
 import style from "./Busca.module.scss";
-import tema from "theme/_base.module.scss";
+import tema from "theme/Base.module.scss";
 
 interface IProdutos {
   Product: any;

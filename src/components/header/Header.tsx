@@ -2,7 +2,6 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
@@ -10,8 +9,8 @@ import { GrMenu } from "react-icons/gr";
 import { ReactComponent as Logo } from "assets/imagens/logo-sorvetec.svg";
 import { InputAdornment, TextField } from "@mui/material";
 import { FiSearch } from "react-icons/fi";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import { memo, useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
 import { BuscaContext } from "context/Busca";
 
 const pages = [
@@ -37,12 +36,7 @@ const pages = [
   },
 ];
 
-interface IProdutos {
-  Product: any;
-  Products: any;
-}
-
-function Header() {
+export default function Header() {
   const navigate = useNavigate();
 
   function redirecionaParaBusca(evento: React.FormEvent<HTMLFormElement>) {
@@ -181,4 +175,4 @@ function Header() {
   );
 }
 
-export default memo(Header);
+

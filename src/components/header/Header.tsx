@@ -7,10 +7,10 @@ import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
 import { GrMenu } from "react-icons/gr";
 import { ReactComponent as Logo } from "assets/imagens/logo-sorvetec.svg";
-import { InputAdornment, TextField } from "@mui/material";
-import { FiSearch } from "react-icons/fi";
-import { Link, useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { memo, useState } from "react";
+import InputSearch from "./InputSearch";
+import { useContext } from "react";
 import { BuscaContext } from "context/Busca";
 
 const pages = [
@@ -36,15 +36,8 @@ const pages = [
   },
 ];
 
-export default function Header() {
-  const navigate = useNavigate();
-
-  function redirecionaParaBusca(evento: React.FormEvent<HTMLFormElement>) {
-    evento.preventDefault();
-    navigate("/busca");
-  }
-
-  const { query, setQuery } = useContext(BuscaContext);
+function Header() {
+  const { setQuery } = useContext(BuscaContext);
 
   // Funções menu
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -144,35 +137,11 @@ export default function Header() {
               </Link>
             ))}
           </Box>
-
-          {/* Input Pesquisa */}
-          <Box
-            component="form"
-            // onSubmit={pesquisaProduto}
-            onSubmit={redirecionaParaBusca}
-            sx={{ backgroundColor: "white", borderRadius: 2, flexGrow: 1 }}
-          >
-            <TextField
-              placeholder="O que você está procurando?"
-              type="search"
-              variant="outlined"
-              fullWidth
-              size="small"
-              onChange={(e) => setQuery(e.target.value)}
-              value={query}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <FiSearch />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </Box>
+          <InputSearch />
         </Toolbar>
       </Container>
     </AppBar>
   );
 }
 
-
+export default memo(Header);

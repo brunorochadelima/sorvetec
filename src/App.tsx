@@ -27,9 +27,9 @@ function App() {
             <Route path="/quem-somos" element={<QuemSomos />} />
             <Route path="*" element={<Pagina404 />} />
           </Routes>
+          <Footer />
+          <BotaoFlutuante />
         </Suspense>
-        <Footer />
-        <BotaoFlutuante />
       </BuscaProvider>
     </BrowserRouter>
   );

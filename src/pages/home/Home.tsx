@@ -5,11 +5,22 @@ import sorveteExpresso from "assets/imagens/sorvete-expresso.webp";
 import sorveteChapa from "assets/imagens/sorvete-chapa.webp";
 import acai from "assets/imagens/acai.webp";
 import Button from "@mui/material/Button";
-import { lazy } from "react";
+import { lazy, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { BuscaContext } from "context/Busca";
 const SliderDepoimento = lazy(() => import("./sliders/SliderDepoimento"));
 const IntegratedForm = lazy(() => import("components/FormRdStation"));
 
 export default function Home() {
+  const navigate = useNavigate();
+
+  const { query, setQuery } = useContext(BuscaContext);
+
+  function redirecionaParaBusca(busca: string) {
+    setQuery(busca);
+    navigate("/busca");
+  }
+
   return (
     <main>
       <section className={tema.container}>
@@ -55,6 +66,7 @@ export default function Home() {
                 super barata, fica pronta em instantes e é uma delícia.
               </p>
               <Button
+                onClick={() => redirecionaParaBusca("expresso")}
                 variant="contained"
                 size="large"
                 color="secondary"
@@ -73,6 +85,7 @@ export default function Home() {
                 chapa para conquistar o seu cliente.
               </p>
               <Button
+                onClick={() => redirecionaParaBusca("chapa")}
                 variant="contained"
                 size="large"
                 color="secondary"
@@ -90,6 +103,7 @@ export default function Home() {
               <h3 className={tema.titulo_h3}>Açaí expresso</h3>
               <p>Fature bastante produzindo o seu próprio açaí expresso</p>
               <Button
+                onClick={() => redirecionaParaBusca("açaí")}
                 variant="contained"
                 size="large"
                 color="secondary"

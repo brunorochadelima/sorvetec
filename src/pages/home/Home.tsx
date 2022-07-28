@@ -5,9 +5,7 @@ import sorveteExpresso from "assets/imagens/sorvete-expresso.webp";
 import sorveteChapa from "assets/imagens/sorvete-chapa.webp";
 import acai from "assets/imagens/acai.webp";
 import Button from "@mui/material/Button";
-// import IntegratedForm from "components/FormRdStation";
 import { lazy } from "react";
-// import SliderDepoimento from "./sliders/SliderDepoimento";
 const SliderDepoimento = lazy(() => import("./sliders/SliderDepoimento"));
 const IntegratedForm = lazy(() => import("components/FormRdStation"));
 

@@ -1,12 +1,12 @@
 import BotaoFlutuante from "components/BotaoFlutuante";
 import Footer from "components/footer/Footer";
 import { ReactComponent as IconLoading } from "assets/imagens/icon-loading.svg";
-import Home from "pages/home/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "components/header/Header";
 import { lazy, Suspense } from "react";
 import { BuscaProvider } from "context/Busca";
 
+const Home = lazy(() => import("pages/home/Home"));
 const Catalogo = lazy(() => import("pages/catalogo/Catalogo"));
 const QuemSomos = lazy(() => import("pages/quemSomos/QuemSomos"));
 const Pagina404 = lazy(() => import("pages/pagina404/Pagina404"));
@@ -28,8 +28,8 @@ function App() {
             <Route path="*" element={<Pagina404 />} />
           </Routes>
           <Footer />
-          <BotaoFlutuante />
         </Suspense>
+          <BotaoFlutuante />
       </BuscaProvider>
     </BrowserRouter>
   );

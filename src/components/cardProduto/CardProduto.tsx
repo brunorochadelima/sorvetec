@@ -1,8 +1,9 @@
 import style from "./CardProduto.module.scss";
 import { useNavigate } from "react-router-dom";
 import { memo } from "react";
+import { IProdutos } from "interfaces/IProdutos";
 
-function CardProduto(props) {
+function CardProduto(props: IProdutos) {
   const navigate = useNavigate();
 
   // Desestruturação de propriedades
@@ -28,7 +29,7 @@ function CardProduto(props) {
   );
 
   //Função verifica se produto está com desconto para fazer a rendericação condicional dos preços
-  function estaEmPromocao(props) {
+  function estaEmPromocao() {
     if (promotional_price > 0) {
       return (
         <>
@@ -59,18 +60,18 @@ function CardProduto(props) {
   }
 
   // direciona para detalhes do produto
-  function redirecionaParaDetalhes(produtoID) {
+  function redirecionaParaDetalhes(produtoID: number) {
     navigate(`/catalogo/${produtoID}`);
   }
 
   return (
     <div className={style.card} onClick={() => redirecionaParaDetalhes(id)}>
-      {promotional_price > 0 && calculaDesconto(props)}
+      {promotional_price > 0 && calculaDesconto()}
 
       <img src={ProductImage[0].http} alt="" />
       <h2 className={style.card__nome}>{name}</h2>
 
-      {estaEmPromocao(props)}
+      {estaEmPromocao()}
 
       <p>
         ou {payment_option_details[1].plots}X de{" "}

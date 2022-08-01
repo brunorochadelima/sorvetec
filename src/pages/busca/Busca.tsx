@@ -5,11 +5,7 @@ import { BuscaContext } from "context/Busca";
 import React, { useContext, useEffect, useState } from "react";
 import style from "./Busca.module.scss";
 import tema from "theme/Base.module.scss";
-
-interface IProdutos {
-  Product: any;
-  Products: any;
-}
+import { IProdutos } from "interfaces/IProdutos";
 
 export default function Busca() {
   const { query, setQuery } = useContext(BuscaContext);

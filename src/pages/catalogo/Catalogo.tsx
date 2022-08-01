@@ -1,14 +1,10 @@
-import React, { useCallback, useEffect, useState} from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import api from "api/api";
 import CardProduto from "components/cardProduto/CardProduto";
 import style from "./Catalogo.module.scss";
 import tema from "theme/Base.module.scss";
 import { ReactComponent as IconLoading } from "assets/imagens/icon-loading.svg";
-
-interface IProdutos {
-  Product: any;
-  Products: any;
-}
+import { IProdutos } from "interfaces/IProdutos";
 
 export default function Catalogo() {
   const [produtos, setProdutos] = useState<IProdutos[]>([]);
@@ -25,7 +21,6 @@ export default function Catalogo() {
   //     })
   //     .then((response) => setprodutos(response.data.Products));
   // }, []);
-
 
   // Função alternativa em caso de erro
   // useEffect(() => {
@@ -44,30 +39,29 @@ export default function Catalogo() {
   //   getProdutos();
   // }, []);
 
-  const getProdutos = useCallback(async()=> {
-    try{
+  const getProdutos = useCallback(async () => {
+    try {
       await api
-      .get(`web_api/products`, {
-        params: {
-          category_id: 421,
-          available: 1,
-        },
-      }).then((response) => setProdutos(response.data.Products))
+        .get(`web_api/products`, {
+          params: {
+            category_id: 421,
+            available: 1,
+          },
+        })
+        .then((response) => setProdutos(response.data.Products));
     } catch (erro) {
       console.log(erro);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  },[])
+  }, []);
 
   useEffect(() => {
     getProdutos();
   }, [getProdutos]);
 
-
   return (
     <section className={tema.container}>
-     
       {loading && <IconLoading />}
       <div className={style.grid_cards}>
         {produtos.map((produto) => (
@@ -79,8 +73,5 @@ export default function Catalogo() {
     </section>
   );
 }
-
-
-
 
 //https://www.multivisi.com.br/web_api/products?page=7

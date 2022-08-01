@@ -68,7 +68,7 @@ function CardProduto(props: IProdutos) {
     <div className={style.card} onClick={() => redirecionaParaDetalhes(id)}>
       {promotional_price > 0 && calculaDesconto()}
 
-      <img src={ProductImage[0].http} alt="" />
+      <img src={ProductImage[0].https} alt="" />
       <h2 className={style.card__nome}>{name}</h2>
 
       {estaEmPromocao()}

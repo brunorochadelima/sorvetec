@@ -3,6 +3,10 @@ export interface IProduto {
   promotional_price: number;
   name: string;
   payment_option_details: any;
-  ProductImage: any;
+  ProductImage: [
+    {
+      https: string;
+    }
+  ];
   id: number;
 }

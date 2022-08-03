@@ -29,7 +29,7 @@ function CardProduto(props: IProdutos) {
   );
 
   //Função verifica se produto está com desconto para fazer a rendericação condicional dos preços
-  function estaEmPromocao() {
+  function estaEmPromocao(): JSX.Element {
     if (promotional_price > 0) {
       return (
         <>
@@ -51,7 +51,7 @@ function CardProduto(props: IProdutos) {
   }
 
   // Calcula o desconto em %
-  function calculaDesconto() {
+  function calculaDesconto(): JSX.Element {
     return (
       <div className={style.card__tag_desconto}>
         {(((price - promotional_price) / price) * 100).toFixed(2)}% de desconto
@@ -59,8 +59,8 @@ function CardProduto(props: IProdutos) {
     );
   }
 
-  // direciona para detalhes do produto
-  function redirecionaParaDetalhes(produtoID: number) {
+  // Direciona para detalhes do produto
+  function redirecionaParaDetalhes(produtoID: number): void {
     navigate(`/catalogo/${produtoID}`);
   }
 

@@ -14,7 +14,7 @@ const IntegratedForm = lazy(() => import("components/FormRdStation"));
 export default function Home() {
   const navigate = useNavigate();
 
-  const { query, setQuery } = useContext(BuscaContext);
+  const { setQuery } = useContext(BuscaContext);
 
   function redirecionaParaBusca(busca: string) {
     setQuery(busca);

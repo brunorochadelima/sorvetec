@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "components/header/Header";
 import { lazy, Suspense } from "react";
 import { BuscaProvider } from "context/Busca";
+import Calculadora from "pages/calculadora/Calculadora";
 
 const Home = lazy(() => import("pages/home/Home"));
 const Catalogo = lazy(() => import("pages/catalogo/Catalogo"));
@@ -22,6 +23,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/catalogo" element={<Catalogo />} />
+            <Route path="/calculadora" element={<Calculadora/>} />
             <Route path="catalogo/:id" element={<ProdutoDetalhes />} />
             <Route path="/busca" element={<Busca />} />
             <Route path="/quem-somos" element={<QuemSomos />} />

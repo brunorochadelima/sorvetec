@@ -5,7 +5,11 @@ export interface IProduto {
   payment_option_details: any;
   ProductImage: [
     {
-      https: string;
+      thumbs: {
+        180: {
+          https: string;
+        };
+      };
     }
   ];
   id: number;

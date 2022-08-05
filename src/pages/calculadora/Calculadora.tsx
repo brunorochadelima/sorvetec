@@ -1,18 +1,14 @@
 import {
   Box,
   Button,
-  Dialog,
-  DialogContent,
-  DialogTitle,
   Grid,
   TextField,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import calculadoraSorvetec from "assets/imagens/calculadora-sorvetec.webp";
 import tema from "theme/Base.module.scss";
 import style from "./Calculadora.module.scss";
 import { ReactComponent as BagMoney } from "assets/imagens/bag-money.svg";
-import FormRdStation from "components/FormRdStation";
 
 export default function Calculadora() {
   const [precoVenda, setPrecoVenda] = useState<Number>();

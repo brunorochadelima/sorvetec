@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import api from "api/api";
 import CardProduto from "components/cardProduto/CardProduto";
 import { BuscaContext } from "context/Busca";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import style from "./Busca.module.scss";
 import tema from "theme/Base.module.scss";
 import { IProdutos } from "interfaces/IProdutos";

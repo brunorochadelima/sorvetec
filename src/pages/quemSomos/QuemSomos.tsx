@@ -1,4 +1,3 @@
-import React from "react";
 import sorvetes from "assets/imagens/sorvetes_sorvetec_quem_somos.webp";
 import tema from "theme/Base.module.scss";
 import styles from "./QuemSomos.module.scss";

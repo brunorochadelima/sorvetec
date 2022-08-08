@@ -16,7 +16,7 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Button } from "@mui/material";
+import { Alert, Button, Snackbar } from "@mui/material";
 
 export default function ProdutoDetalhes() {
   const { id } = useParams();
@@ -28,6 +28,7 @@ export default function ProdutoDetalhes() {
   const [payment_option, setPayment_option] = useState();
   const [availability, setAvailability] = useState();
   const [cart_url, setCart_url] = useState("");
+  const [avisoEstoque, setAvisoEstoque] = useState(false);
 
   useEffect(() => {
     api.get(`web_api/products/${id}`).then((response) => {
@@ -96,6 +97,11 @@ export default function ProdutoDetalhes() {
       })
       .then((response) => {
         setCart_url(response.data.cart_url);
+      })
+      .catch((error) => {
+        console.log(error);
+        // setAvisoEstoque(error.response.data.causes[0]);
+        setAvisoEstoque(true);
       });
   }
 
@@ -141,6 +147,19 @@ export default function ProdutoDetalhes() {
               {parse(`${payment_option}`)}
             </p>
 
+            {/* Aviso estoque baixo */}
+            <Snackbar
+              open={avisoEstoque}
+              autoHideDuration={6000}
+              onClose={() => setAvisoEstoque(false)}
+              message="Note archived"
+            >
+              <Alert severity="info">
+                Desculpe, pode não haver mais estoque desse produto, entre em
+                contato pelo televendas <b>(34) 3257-0800</b>
+              </Alert>
+            </Snackbar>
+
             <Button
               onClick={adicionarProdutoCarrinho}
               sx={{
@@ -158,7 +177,11 @@ export default function ProdutoDetalhes() {
             </Button>
             <p>
               Gostou? Conheça em nosso showroom,{" "}
-              <a href="https://www.multivisi.com.br/showroom" target="_blank" rel="noreferrer">
+              <a
+                href="https://www.multivisi.com.br/showroom"
+                target="_blank"
+                rel="noreferrer"
+              >
                 agende aqui.
               </a>
             </p>

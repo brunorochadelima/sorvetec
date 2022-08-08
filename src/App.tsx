@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "components/header/Header";
 import { lazy, Suspense } from "react";
 import { BuscaProvider } from "context/Busca";
+import ScrollToTop from "utils/ScrollToTop";
 
 const Home = lazy(() => import("pages/home/Home"));
 const Catalogo = lazy(() => import("pages/catalogo/Catalogo"));
@@ -18,6 +19,7 @@ const DialogoModal = lazy(() => import("pages/calculadora/DialogoModal"))
 function App() {
   return (
     <BrowserRouter>
+    <ScrollToTop/>
       <BuscaProvider>
         <Header />
         <Suspense fallback={<div><IconLoading /></div>}>

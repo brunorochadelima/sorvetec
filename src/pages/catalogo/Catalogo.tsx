@@ -46,6 +46,8 @@ export default function Catalogo() {
           params: {
             category_id: 421,
             available: 1,
+            page: 1,
+            limit: 30,
           },
         })
         .then((response) => setProdutos(response.data.Products));

@@ -82,7 +82,7 @@ export default function ProdutoDetalhes() {
         <span>{priceFormatado}</span>
       </p>
     );
-  }
+  };
 
   // Adiciona ao carrinho
   function adicionarProdutoCarrinho() {
@@ -103,7 +103,7 @@ export default function ProdutoDetalhes() {
         // setAvisoEstoque(error.response.data.causes[0]);
         setAvisoEstoque(true);
       });
-  }
+  };
 
   //Redireciona para checkout quando o hook cart_url recebe a url
   useEffect(() => {

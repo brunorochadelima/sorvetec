@@ -23,7 +23,7 @@ export default function Calculadora() {
 
   function memorizarSessao() {
     localStorage.setItem("myValueInLocalStorage", "false");
-  }
+  };
 
   useEffect(() => {
     var storage = localStorage.getItem("myValueInLocalStorage");
@@ -50,7 +50,7 @@ export default function Calculadora() {
         </DialogContent>
       </Dialog>
     );
-  }
+  };
 
   const LucroPorCasquinha = Number(precoVenda) - Number(custoProducao);
   const lucroMensal = Number(casquinhasVendidasMes) * LucroPorCasquinha;
@@ -73,7 +73,7 @@ export default function Calculadora() {
   function aoSubmeterForm(evento: React.FormEvent<HTMLFormElement>) {
     evento.preventDefault();
     setMostraResultado(true);
-  }
+  };
 
   return (
     <section className={tema.container} style={{ minHeight: "100vh" }}>

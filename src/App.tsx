@@ -14,7 +14,7 @@ const Pagina404 = lazy(() => import("pages/pagina404/Pagina404"));
 const Busca = lazy(() => import("pages/busca/Busca"));
 const ProdutoDetalhes = lazy(() => import("pages/produtoDetalhes/ProdutoDetalhes"));
 const Calculadora = lazy(() => import("pages/calculadora/Calculadora"))
-const DialogoModal = lazy(() => import("pages/calculadora/DialogoModal"))
+
 
 function App() {
   return (
@@ -26,8 +26,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/catalogo" element={<Catalogo />} />
-            <Route path="/calculadora" element={<DialogoModal/>} />
-            <Route path="/calculadora-lucro" element={<Calculadora />} />
+            <Route path="/calculadora" element={<Calculadora/>} />
             <Route path="catalogo/:id" element={<ProdutoDetalhes />} />
             <Route path="/busca" element={<Busca />} />
             <Route path="/quem-somos" element={<QuemSomos />} />

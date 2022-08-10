@@ -1,20 +1,56 @@
 import {
   Box,
   Button,
+  Dialog,
+  DialogContent,
+  DialogTitle,
   Grid,
   TextField,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import calculadoraSorvetec from "assets/imagens/calculadora-sorvetec.webp";
 import tema from "theme/Base.module.scss";
 import style from "./Calculadora.module.scss";
 import { ReactComponent as BagMoney } from "assets/imagens/bag-money.svg";
+import FormRdStation from "components/FormRdStation";
 
 export default function Calculadora() {
   const [precoVenda, setPrecoVenda] = useState<Number>();
   const [custoProducao, setCustoProducao] = useState<Number>(1.06);
   const [casquinhasVendidasMes, setCasquinhasVendidasMes] = useState<Number>();
   const [mostraResultado, setMostraResultado] = useState(false);
+  const [modal, setModal] = useState(true);
+
+  function memorizarSessao() {
+    localStorage.setItem("myValueInLocalStorage", "false");
+  }
+
+  useEffect(() => {
+    var storage = localStorage.getItem("myValueInLocalStorage");
+    if (storage === "false") {
+      setModal(false);
+      console.log("ok");
+    }
+  }, []);
+
+  function exibeModal(): JSX.Element {
+    return (
+      <Dialog open={modal} maxWidth={"md"}>
+        <DialogTitle sx={{ color: "#F280AA", fontWeight: "bold" }}>
+          Descubra o quanto poderá lucrar investindo em uma Máquina de Sorvete
+          da Sorvetec!
+        </DialogTitle>
+        <DialogContent onSubmit={memorizarSessao}>
+          Insira o seu nome e o melhor e-mail para acessar a nossa Calculadora
+          de Lucro, e veja o quanto você pode faturar com as nossas máquinas de
+          sorvete.
+          <br />
+          <br />
+          <FormRdStation />
+        </DialogContent>
+      </Dialog>
+    );
+  }
 
   const LucroPorCasquinha = Number(precoVenda) - Number(custoProducao);
   const lucroMensal = Number(casquinhasVendidasMes) * LucroPorCasquinha;
@@ -41,6 +77,7 @@ export default function Calculadora() {
 
   return (
     <section className={tema.container} style={{ minHeight: "100vh" }}>
+      {exibeModal()}
       <Grid container spacing={5}>
         <Grid item xs={12} md={6}>
           <h1 className={tema.titulo_h2}>Calculadora de lucro Sorvetec</h1>

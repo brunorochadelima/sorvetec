@@ -17,6 +17,7 @@
     "jsx": "react-jsx",
     "plugins": [{ "name": "typescript-plugin-css-modules" }],    
     "baseUrl": "src",
+    "removeComments": true
   },
   "include": ["src"]
  

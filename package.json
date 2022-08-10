@@ -1,7 +1,6 @@
 {
   "name": "sorvetec",
-  "version": "0.1.1",
-  "homepage": ".",
+  "version": "0.1.1", 
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.3",

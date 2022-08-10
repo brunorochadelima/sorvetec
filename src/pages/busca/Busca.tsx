@@ -8,7 +8,7 @@ import tema from "theme/Base.module.scss";
 import { IProdutos } from "interfaces/IProdutos";
 
 export default function Busca() {
-  const { query, setQuery } = useContext(BuscaContext);
+  const { query } = useContext(BuscaContext);
   const [produtosFiltrados, setProdutosFiltrados] = useState<IProdutos[]>([]);
 
   useEffect(() => {

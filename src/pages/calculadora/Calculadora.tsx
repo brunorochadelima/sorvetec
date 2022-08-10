@@ -29,7 +29,6 @@ export default function Calculadora() {
     var storage = localStorage.getItem("myValueInLocalStorage");
     if (storage === "false") {
       setModal(false);
-      console.log("ok");
     }
   }, []);
 

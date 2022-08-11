@@ -1,4 +1,4 @@
-var CACHE_NAME = 'pwa-task-manager';
+var CACHE_NAME = 'pwa-task-manager-v1';
 var urlsToCache = [
   '/',
   '/completed'

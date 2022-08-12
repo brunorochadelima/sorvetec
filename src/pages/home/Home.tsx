@@ -33,7 +33,7 @@ export default function Home() {
             </p>
           </div>
           <div>
-            <img src={maquinasSorvetec} alt="máquinas de sorvete sorvetec" />
+            <img loading="eager" src={maquinasSorvetec} alt="máquinas de sorvete sorvetec" />
           </div>
         </div>
       </section>

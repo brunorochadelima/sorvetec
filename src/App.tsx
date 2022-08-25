@@ -13,7 +13,8 @@ const QuemSomos = lazy(() => import("pages/quemSomos/QuemSomos"));
 const Pagina404 = lazy(() => import("pages/pagina404/Pagina404"));
 const Busca = lazy(() => import("pages/busca/Busca"));
 const ProdutoDetalhes = lazy(() => import("pages/produtoDetalhes/ProdutoDetalhes"));
-const Calculadora = lazy(() => import("pages/calculadora/Calculadora"))
+const Calculadora = lazy(() => import("pages/calculadora/Calculadora"));
+const Blog = lazy(()=> import("pages/blog/Blog"));
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Route path="catalogo/:id" element={<ProdutoDetalhes />} />
             <Route path="/busca" element={<Busca />} />
             <Route path="/quem-somos" element={<QuemSomos />} />
+            <Route path="/blog" element={<Blog />} />
             <Route path="*" element={<Pagina404 />} />
           </Routes>
           <Footer />

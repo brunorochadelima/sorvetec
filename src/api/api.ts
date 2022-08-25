@@ -4,4 +4,7 @@ const api = axios.create({
   baseURL: 'https://www.multivisi.com.br/'
 })
 
-export default api
+export default api;
+
+
+

@@ -1,6 +1,9 @@
 import { Button } from "@mui/material";
 import { IBlogs } from "interfaces/IBlogs";
 import React from "react";
+import parse from "html-react-parser";
+import tema from "theme/Base.module.scss";
+import style from "./CardBlog.module.scss"
 
 export default function CardBlog(props: IBlogs) {
   const {
@@ -12,13 +15,14 @@ export default function CardBlog(props: IBlogs) {
     id_category,
   } = props;
 
-  const resume = post_text.substring(0, 200);
+  const resume = post_text.substring(0, 120);
   const caminhoImagem = "https://sorvetec.com.br/public/img/uploads/";
 
   return (
-    <div>
+    <div className={style.containerCard}>
       <img src={caminhoImagem + post_cover} alt={post_title} />
-      <p>{resume}</p>
+      <h2>{post_title}</h2>
+      <p> {parse(`${resume} ...`)}</p>
       <Button variant="outlined">Continuar Lendo</Button>
     </div>
   );

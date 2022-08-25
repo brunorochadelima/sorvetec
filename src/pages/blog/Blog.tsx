@@ -3,12 +3,14 @@ import React, { useCallback } from "react";
 import { IBlogs } from "interfaces/IBlogs";
 import CardBlog from "components/cardBlog/CardBlog";
 import { ReactComponent as IconLoading } from "assets/imagens/icon-loading.svg";
+import tema from "theme/Base.module.scss";
+import style from "./Blog.module.scss";
 
 export default function Blog() {
   const [blogs, setBlogs] = React.useState<IBlogs[]>([]);
   const [loading, setLoading] = React.useState(true);
 
-  const getBlogs = useCallback(async () =>  {
+  const getBlogs = useCallback(async () => {
     try {
       await axios
         .get("https://api.sorvetec.com.br/api/v1/posts")
@@ -18,20 +20,22 @@ export default function Blog() {
     } finally {
       setLoading(false);
     }
-  }, [])
+  }, []);
 
   React.useEffect(() => {
     getBlogs();
   }, [getBlogs]);
 
   return (
-    <section>
-      {loading && <IconLoading />}
-      {blogs.map((blog) => (
-        <div>
-          <CardBlog {...blog} />
-        </div>
-      ))}
+    <section className={tema.container}>
+      <div className={style.grid_cards}>
+        {loading && <IconLoading />}
+        {blogs.map((blog) => (
+          <div>
+            <CardBlog {...blog} />
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

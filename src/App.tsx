@@ -14,7 +14,8 @@ const Pagina404 = lazy(() => import("pages/pagina404/Pagina404"));
 const Busca = lazy(() => import("pages/busca/Busca"));
 const ProdutoDetalhes = lazy(() => import("pages/produtoDetalhes/ProdutoDetalhes"));
 const Calculadora = lazy(() => import("pages/calculadora/Calculadora"));
-const Blog = lazy(()=> import("pages/blog/Blog"));
+const BlogFeed = lazy(()=> import("pages/blog/BlogFeed"));
+const BlogPost = lazy(()=> import("pages/blog/BlogPost"));
 
 
 function App() {
@@ -27,11 +28,12 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/catalogo" element={<Catalogo />} />
-            <Route path="/calculadora" element={<Calculadora/>} />
             <Route path="catalogo/:id" element={<ProdutoDetalhes />} />
+            <Route path="/calculadora" element={<Calculadora/>} />
             <Route path="/busca" element={<Busca />} />
             <Route path="/quem-somos" element={<QuemSomos />} />
-            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog" element={<BlogFeed />} />
+            <Route path="blog/:id_post" element={<BlogPost />} />
             <Route path="*" element={<Pagina404 />} />
           </Routes>
           <Footer />

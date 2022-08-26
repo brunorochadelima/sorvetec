@@ -4,9 +4,9 @@ import { IBlogs } from "interfaces/IBlogs";
 import CardBlog from "components/cardBlog/CardBlog";
 import { ReactComponent as IconLoading } from "assets/imagens/icon-loading.svg";
 import tema from "theme/Base.module.scss";
-import style from "./Blog.module.scss";
+import style from "./BlogFeed.module.scss";
 
-export default function Blog() {
+export default function BlogFeed() {
   const [blogs, setBlogs] = React.useState<IBlogs[]>([]);
   const [loading, setLoading] = React.useState(true);
 
@@ -31,7 +31,7 @@ export default function Blog() {
       <div className={style.grid_cards}>
         {loading && <IconLoading />}
         {blogs.map((blog) => (
-          <div>
+          <div key={blog.id_post}>
             <CardBlog {...blog} />
           </div>
         ))}

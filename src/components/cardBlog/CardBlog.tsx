@@ -32,7 +32,7 @@ export default function CardBlog(props: IBlogs) {
     >
       <img src={caminhoImagem + post_cover} alt={post_title} />
       <h2>{post_title}</h2>
-      {/* <p> {parse(`${resume} ...`)}</p> */}
+      <div> {parse(`${resume} ...`)}</div>
       <Button variant="outlined">Continuar Lendo</Button>
     </div>
   );

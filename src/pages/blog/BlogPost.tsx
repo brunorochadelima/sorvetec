@@ -35,11 +35,13 @@ export default function BlogPost() {
 
   return (
     <div className={style.container_conteudo}>
+      <br />
       <div className={tema.titulo_h2}>{post?.post_title}</div>
+      <br />
       <hr />
       <div>{parse(`${caminhoImagens}`)}</div>
       <Button variant="contained" size="large" onClick={() => navigate(-1)}>
-      ‹ Voltar
+        ‹ Voltar
       </Button>
     </div>
   );

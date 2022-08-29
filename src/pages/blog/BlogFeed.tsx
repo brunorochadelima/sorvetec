@@ -5,22 +5,33 @@ import CardBlog from "components/cardBlog/CardBlog";
 import { ReactComponent as IconLoading } from "assets/imagens/icon-loading.svg";
 import tema from "theme/Base.module.scss";
 import style from "./BlogFeed.module.scss";
+import { Box, Button } from "@mui/material";
 
 export default function BlogFeed() {
   const [blogs, setBlogs] = React.useState<IBlogs[]>([]);
-  const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = React.useState<Boolean>();
+  const [proximaPagina, setProximaPagina] = React.useState(8);
+
+  function verMais() {
+    setProximaPagina(proximaPagina + 8);
+  }
 
   const getBlogs = useCallback(async () => {
+    setLoading(true);
     try {
       await axios
-        .get("https://api.sorvetec.com.br/api/v1/posts")
-        .then((response) => setBlogs(response.data));
+        .get(
+          `https://api.sorvetec.com.br/api/v1/posts/offset=0/limit=${proximaPagina}`
+        )
+        .then((response) => {
+          setBlogs(response.data);
+        });
     } catch (erro) {
       console.log(erro);
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [proximaPagina]);
 
   React.useEffect(() => {
     getBlogs();
@@ -28,14 +39,20 @@ export default function BlogFeed() {
 
   return (
     <section className={tema.container}>
+      {loading && <IconLoading />}
       <div className={style.grid_cards}>
-        {loading && <IconLoading />}
         {blogs.map((blog) => (
           <div key={blog.id_post}>
             <CardBlog {...blog} />
           </div>
         ))}
       </div>
+      {loading && <IconLoading />}
+      <Box sx={{ textAlign: "center", mb: 3 }}>
+        <Button size="large" variant="contained" onClick={verMais}>
+          + Ver mais
+        </Button>
+      </Box>
     </section>
   );
 }

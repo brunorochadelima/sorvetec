@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <main>
-      <section className={tema.container}>
+      <section className={tema.container} style={{marginTop: "1.5rem"}}>
         <div className={style.grid_container}>
           <div>
             <h1 className={tema.titulo_h1}>Empreenda com a Sorvetec</h1>

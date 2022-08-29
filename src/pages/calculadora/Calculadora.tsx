@@ -75,7 +75,7 @@ export default function Calculadora() {
   };
 
   return (
-    <section className={tema.container} style={{ minHeight: "100vh" }}>
+    <section className={tema.container} style={{ minHeight: "100vh", marginTop: "1.5rem" }}>
       {exibeModal()}
       <Grid container spacing={5}>
         <Grid item xs={12} md={6}>

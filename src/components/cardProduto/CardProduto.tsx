@@ -54,7 +54,7 @@ function CardProduto(props: IProdutos) {
   function calculaDesconto(): JSX.Element {
     return (
       <div className={style.card__tag_desconto}>
-        {(((price - promotional_price) / price) * 100).toFixed(2)}% de desconto
+        {Math.floor(((price - promotional_price) / price) * 100)}% de desconto
       </div>
     );
   }

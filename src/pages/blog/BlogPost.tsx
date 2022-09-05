@@ -37,10 +37,6 @@ export default function BlogPost() {
     <div className={style.container_conteudo}>
       <br />
       <div className={tema.titulo_h2}>{post?.post_title}</div>
-
-      {/* <!-- Go to www.addthis.com/dashboard to customize your tools --> */}
-      <div className="addthis_inline_share_toolbox"></div>
-
       <br />
       <hr />
       <div>{parse(`${caminhoImagens}`)}</div>

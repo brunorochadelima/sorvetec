@@ -10,21 +10,22 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 export default function BlogPost() {
-  const { id_post } = useParams();
+  const { id } = useParams();
   const [post, setPost] = useState<IBlogs>();
   const navigate = useNavigate();
 
   useEffect(() => {
     try {
       axios
-        .get(`https://api.sorvetec.com.br/api/v1/posts/${id_post}`)
+        .get(`https://www.sorvetec.com.br/laravel/public/api/posts/${id}`)
         .then((response) => {
-          setPost(response.data[0]);
+          console.log(response.data);
+          setPost(response.data);
         });
     } catch (error) {
       console.log(error);
     }
-  }, [id_post]);
+  }, [id]);
 
   const caminhoImagens = post?.post_text
     .split("../../assets")

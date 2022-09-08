@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function CardBlog(props: IBlogs) {
   const {
-    id_post,
+    id,
     post_title,
     post_cover,
     post_short_text,
@@ -18,8 +18,8 @@ export default function CardBlog(props: IBlogs) {
 
   //Redireciona para post
   const navigate = useNavigate();
-  function redirecionaParaPost(id_post: Number) {
-    navigate(`/blog/${id_post}`);
+  function redirecionaParaPost(id: Number) {
+    navigate(`/blog/${id}`);
   }
 
   const resume = post_text.substring(0, 120);
@@ -28,7 +28,7 @@ export default function CardBlog(props: IBlogs) {
   return (
     <div
       className={style.containerCard}
-      onClick={() => redirecionaParaPost(id_post)}
+      onClick={() => redirecionaParaPost(id)}
     >
       <img src={caminhoImagem + post_cover} alt={post_title} />
       <h2>{post_title}</h2>

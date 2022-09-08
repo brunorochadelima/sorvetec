@@ -1,4 +1,5 @@
 export interface IBlogs {
+  id: number;
   id_post: number;
   post_title: string;
   post_cover: string;

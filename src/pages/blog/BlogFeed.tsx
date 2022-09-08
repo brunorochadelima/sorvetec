@@ -11,29 +11,60 @@ import capaBlogMobile from "assets/imagens/capa-blog-mobile.webp";
 
 export default function BlogFeed() {
   const [blogs, setBlogs] = React.useState<IBlogs[]>([]);
-  const [loading, setLoading] = React.useState<Boolean>();
-  const [proximaPagina, setProximaPagina] = React.useState(8);
+  const [loading, setLoading] = React.useState<Boolean>(true);
+  const [proximaPagina, setProximaPagina] = React.useState("");
+
+  //dados paginação da api
+  const [to, setTo] = React.useState<Number>(0);
+  const [total, setTotal] = React.useState<Number>(1);
 
   function verMais() {
-    setProximaPagina(proximaPagina + 8);
+    setLoading(true);
+    axios.get(proximaPagina).then((response) => {
+      setBlogs([...blogs, ...response.data.data]);
+      setProximaPagina(response.data.next_page_url);
+      setTo(response.data.to);
+      setTotal(response.data.total);
+      setLoading(false);
+    });
   }
+
+  // function verMais() {
+  //   setProximaPagina(proximaPagina + 8);
+  // }
 
   const getBlogs = useCallback(async () => {
     setLoading(true);
     try {
       await axios
-        .get(
-          `https://api.sorvetec.com.br/api/v1/posts/offset=0/limit=${proximaPagina}`
-        )
+        .get(`https://www.sorvetec.com.br/laravel/public/api/posts`)
         .then((response) => {
-          setBlogs(response.data);
+          setBlogs(response.data.data);
+          setProximaPagina(response.data.next_page_url);
         });
     } catch (erro) {
       console.log(erro);
     } finally {
       setLoading(false);
     }
-  }, [proximaPagina]);
+  }, []);
+
+  // const getBlogs = useCallback(async () => {
+  //   setLoading(true);
+  //   try {
+  //     await axios
+  //       .get(
+  //         `https://api.sorvetec.com.br/api/v1/posts/offset=0/limit=${proximaPagina}`
+  //       )
+  //       .then((response) => {
+  //         setBlogs(response.data);
+  //       });
+  //   } catch (erro) {
+  //     console.log(erro);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }, [proximaPagina]);
 
   React.useEffect(() => {
     getBlogs();
@@ -56,19 +87,19 @@ export default function BlogFeed() {
           loading="eager"
         />
       </picture>
-      
+
       <section className={tema.container}>
         {loading && <IconLoading />}
         <div className={style.grid_cards}>
           {blogs.map((blog) => (
-            <div key={blog.id_post}>
+            <div key={blog.id}>
               <CardBlog {...blog} />
             </div>
           ))}
         </div>
         {loading && <IconLoading />}
         <Box sx={{ textAlign: "center", mb: 3 }}>
-          <Button size="large" variant="contained" onClick={verMais}>
+          <Button size="large" variant="contained" onClick={verMais} disabled={to >= total}>
             + Ver mais
           </Button>
         </Box>

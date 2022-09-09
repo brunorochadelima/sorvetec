@@ -1,21 +1,26 @@
 import BotaoFlutuante from "components/BotaoFlutuante";
 import Footer from "components/footer/Footer";
 import { ReactComponent as IconLoading } from "assets/imagens/icon-loading.svg";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useNavigate,
+  Navigate,
+} from "react-router-dom";
 import Header from "components/header/Header";
 import { lazy, Suspense } from "react";
 import { BuscaProvider } from "context/Busca";
 import ScrollToTop from "utils/ScrollToTop";
 import { isAuthenticated } from "pages/admin/login/auth";
+import BlogAdmin from "pages/admin/login/BlogAdmin";
 
 const Home = lazy(() => import("pages/home/Home"));
 const Catalogo = lazy(() => import("pages/catalogo/Catalogo"));
 const QuemSomos = lazy(() => import("pages/quemSomos/QuemSomos"));
 const Pagina404 = lazy(() => import("pages/pagina404/Pagina404"));
 const Busca = lazy(() => import("pages/busca/Busca"));
-const ProdutoDetalhes = lazy(
-  () => import("pages/produtoDetalhes/ProdutoDetalhes")
-);
+const ProdutoDetalhes = lazy(() => import("pages/produtoDetalhes/ProdutoDetalhes"));
 const Calculadora = lazy(() => import("pages/calculadora/Calculadora"));
 const BlogFeed = lazy(() => import("pages/blog/BlogFeed"));
 const BlogPost = lazy(() => import("pages/blog/BlogPost"));
@@ -25,9 +30,8 @@ const Login = lazy(() => import("pages/admin/login/Login"));
 
 //verifica se usuário está logado para exibir rotas privadas
 function PrivateRoute({ children }: any) {
-  const navigate = useNavigate();
   let auth = isAuthenticated();
-  return auth ? children : navigate("/login");
+  return auth ? children : <Navigate to="/login" />;
 }
 
 function App() {
@@ -35,7 +39,7 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <BuscaProvider>
-        { window.location.pathname!=='/login' ? <Header/>:null}
+        {window.location.pathname !== "/login" ? <Header /> : null}
         {/* <Header /> */}
         <Suspense
           fallback={
@@ -60,14 +64,12 @@ function App() {
               path="/private"
               element={
                 <PrivateRoute>
-                  <Catalogo />
+                  <BlogAdmin />
                 </PrivateRoute>
               }
             />
-
-
           </Routes>
-          {window.location.pathname!=='/login' ? <Footer />:null}
+          {window.location.pathname !== "/login" ? <Footer /> : null}
           {/* <Footer /> */}
         </Suspense>
         <BotaoFlutuante />

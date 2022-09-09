@@ -59,9 +59,11 @@ function CardProduto(props: IProdutos) {
     );
   }
 
+  const nomeProdutoSemEspaco = name.split(" ").join("-");
+
   // Direciona para detalhes do produto
   function redirecionaParaDetalhes(produtoID: number): void {
-    navigate(`/catalogo/${produtoID}`);
+    navigate(`/catalogo/${produtoID}?${nomeProdutoSemEspaco}`);
   }
 
   return (

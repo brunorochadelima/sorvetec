@@ -16,10 +16,12 @@ export default function CardBlog(props: IBlogs) {
     id_category,
   } = props;
 
+  const tituloSemEspaco = post_title.split(" ").join("-");
+
   //Redireciona para post
   const navigate = useNavigate();
   function redirecionaParaPost(id: Number) {
-    navigate(`/blog/${id}`);
+    navigate(`/blog/${id}/?title=${tituloSemEspaco}`);
   }
 
   const resume = post_text.substring(0, 120);

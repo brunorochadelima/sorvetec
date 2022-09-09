@@ -8,8 +8,6 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [erro, setErro] = useState("");
-  const [token, setToken] = useState("");
-
 
   // Criar função pra ver se o usuário esta autenticado dentro de um compoente separado auth
   // Guardar o token no local storage
@@ -24,13 +22,17 @@ export default function Login() {
       })
       .then((response) => {
         console.log(response);
-        setToken(response.data.plainTextToken);
+        localStorage.setItem("token", response.data.plainTextToken);
       })
       .catch((error) => {
         console.log(error);
         setErro(error.response.data);
       });
   }
+
+  // function memorizarToken() {
+  //   localStorage.setItem("token", token);
+  // }
 
   return (
     <div style={{ backgroundColor: "#F3F4F6" }}>

@@ -67,7 +67,7 @@ export default function Login() {
 
               {/* Mensagem erro */}
               <Typography variant="h6" color={"red"}>
-                {erro === "Unauthorized" ? "Email e/ou senha inválidos" : ""}
+                {erro === "Unauthorized" ? "Email e/ou senha inválidos." : ""}
               </Typography>
 
               <Button

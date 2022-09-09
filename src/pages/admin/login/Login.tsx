@@ -30,10 +30,6 @@ export default function Login() {
       });
   }
 
-  // function memorizarToken() {
-  //   localStorage.setItem("token", token);
-  // }
-
   return (
     <div style={{ backgroundColor: "#F3F4F6" }}>
       <div className={tema.container}>

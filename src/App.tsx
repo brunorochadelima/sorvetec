@@ -23,6 +23,7 @@ const Login = lazy(() => import("pages/admin/login/Login"));
 
 //https://dev.to/iamandrewluca/private-route-in-react-router-v6-lg5
 
+//verifica se usuário está logado para exibir rotas privadas
 function PrivateRoute({ children }: any) {
   const navigate = useNavigate();
   let auth = isAuthenticated();
@@ -63,6 +64,8 @@ function App() {
                 </PrivateRoute>
               }
             />
+
+
           </Routes>
           {window.location.pathname!=='/login' ? <Footer />:null}
           {/* <Footer /> */}

@@ -34,7 +34,8 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <BuscaProvider>
-        <Header />
+        { window.location.pathname!=='/login' ? <Header/>:null}
+        {/* <Header /> */}
         <Suspense
           fallback={
             <div>
@@ -63,7 +64,8 @@ function App() {
               }
             />
           </Routes>
-          <Footer />
+          {window.location.pathname!=='/login' ? <Footer />:null}
+          {/* <Footer /> */}
         </Suspense>
         <BotaoFlutuante />
       </BuscaProvider>

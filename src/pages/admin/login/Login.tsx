@@ -37,7 +37,7 @@ export default function Login() {
   return (
     <div style={{ backgroundColor: "#F3F4F6" }}>
       <div className={tema.container}>
-        <Box sx={{ display: "grid", placeItems: "center", height: "80vh" }}>
+        <Box sx={{ display: "grid", placeItems: "center", height: "100vh" }}>
           <Paper sx={{ width: { md: "430px" } }}>
             <Box sx={{ p: 4 }}>
               <p className={tema.titulo_h2}>

@@ -13,18 +13,21 @@ import { lazy, Suspense } from "react";
 import { BuscaProvider } from "context/Busca";
 import ScrollToTop from "utils/ScrollToTop";
 import { isAuthenticated } from "pages/admin/login/auth";
-import CriarPost from "pages/admin/login/CriarPost";
 
 const Home = lazy(() => import("pages/home/Home"));
 const Catalogo = lazy(() => import("pages/catalogo/Catalogo"));
 const QuemSomos = lazy(() => import("pages/quemSomos/QuemSomos"));
 const Pagina404 = lazy(() => import("pages/pagina404/Pagina404"));
 const Busca = lazy(() => import("pages/busca/Busca"));
-const ProdutoDetalhes = lazy(() => import("pages/produtoDetalhes/ProdutoDetalhes"));
+const ProdutoDetalhes = lazy(
+  () => import("pages/produtoDetalhes/ProdutoDetalhes")
+);
 const Calculadora = lazy(() => import("pages/calculadora/Calculadora"));
 const BlogFeed = lazy(() => import("pages/blog/BlogFeed"));
 const BlogPost = lazy(() => import("pages/blog/BlogPost"));
 const Login = lazy(() => import("pages/admin/login/Login"));
+const CriarPost = lazy(() => import("pages/admin/login/CriarPost"));
+const ListarPosts = lazy(() => import("pages/admin/login/ListarPosts"));
 
 //https://dev.to/iamandrewluca/private-route-in-react-router-v6-lg5
 
@@ -39,8 +42,11 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <BuscaProvider>
-        {window.location.pathname === "/login" || window.location.pathname === "/criar-post" ? null : <Header />}
-        
+        {window.location.pathname === "/login" ||
+        window.location.pathname === "/criar-post" ? null : (
+          <Header />
+        )}
+
         {/* <Header /> */}
         <Suspense
           fallback={
@@ -66,6 +72,15 @@ function App() {
               element={
                 <PrivateRoute>
                   <CriarPost />
+                </PrivateRoute>
+              }
+            />
+
+            <Route
+              path="/listar-posts"
+              element={
+                <PrivateRoute>
+                  <ListarPosts />
                 </PrivateRoute>
               }
             />

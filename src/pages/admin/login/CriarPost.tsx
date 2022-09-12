@@ -109,7 +109,7 @@ export default function CriarPost() {
 
   return (
     <Container>
-      <Navbar/>
+      <Navbar />
       <div>
         <h2 className={tema.titulo_h2}>Criar Postagem</h2>
         <Box component="form" onSubmit={aoSubmeterForm}>

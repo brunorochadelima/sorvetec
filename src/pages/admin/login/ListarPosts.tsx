@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react";
+import Navbar from "./Navbar";
 
 export default function ListarPosts() {
   return (
-    <div>ListarPosts</div>
-  )
+    <div>
+      <Navbar />
+      ListarPosts
+    </div>
+  );
 }

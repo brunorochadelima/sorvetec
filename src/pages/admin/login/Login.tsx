@@ -2,9 +2,9 @@ import tema from "theme/Base.module.scss";
 import { Button, Paper, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { isAuthenticated } from "./auth";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -15,11 +15,17 @@ export default function Login() {
   // Guardar o token no local storage
   // Criar componente PrivateRoute que retorna <Route/>
   const navigate = useNavigate();
-  
+
+  useEffect(() => {
+    if (isAuthenticated()) {
+      navigate("/criar-post");
+    }
+  }, []);
+
   function aoSubmeterForm(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     axios
-    // https://www.sorvetec.com.br/laravel/public/api/login
+      // https://www.sorvetec.com.br/laravel/public/api/login
       .post("http://127.0.0.1:8000/api/login", {
         email: email,
         password: password,
@@ -27,8 +33,7 @@ export default function Login() {
       .then((response) => {
         console.log(response);
         localStorage.setItem("token", response.data.plainTextToken);
-       
-        navigate('/private')
+        navigate("/criar-post");
       })
       .catch((error) => {
         console.log(error);

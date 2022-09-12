@@ -10,7 +10,7 @@ export const EditorTexto = (props) => {
 
   const config = {
     readonly: false, // all options from https://xdsoft.net/jodit/doc/,
-    height: 500,
+    height: 450,
     // placeholder: placeholder || 'Start typings...'
   };
   // [placeholder]

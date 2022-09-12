@@ -16,7 +16,8 @@ export default function Login() {
   function aoSubmeterForm(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     axios
-      .post("https://www.sorvetec.com.br/laravel/public/api/login", {
+    // https://www.sorvetec.com.br/laravel/public/api/login
+      .post("http://127.0.0.1:8000/api/login", {
         email: email,
         password: password,
       })
@@ -57,6 +58,7 @@ export default function Login() {
                 label="Senha"
                 variant="outlined"
                 margin="dense"
+                type="password"
                 fullWidth
                 required
                 value={password}

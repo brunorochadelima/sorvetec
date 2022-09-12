@@ -6,21 +6,21 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  TextareaAutosize,
   TextField,
 } from "@mui/material";
 import axios from "axios";
 import { ICategorias } from "interfaces/ICategorias";
 import React, { useEffect, useState } from "react";
-import tema from "theme/Base.module.scss"
-import { EditorConvertToHTML } from "./EditorTexto";
+import tema from "theme/Base.module.scss";
+import { EditorTexto } from "./EditorTexto";
+import Navbar from "./Navbar";
 
-export default function BlogAdmin() {
+export default function CriarPost() {
   const [titulo, setTitulo] = useState("");
   const [imagem, setImagem] = useState<File | null>(null);
   const [categorias, setCategorias] = useState<ICategorias[]>([]);
   const [categoria, setCategoria] = useState("");
-  const [texto, setText] = useState("");
+  const [texto, setTexto] = useState("");
   const [respostaApi, setRespostaApi] = useState("");
   const [mostrarAlerta, setMostrarAlerta] = useState(false);
 
@@ -39,7 +39,10 @@ export default function BlogAdmin() {
     var token = localStorage.getItem("token");
 
     const formData = new FormData();
-    formData.append("post_title", titulo);
+    formData.append(
+      "post_title",
+      titulo.replace(/<script>[\s\S]*?<\/script>/, "")
+    );
     formData.append("category_id", categoria);
     formData.append("post_text", texto);
     if (imagem) {
@@ -59,7 +62,7 @@ export default function BlogAdmin() {
       })
       .then((response) => {
         console.log(response);
-        setRespostaApi("")
+        setRespostaApi("");
       })
       .catch((error) => {
         console.log(error);
@@ -91,22 +94,43 @@ export default function BlogAdmin() {
     }
   }
 
+  //salva rascunho
+  const handleSave = () => {
+    localStorage.setItem("document", texto);
+  };
+
+  //recupera rascunho
+  const loadDoc = () => {
+    const texto = localStorage.getItem("document");
+    if (texto) {
+      setTexto(texto);
+    }
+  };
+
   return (
     <Container>
+      <Navbar/>
       <div>
         <h2 className={tema.titulo_h2}>Criar Postagem</h2>
         <Box component="form" onSubmit={aoSubmeterForm}>
           <TextField
-            label="Titulo do post"
+            label="Título do post"
             fullWidth
             onChange={(e) => setTitulo(e.target.value)}
           />
 
-          <Box sx={{ display: "flex", justifyContent: "space-between", my: 4 }}>
-            <Box sx={{ width: "50%" }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              my: 4,
+              flexWrap: "wrap",
+            }}
+          >
+            <Box>
               <InputLabel id="categoria">Categoria</InputLabel>
               <Select
-                sx={{ minWidth: "250px" }}
+                sx={{ minWidth: "300px" }}
                 labelId="categoria"
                 id="categoria_post"
                 value={categoria}
@@ -121,31 +145,42 @@ export default function BlogAdmin() {
             </Box>
 
             <Box>
-              <InputLabel id="imagem_capa">Imagem capa</InputLabel>
+              <InputLabel id="imagem_capa">Imagem de capa</InputLabel>
               <TextField type="file" onChange={selecionarImagem} />
             </Box>
           </Box>
 
+          {/* <TextareaAutosize
+            aria-label="Escreva aqui o conteúdo do post"
+            minRows={15}
+            placeholder="Escreva aqui o conteúdo do post..."
+            style={{ width: "100%" }}
+            onChange={(e) => setTexto(e.target.value)}
+          /> */}
 
-          <TextareaAutosize
-              aria-label="Escreva aqui o conteúdo do post"
-              minRows={15}
-              placeholder="Escreva aqui o conteúdo do post..."
-              style={{ width: '100%' }}
-
-            onChange={(e) => setText(e.target.value)}
+          <EditorTexto
+            onBlur={(novoTexto: string) => setTexto(novoTexto)}
+            value={texto}
           />
 
-          <Button sx={{my: 4}} variant="contained" size="large" type="submit">
-            Criar post
-          </Button>
+          <Box sx={{ display: "flex", justifyContent: "end", gap: 2, my: 4 }}>
+            <Button onClick={handleSave} variant="outlined">
+              Salvar rascunho
+            </Button>
+
+            <Button onClick={loadDoc} variant="outlined">
+              Recuperar rascunho
+            </Button>
+
+            <Button variant="contained" size="large" type="submit">
+              Criar post
+            </Button>
+          </Box>
 
           {mostrarAlerta && alert()}
-          <br/>
+          <br />
         </Box>
-
       </div>
-        <EditorConvertToHTML/>
     </Container>
   );
 }

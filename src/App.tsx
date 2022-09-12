@@ -13,7 +13,7 @@ import { lazy, Suspense } from "react";
 import { BuscaProvider } from "context/Busca";
 import ScrollToTop from "utils/ScrollToTop";
 import { isAuthenticated } from "pages/admin/login/auth";
-import BlogAdmin from "pages/admin/login/BlogAdmin";
+import CriarPost from "pages/admin/login/CriarPost";
 
 const Home = lazy(() => import("pages/home/Home"));
 const Catalogo = lazy(() => import("pages/catalogo/Catalogo"));
@@ -39,7 +39,8 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <BuscaProvider>
-        {window.location.pathname !== "/login" ? <Header /> : null}
+        {window.location.pathname === "/login" || window.location.pathname === "/criar-post" ? null : <Header />}
+        
         {/* <Header /> */}
         <Suspense
           fallback={
@@ -61,10 +62,10 @@ function App() {
             <Route path="/login" element={<Login />} />
 
             <Route
-              path="/private"
+              path="/criar-post"
               element={
                 <PrivateRoute>
-                  <BlogAdmin />
+                  <CriarPost />
                 </PrivateRoute>
               }
             />

@@ -3,6 +3,8 @@ import { Button, Paper, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -12,7 +14,8 @@ export default function Login() {
   // Criar função pra ver se o usuário esta autenticado dentro de um compoente separado auth
   // Guardar o token no local storage
   // Criar componente PrivateRoute que retorna <Route/>
-
+  const navigate = useNavigate();
+  
   function aoSubmeterForm(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     axios
@@ -24,6 +27,8 @@ export default function Login() {
       .then((response) => {
         console.log(response);
         localStorage.setItem("token", response.data.plainTextToken);
+       
+        navigate('/private')
       })
       .catch((error) => {
         console.log(error);

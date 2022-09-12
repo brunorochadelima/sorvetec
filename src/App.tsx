@@ -43,7 +43,7 @@ function App() {
       <ScrollToTop />
       <BuscaProvider>
         {window.location.pathname === "/login" ||
-        window.location.pathname === "/criar-post" ? null : (
+        window.location.pathname === "/criar-post" || window.location.pathname === "/listar-posts" ? null : (
           <Header />
         )}
 

@@ -114,7 +114,7 @@ export default function AtualizaPost() {
     <Container>
       <Navbar />
       <div>
-        <h2 className={tema.titulo_h2}>Atualiza post</h2>
+        <h2 className={tema.titulo_h2}>Atualizar Post</h2>
         <Box component="form" onSubmit={aoSubmeterForm}>
           <TextField
             label="Título do post"
@@ -123,7 +123,7 @@ export default function AtualizaPost() {
             onChange={(e) => setTitulo(e.target.value)}
           />
 
-          <Box>
+          <Box sx={{my: 3}}>
             <InputLabel id="categoria">Categoria</InputLabel>
             <Select
               sx={{ minWidth: "300px" }}

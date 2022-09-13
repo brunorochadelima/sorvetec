@@ -14,7 +14,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { IBlogs } from "interfaces/IBlogs";
-import { BiTrash } from "react-icons/bi";
+import { BiTrash, BiEdit } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import tema from "theme/Base.module.scss";
 
@@ -81,19 +81,19 @@ export default function ListarPosts() {
       </div>
       <TableContainer component={Paper} sx={{ my: 5 }}>
         <Table>
-          <TableHead>
+          <TableHead sx={{ backgroundColor: "#F3F4F6" }}>
             <TableRow>
               <TableCell>
                 <b>Id</b>
               </TableCell>
               <TableCell>
-                <b>Título</b>{" "}
+                <b>Título</b>
               </TableCell>
               <TableCell>
-                <b>Data de criação</b>
+                <b>Editar</b>
               </TableCell>
               <TableCell>
-                <b>Data da última alteração</b>
+                <b>Excluir</b>
               </TableCell>
             </TableRow>
           </TableHead>
@@ -102,10 +102,15 @@ export default function ListarPosts() {
               <TableRow key={post.id}>
                 <TableCell>{post.id}</TableCell>
                 <TableCell>{post.post_title}</TableCell>
-                <TableCell>{post.created_at}</TableCell>
-                <TableCell>{post.updated_at}</TableCell>
+
                 <TableCell>
-                  {<Link to={`/atualizar-post/${post.id}`}>Editar</Link>}
+                  {
+                    <Link to={`/atualizar-post/${post.id}`}>
+                      <div>
+                        <BiEdit size={30} color="#F280AA" />
+                      </div>
+                    </Link>
+                  }
                 </TableCell>
                 <TableCell>
                   <Button

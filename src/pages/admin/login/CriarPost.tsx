@@ -111,7 +111,7 @@ export default function CriarPost() {
     <Container>
       <Navbar />
       <div>
-        <h2 className={tema.titulo_h2}>Criar Postagem</h2>
+        <h2 className={tema.titulo_h2}>Criar Post</h2>
         <Box component="form" onSubmit={aoSubmeterForm}>
           <TextField
             label="Título do post"

@@ -150,14 +150,6 @@ export default function CriarPost() {
             </Box>
           </Box>
 
-          {/* <TextareaAutosize
-            aria-label="Escreva aqui o conteúdo do post"
-            minRows={15}
-            placeholder="Escreva aqui o conteúdo do post..."
-            style={{ width: "100%" }}
-            onChange={(e) => setTexto(e.target.value)}
-          /> */}
-
           <EditorTexto
             onBlur={(novoTexto: string) => setTexto(novoTexto)}
             value={texto}

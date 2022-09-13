@@ -11,9 +11,6 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [erro, setErro] = useState("");
 
-  // Criar função pra ver se o usuário esta autenticado dentro de um compoente separado auth
-  // Guardar o token no local storage
-  // Criar componente PrivateRoute que retorna <Route/>
   const navigate = useNavigate();
 
   useEffect(() => {

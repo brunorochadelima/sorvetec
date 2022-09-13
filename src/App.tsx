@@ -1,13 +1,7 @@
 import BotaoFlutuante from "components/BotaoFlutuante";
 import Footer from "components/footer/Footer";
 import { ReactComponent as IconLoading } from "assets/imagens/icon-loading.svg";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  useNavigate,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "components/header/Header";
 import { lazy, Suspense } from "react";
 import { BuscaProvider } from "context/Busca";
@@ -28,6 +22,7 @@ const BlogPost = lazy(() => import("pages/blog/BlogPost"));
 const Login = lazy(() => import("pages/admin/login/Login"));
 const CriarPost = lazy(() => import("pages/admin/login/CriarPost"));
 const ListarPosts = lazy(() => import("pages/admin/login/ListarPosts"));
+const AtualizaPost = lazy(() => import("pages/admin/login/AtualizaPost"));
 
 //https://dev.to/iamandrewluca/private-route-in-react-router-v6-lg5
 
@@ -43,7 +38,10 @@ function App() {
       <ScrollToTop />
       <BuscaProvider>
         {window.location.pathname === "/login" ||
-        window.location.pathname === "/criar-post" || window.location.pathname === "/listar-posts" ? null : (
+        window.location.pathname === "/criar-post" ||
+        window.location.pathname === "/listar-posts" ||
+        window.location.pathname.substring(0, 15) ===
+          "/atualizar-post" ? null : (
           <Header />
         )}
 
@@ -81,6 +79,15 @@ function App() {
               element={
                 <PrivateRoute>
                   <ListarPosts />
+                </PrivateRoute>
+              }
+            />
+
+            <Route
+              path="/atualizar-post/:id"
+              element={
+                <PrivateRoute>
+                  <AtualizaPost />
                 </PrivateRoute>
               }
             />

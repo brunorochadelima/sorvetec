@@ -6,7 +6,6 @@ import {
   ListItemText,
   Drawer,
 } from "@mui/material";
-import React from "react";
 import { BiAddToQueue } from "react-icons/bi";
 import { MdFormatListBulleted } from "react-icons/md";
 import { useNavigate } from "react-router-dom";

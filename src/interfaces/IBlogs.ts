@@ -6,7 +6,8 @@ export interface IBlogs {
   post_short_text: string;
   post_text: string;
   id_category: number;
-  created_at: Date;
-  updated_at: Date | null;
+  created_at: any;
+  updated_at: any;
   data: [];
+  next_page_url: string;
 }

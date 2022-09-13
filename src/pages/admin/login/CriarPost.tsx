@@ -49,7 +49,7 @@ export default function CriarPost() {
       formData.append("post_cover", imagem);
     }
 
-    // Cria post
+    // Cria o post
     axios
       .request({
         url: "http://127.0.0.1:8000/api/posts/",
@@ -94,12 +94,12 @@ export default function CriarPost() {
     }
   }
 
-  //salva rascunho
+  //Salva rascunho
   const handleSave = () => {
     localStorage.setItem("document", texto);
   };
 
-  //recupera rascunho
+  //Recupera rascunho
   const loadDoc = () => {
     const texto = localStorage.getItem("document");
     if (texto) {

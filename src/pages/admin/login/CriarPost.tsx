@@ -130,7 +130,7 @@ export default function CriarPost() {
             <Box>
               <InputLabel id="categoria">Categoria</InputLabel>
               <Select
-                sx={{ minWidth: "300px" }}
+               sx={{minWidth: 250}}
                 labelId="categoria"
                 id="categoria_post"
                 value={categoria}
@@ -146,7 +146,11 @@ export default function CriarPost() {
 
             <Box>
               <InputLabel id="imagem_capa">Imagem de capa</InputLabel>
-              <TextField type="file" onChange={selecionarImagem} />
+              <TextField
+                type="file"
+                onChange={selecionarImagem}
+               sx={{width: 600}}
+              />
             </Box>
           </Box>
 

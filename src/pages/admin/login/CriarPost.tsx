@@ -45,7 +45,10 @@ export default function CriarPost() {
       titulo.replace(/<script>[\s\S]*?<\/script>/, "")
     );
     formData.append("category_id", categoria);
-    formData.append("post_text", texto);
+    formData.append(
+      "post_text",
+      texto.replace(/<script>[\s\S]*?<\/script>/, "")
+    );
     if (imagem) {
       formData.append("post_cover", imagem);
     }
@@ -112,7 +115,9 @@ export default function CriarPost() {
     <Container>
       <Navbar />
       <div>
-        <h2 className={tema.titulo_h2}><BiAddToQueue size={40} /> Criar Post</h2>
+        <h2 className={tema.titulo_h2}>
+          <BiAddToQueue size={40} /> Criar Post
+        </h2>
         <Box component="form" onSubmit={aoSubmeterForm}>
           <TextField
             label="Título do post"
@@ -131,7 +136,7 @@ export default function CriarPost() {
             <Box>
               <InputLabel id="categoria">Categoria</InputLabel>
               <Select
-               sx={{minWidth: 250}}
+                sx={{ minWidth: 250 }}
                 labelId="categoria"
                 id="categoria_post"
                 value={categoria}
@@ -150,7 +155,7 @@ export default function CriarPost() {
               <TextField
                 type="file"
                 onChange={selecionarImagem}
-               sx={{width: 600}}
+                sx={{ width: 600 }}
               />
             </Box>
           </Box>

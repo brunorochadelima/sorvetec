@@ -7,6 +7,7 @@ export const EditorTexto = (props) => {
   const config = {
     readonly: false, // all options from https://xdsoft.net/jodit/doc/,
     height: 450,
+    cleanOnPaste: true,
     cleanHTML: {
       denyTags: {
         script: true,

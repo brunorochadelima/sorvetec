@@ -54,8 +54,8 @@ export default function AtualizaPost() {
       .put(
         `http://127.0.0.1:8000/api/posts/${parametros.id}`,
         {
-          post_title: titulo,
-          post_text: texto,
+          post_title: titulo.replace(/<script>[\s\S]*?<\/script>/, ""),
+          post_text: texto.replace(/<script>[\s\S]*?<\/script>/, ""),
           category_id: categoria,
         },
         {

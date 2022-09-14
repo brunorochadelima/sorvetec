@@ -19,9 +19,11 @@ export default function CardBlog(props: IBlogs) {
 
   // const caminhoImagem = "https://sorvetec.com.br/public/img/uploads/";
   // Se na url da imagem tiver "posts_cover" utilizar caminho do laravel caso contrario usar pasta public
+  //Ex caminho laravel: https://sorvetec.com.br/laravel/public/storage/
+  //Ex caminho local: http://localhost:8000/storage/
   const caminhoImagem =
     post_cover.substring(0, 11) === "posts_cover"
-      ? "http://localhost:8000/storage/"
+      ? "https://sorvetec.com.br/laravel/public/storage/"
       : "https://sorvetec.com.br/public/img/uploads/";
 
   return (

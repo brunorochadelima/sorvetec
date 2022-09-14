@@ -56,7 +56,7 @@ export default function CriarPost() {
     // Cria o post
     apiBlog
       .request({
-        url: "api/posts/",
+        url: "api/posts",
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

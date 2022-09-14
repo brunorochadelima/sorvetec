@@ -89,19 +89,6 @@ export default function AtualizaPost() {
       });
   }, []);
 
-  //Salva rascunho
-  const handleSave = () => {
-    localStorage.setItem("document", texto);
-  };
-
-  //Recupera rascunho
-  const loadDoc = () => {
-    const texto = localStorage.getItem("document");
-    if (texto) {
-      setTexto(texto);
-    }
-  };
-
   //Alerta erro ou sucesso após clicar no botão Atualizar
   function alert(): JSX.Element {
     if (respostaApi) {
@@ -115,7 +102,10 @@ export default function AtualizaPost() {
     <Container>
       <Navbar />
       <div>
-        <h2 className={tema.titulo_h2}> <BiEdit size={40}/> Atualizar Post</h2>
+        <h2 className={tema.titulo_h2}>
+          {" "}
+          <BiEdit size={40} /> Atualizar Post
+        </h2>
         <Box component="form" onSubmit={aoSubmeterForm}>
           <TextField
             label="Título do post"
@@ -124,7 +114,7 @@ export default function AtualizaPost() {
             onChange={(e) => setTitulo(e.target.value)}
           />
 
-          <Box sx={{my: 3}}>
+          <Box sx={{ my: 3 }}>
             <InputLabel id="categoria">Categoria</InputLabel>
             <Select
               sx={{ minWidth: "300px" }}
@@ -146,15 +136,7 @@ export default function AtualizaPost() {
             value={post && post.post_text}
           />
 
-          <Box sx={{ display: "flex", justifyContent: "end", gap: 2, my: 4 }}>
-            <Button onClick={handleSave} variant="outlined">
-              Salvar rascunho
-            </Button>
-
-            <Button onClick={loadDoc} variant="outlined">
-              Recuperar rascunho
-            </Button>
-
+          <Box sx={{ display: "flex", justifyContent: "end", my: 4 }}>
             <Button variant="contained" size="large" type="submit">
               Atualizar post
             </Button>

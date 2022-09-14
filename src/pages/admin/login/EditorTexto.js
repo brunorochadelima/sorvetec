@@ -7,6 +7,11 @@ export const EditorTexto = (props) => {
   const config = {
     readonly: false, // all options from https://xdsoft.net/jodit/doc/,
     height: 450,
+    cleanHTML: {
+      allowTags: {
+        script: false,
+      }
+    }
     // placeholder: placeholder || 'Start typings...'
   };
   // [placeholder]

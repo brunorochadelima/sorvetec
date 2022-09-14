@@ -1,4 +1,3 @@
-import api from "api/api";
 import axios from "axios";
 import { IBlogs } from "interfaces/IBlogs";
 import React, { useEffect, useState } from "react";

@@ -15,6 +15,7 @@ import tema from "theme/Base.module.scss";
 import { EditorTexto } from "./EditorTexto";
 import Navbar from "./Navbar";
 import { BiAddToQueue } from "react-icons/bi";
+import apiBlog from "api/apiBlog";
 
 export default function CriarPost() {
   const [titulo, setTitulo] = useState("");
@@ -54,9 +55,9 @@ export default function CriarPost() {
     }
 
     // Cria o post
-    axios
+    apiBlog
       .request({
-        url: "http://127.0.0.1:8000/api/posts/",
+        url: "api/posts/",
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -77,10 +78,10 @@ export default function CriarPost() {
       });
   }
 
-  //Pegar a lista de categgorias na api
+  //Pegar a lista de categorias na api
   useEffect(() => {
-    axios
-      .get("https://www.sorvetec.com.br/laravel/public/api/categories")
+    apiBlog
+      .get("api/categories")
       .then((response) => {
         setCategorias(response.data);
       })

@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
@@ -17,11 +16,11 @@ import { EditorTexto } from "./EditorTexto";
 import { ICategorias } from "interfaces/ICategorias";
 import { IBlogs } from "interfaces/IBlogs";
 import { BiEdit } from "react-icons/bi";
+import apiBlog from "api/apiBlog";
 
 export default function AtualizaPost() {
   const [post, setPost] = useState<IBlogs>();
   const [titulo, setTitulo] = useState("");
-  const [imagem, setImagem] = useState<File | null>(null);
   const [categorias, setCategorias] = useState<ICategorias[]>([]);
   const [categoria, setCategoria] = useState("");
   const [texto, setTexto] = useState("");
@@ -34,8 +33,8 @@ export default function AtualizaPost() {
   // busca o post na primeira renderização a partir do parâmetro da url
   useEffect(() => {
     if (parametros.id) {
-      axios
-        .get(`http://127.0.0.1:8000/api/posts/${parametros.id}`)
+      apiBlog
+        .get(`api/posts/${parametros.id}`)
         .then((response) => {
           console.log(response);
           setPost(response.data);
@@ -50,9 +49,9 @@ export default function AtualizaPost() {
     //pega o token
     var token = localStorage.getItem("token");
 
-    axios
+    apiBlog
       .put(
-        `http://127.0.0.1:8000/api/posts/${parametros.id}`,
+        `api/posts/${parametros.id}`,
         {
           post_title: titulo.replace(/<script>[\s\S]*?<\/script>/, ""),
           post_text: texto.replace(/<script>[\s\S]*?<\/script>/, ""),
@@ -79,8 +78,8 @@ export default function AtualizaPost() {
 
   //Pegar a lista de categorias na api
   useEffect(() => {
-    axios
-      .get("https://www.sorvetec.com.br/laravel/public/api/categories")
+    apiBlog
+      .get("api/categories")
       .then((response) => {
         setCategorias(response.data);
       })

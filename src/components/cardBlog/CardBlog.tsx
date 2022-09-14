@@ -1,8 +1,6 @@
 import { Button } from "@mui/material";
 import { IBlogs } from "interfaces/IBlogs";
-import React from "react";
 import parse from "html-react-parser";
-import tema from "theme/Base.module.scss";
 import style from "./CardBlog.module.scss";
 import { useNavigate } from "react-router-dom";
 
@@ -11,9 +9,7 @@ export default function CardBlog(props: IBlogs) {
     id,
     post_title,
     post_cover,
-    post_short_text,
     post_text,
-    id_category,
   } = props;
 
   const tituloSemEspaco = post_title.split(" ").join("-");

@@ -10,7 +10,7 @@ import { BiAddToQueue } from "react-icons/bi";
 import { MdFormatListBulleted, MdLogout } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from "assets/imagens/logo-sorvetec.svg";
-import axios from "axios";
+import apiBlog from "api/apiBlog";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -18,8 +18,8 @@ export default function Navbar() {
   var token = localStorage.getItem("token");
 
   function logout() {
-    axios
-      .get("http://127.0.0.1:8000/api/logout", {
+    apiBlog
+      .get("api/logout", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {

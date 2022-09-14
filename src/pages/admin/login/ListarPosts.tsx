@@ -18,6 +18,7 @@ import { BiTrash, BiEdit } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import tema from "theme/Base.module.scss";
 import { MdFormatListBulleted } from "react-icons/md";
+import apiBlog from "api/apiBlog";
 
 export default function ListarPosts() {
   const [posts, setPosts] = useState<IBlogs[]>([]);
@@ -28,8 +29,8 @@ export default function ListarPosts() {
   var token = localStorage.getItem("token");
 
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:8000/api/posts")
+    apiBlog
+      .get("api/posts")
       .then((response) => {
         setPosts(response.data.data);
         setProximaPagina(response.data.next_page_url);
@@ -57,8 +58,8 @@ export default function ListarPosts() {
     let text = "Tem certeza de que quer excluir este post? ";
     // eslint-disable-next-line no-restricted-globals
     if (confirm(text) === true) {
-      axios
-        .delete(`http://127.0.0.1:8000/api/posts/${postAhSerExcluido.id}`, {
+      apiBlog
+        .delete(`api/posts/${postAhSerExcluido.id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -1,10 +1,10 @@
 import tema from "theme/Base.module.scss";
 import { Button, Paper, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { isAuthenticated } from "./auth";
+import apiBlog from "api/apiBlog";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -17,13 +17,12 @@ export default function Login() {
     if (isAuthenticated()) {
       navigate("/criar-post");
     }
-  }, []);
+  }, [navigate]);
 
   function aoSubmeterForm(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    axios
-      // https://www.sorvetec.com.br/laravel/public/api/login
-      .post("http://127.0.0.1:8000/api/login", {
+    apiBlog
+      .post("api/login", {
         email: email,
         password: password,
       })

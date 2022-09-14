@@ -5,12 +5,7 @@ import style from "./CardBlog.module.scss";
 import { useNavigate } from "react-router-dom";
 
 export default function CardBlog(props: IBlogs) {
-  const {
-    id,
-    post_title,
-    post_cover,
-    post_text,
-  } = props;
+  const { id, post_title, post_cover, post_text } = props;
 
   const tituloSemEspaco = post_title.split(" ").join("-");
 
@@ -21,7 +16,13 @@ export default function CardBlog(props: IBlogs) {
   }
 
   const resume = post_text.substring(0, 120);
-  const caminhoImagem = "https://sorvetec.com.br/public/img/uploads/";
+
+  // const caminhoImagem = "https://sorvetec.com.br/public/img/uploads/";
+  // Se na url da imagem tiver "posts_cover" utilizar caminho do laravel caso contrario usar pasta public
+  const caminhoImagem =
+    post_cover.substring(0, 11) === "posts_cover"
+      ? "http://localhost:8000/storage/"
+      : "https://sorvetec.com.br/public/img/uploads/";
 
   return (
     <div

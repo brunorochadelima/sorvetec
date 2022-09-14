@@ -8,6 +8,7 @@ import style from "./BlogFeed.module.scss";
 import { Box, Button } from "@mui/material";
 import capaBlog from "assets/imagens/capa-blog.webp";
 import capaBlogMobile from "assets/imagens/capa-blog-mobile.webp";
+import apiBlog from "api/apiBlog";
 
 export default function BlogFeed() {
   const [blogs, setBlogs] = React.useState<IBlogs[]>([]);
@@ -36,8 +37,8 @@ export default function BlogFeed() {
   const getBlogs = useCallback(async () => {
     setLoading(true);
     try {
-      await axios
-        .get(`https://www.sorvetec.com.br/laravel/public/api/posts`)
+      await apiBlog
+        .get(`api/posts`)
         .then((response) => {
           setBlogs(response.data.data);
           setProximaPagina(response.data.next_page_url);

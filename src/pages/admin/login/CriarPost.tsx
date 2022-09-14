@@ -8,7 +8,6 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import axios from "axios";
 import { ICategorias } from "interfaces/ICategorias";
 import React, { useEffect, useState } from "react";
 import tema from "theme/Base.module.scss";

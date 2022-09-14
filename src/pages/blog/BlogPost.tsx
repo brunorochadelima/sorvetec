@@ -7,6 +7,7 @@ import tema from "theme/Base.module.scss";
 import style from "./BlogPost.module.scss";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import apiBlog from "api/apiBlog";
 
 export default function BlogPost() {
   const { id } = useParams();
@@ -15,8 +16,8 @@ export default function BlogPost() {
 
   useEffect(() => {
     try {
-      axios
-        .get(`https://www.sorvetec.com.br/laravel/public/api/posts/${id}`)
+      apiBlog
+        .get(`api/posts/${id}`)
         .then((response) => {
           console.log(response.data);
           setPost(response.data);
@@ -28,7 +29,8 @@ export default function BlogPost() {
 
   const caminhoImagens = post?.post_text
     .split("../../assets")
-    .join("https://www.sorvetec.com.br/public/img");
+    .join("https://www.sorvetec.com.br/public/img")
+
 
   //Exemplo caminho imagem válido para corpo texto:
   //https://www.sorvetec.com.br/public/img/uploads/gallery/images/2018/04/foto.png

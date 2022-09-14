@@ -16,6 +16,7 @@ import {
 import { EditorTexto } from "./EditorTexto";
 import { ICategorias } from "interfaces/ICategorias";
 import { IBlogs } from "interfaces/IBlogs";
+import { BiEdit } from "react-icons/bi";
 
 export default function AtualizaPost() {
   const [post, setPost] = useState<IBlogs>();
@@ -114,7 +115,7 @@ export default function AtualizaPost() {
     <Container>
       <Navbar />
       <div>
-        <h2 className={tema.titulo_h2}>Atualizar Post</h2>
+        <h2 className={tema.titulo_h2}> <BiEdit size={40}/> Atualizar Post</h2>
         <Box component="form" onSubmit={aoSubmeterForm}>
           <TextField
             label="Título do post"

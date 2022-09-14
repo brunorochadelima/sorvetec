@@ -14,6 +14,7 @@ import React, { useEffect, useState } from "react";
 import tema from "theme/Base.module.scss";
 import { EditorTexto } from "./EditorTexto";
 import Navbar from "./Navbar";
+import { BiAddToQueue } from "react-icons/bi";
 
 export default function CriarPost() {
   const [titulo, setTitulo] = useState("");
@@ -111,7 +112,7 @@ export default function CriarPost() {
     <Container>
       <Navbar />
       <div>
-        <h2 className={tema.titulo_h2}>Criar Post</h2>
+        <h2 className={tema.titulo_h2}><BiAddToQueue size={40} /> Criar Post</h2>
         <Box component="form" onSubmit={aoSubmeterForm}>
           <TextField
             label="Título do post"

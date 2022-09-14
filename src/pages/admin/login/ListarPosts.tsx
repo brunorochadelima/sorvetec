@@ -17,6 +17,7 @@ import { IBlogs } from "interfaces/IBlogs";
 import { BiTrash, BiEdit } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import tema from "theme/Base.module.scss";
+import { MdFormatListBulleted } from "react-icons/md";
 
 export default function ListarPosts() {
   const [posts, setPosts] = useState<IBlogs[]>([]);
@@ -53,7 +54,7 @@ export default function ListarPosts() {
   }
 
   function excluir(postAhSerExcluido: IBlogs) {
-    let text = "Tem certeza de que quer excluir este post?";
+    let text = "Tem certeza de que quer excluir este post? ";
     // eslint-disable-next-line no-restricted-globals
     if (confirm(text) === true) {
       axios
@@ -77,7 +78,9 @@ export default function ListarPosts() {
     <Container>
       <Navbar />
       <div>
-        <h1 className={tema.titulo_h2}>Lista de Posts</h1>
+        <h1 className={tema.titulo_h2}>
+          <MdFormatListBulleted size={40} /> Lista de Posts
+        </h1>
       </div>
       <TableContainer component={Paper} sx={{ my: 5 }}>
         <Table>
@@ -99,10 +102,9 @@ export default function ListarPosts() {
           </TableHead>
           <TableBody>
             {posts.map((post) => (
-              <TableRow key={post.id}>
+              <TableRow key={post.id} hover>
                 <TableCell>{post.id}</TableCell>
                 <TableCell>{post.post_title}</TableCell>
-
                 <TableCell>
                   {
                     <Link to={`/atualizar-post/${post.id}`}>
@@ -113,13 +115,11 @@ export default function ListarPosts() {
                   }
                 </TableCell>
                 <TableCell>
-                  <Button
-                    variant="outlined"
-                    color="error"
+                  <BiTrash
+                    size={30}
+                    color="#E74C3C"
                     onClick={() => excluir(post)}
-                  >
-                    <BiTrash /> Exluir
-                  </Button>
+                  />
                 </TableCell>
               </TableRow>
             ))}

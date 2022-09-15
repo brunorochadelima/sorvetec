@@ -11,8 +11,9 @@ import { MdFormatListBulleted, MdLogout } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from "assets/imagens/logo-sorvetec.svg";
 import apiBlog from "api/apiBlog";
+import { memo } from "react";
 
-export default function Navbar() {
+function Navbar() {
   const navigate = useNavigate();
   //pega o token
   var token = localStorage.getItem("token");
@@ -62,3 +63,5 @@ export default function Navbar() {
     </Drawer>
   );
 }
+
+export default memo(Navbar);

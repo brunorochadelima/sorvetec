@@ -13,6 +13,7 @@ export default function Login() {
 
   const navigate = useNavigate();
 
+  //se tiver token no local storage, ir direto para o admin
   useEffect(() => {
     if (isAuthenticated()) {
       navigate("/criar-post");

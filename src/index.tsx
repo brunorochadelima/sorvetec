@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
-import { Helmet } from "react-helmet";
+import { HelmetProvider, Helmet } from "react-helmet-async";
 
 const theme = createTheme({
   palette: {
@@ -44,10 +44,12 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
-      <Helmet>
-        <title>Sorvetec - Sorvete expresso, na chapa e açaí</title>
-      </Helmet>
+      <HelmetProvider>
+        <Helmet>
+          <title>Sorvetec - Sorvete expresso, na chapa e açaí</title>
+        </Helmet>
+        <App />
+      </HelmetProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

@@ -8,7 +8,7 @@ import style from "./BlogPost.module.scss";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import apiBlog from "api/apiBlog";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 export default function BlogPost() {
   const { id } = useParams();

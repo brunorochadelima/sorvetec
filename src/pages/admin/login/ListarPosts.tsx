@@ -17,8 +17,8 @@ import { IBlogs } from "interfaces/IBlogs";
 import { BiTrash, BiEdit } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import tema from "theme/Base.module.scss";
-import { MdFormatListBulleted } from "react-icons/md";
 import apiBlog from "api/apiBlog";
+import { CgList } from "react-icons/cg";
 
 export default function ListarPosts() {
   const [posts, setPosts] = useState<IBlogs[]>([]);
@@ -80,7 +80,7 @@ export default function ListarPosts() {
       <Navbar />
       <div>
         <h1 className={tema.titulo_h2}>
-          <MdFormatListBulleted size={40} /> Lista de Posts
+          <CgList size={40} /> Lista de Posts
         </h1>
       </div>
       <TableContainer component={Paper} sx={{ my: 5 }}>

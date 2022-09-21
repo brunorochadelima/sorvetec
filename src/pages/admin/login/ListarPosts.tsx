@@ -1,6 +1,8 @@
 import {
   Box,
   Button,
+  IconButton,
+  InputAdornment,
   Paper,
   Table,
   TableBody,
@@ -8,13 +10,14 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  TextField,
 } from "@mui/material";
 import { Container } from "@mui/system";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { IBlogs } from "interfaces/IBlogs";
-import { BiTrash, BiEdit } from "react-icons/bi";
+import { BiTrash, BiEdit, BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import tema from "theme/Base.module.scss";
 import apiBlog from "api/apiBlog";
@@ -24,6 +27,13 @@ export default function ListarPosts() {
   const [posts, setPosts] = useState<IBlogs[]>([]);
   const [proximaPagina, setProximaPagina] = useState("");
   const [paginaAnterior, setPaginaAnterior] = useState("");
+  const [pesquisaPost, setPesquisaPost] = useState("");
+
+  useEffect(() => {
+    apiBlog.get(`api/posts?title=${pesquisaPost}`).then((response) => {
+      setPosts(response.data.data);
+    });
+  }, [pesquisaPost]);
 
   //pega o token
   var token = localStorage.getItem("token");
@@ -83,6 +93,24 @@ export default function ListarPosts() {
           <CgList size={40} /> Lista de Posts
         </h1>
       </div>
+
+      <TextField
+        value={pesquisaPost}
+        placeholder="Buscar post"
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton>
+                <BiSearch />
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
+        variant="outlined"
+        fullWidth
+        onChange={(event) => setPesquisaPost(event.target.value)}
+      />
+
       <TableContainer component={Paper} sx={{ my: 5 }}>
         <Table>
           <TableHead sx={{ backgroundColor: "#F3F4F6" }}>

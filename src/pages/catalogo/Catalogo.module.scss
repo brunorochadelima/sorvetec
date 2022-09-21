@@ -1,10 +1,10 @@
 .grid_cards {
-  margin-top: 1.5rem;
   display: grid;
-  grid-row-gap: 0.5rem;
+  grid-row-gap: 2rem;
   grid-column-gap: 0.5rem;
   justify-items: center;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   padding-bottom: 2rem;
-  min-height: 100vh;
+  min-height: 50vh;
+  margin-top: 1.5rem;
 }

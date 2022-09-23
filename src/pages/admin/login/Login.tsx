@@ -29,7 +29,7 @@ export default function Login() {
       })
       .then((response) => {
         console.log(response);
-        localStorage.setItem("token", response.data.plainTextToken);
+        sessionStorage.setItem("token", response.data.plainTextToken);
         navigate("/criar-post");
       })
       .catch((error) => {

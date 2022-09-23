@@ -47,7 +47,7 @@ export default function AtualizaPost() {
     event.preventDefault();
 
     //pega o token
-    var token = localStorage.getItem("token");
+    var token = sessionStorage.getItem("token");
 
     apiBlog
       .put(

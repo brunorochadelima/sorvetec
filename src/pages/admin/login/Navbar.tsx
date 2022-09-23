@@ -5,15 +5,10 @@ import {
   ListItemIcon,
   ListItemText,
   Drawer,
-  AppBar,
-  IconButton,
-  Toolbar,
-  Typography,
   Box,
 } from "@mui/material";
 import { BiAddToQueue } from "react-icons/bi";
 import {
-  MdFormatListBulleted,
   MdLogout,
   MdMenu,
   MdOutlineArrowBackIosNew,
@@ -29,7 +24,7 @@ function Navbar() {
 
   const navigate = useNavigate();
   //pega o token
-  var token = localStorage.getItem("token");
+  var token = sessionStorage.getItem("token");
 
   function logout() {
     apiBlog
@@ -37,7 +32,7 @@ function Navbar() {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
-        localStorage.removeItem("token");
+        sessionStorage.removeItem("token");
         navigate("/login");
       });
   }

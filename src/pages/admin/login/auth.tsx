@@ -1,6 +1,6 @@
 // export const isAuthenticated = () => true;
 export const isAuthenticated = () => {
-  var storage = localStorage.getItem("token");
+  var storage = sessionStorage.getItem("token");
   if (storage) {
     return true;
   }

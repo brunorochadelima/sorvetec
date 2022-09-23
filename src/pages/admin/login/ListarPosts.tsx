@@ -36,7 +36,7 @@ export default function ListarPosts() {
   }, [pesquisaPost]);
 
   //pega o token
-  var token = localStorage.getItem("token");
+  var token = sessionStorage.getItem("token");
 
   useEffect(() => {
     apiBlog

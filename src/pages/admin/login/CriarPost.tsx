@@ -37,7 +37,7 @@ export default function CriarPost() {
     event.preventDefault();
 
     //pega o token
-    var token = localStorage.getItem("token");
+    var token = sessionStorage.getItem("token");
 
     const formData = new FormData();
     formData.append(

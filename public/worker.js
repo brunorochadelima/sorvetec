@@ -1,4 +1,4 @@
-var CACHE_NAME = 'pwa-task-manager-v2.4.2';
+var CACHE_NAME = 'pwa-task-manager';
 var urlsToCache = [
   '/',
   '/completed'
@@ -36,7 +36,7 @@ self.addEventListener('fetch', event => {
 // Update a service worker
 // eslint-disable-next-line no-restricted-globals
 self.addEventListener('activate', event => {
-  var cacheWhitelist = ['pwa-task-manager-v2.1'];
+  var cacheWhitelist = ['pwa-task-manager'];
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(

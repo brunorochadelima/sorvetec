@@ -28,9 +28,7 @@ function Navbar() {
 
   function logout() {
     apiBlog
-      .get("api/logout", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      .get("api/logout")
       .then(() => {
         sessionStorage.removeItem("token");
         navigate("/login");

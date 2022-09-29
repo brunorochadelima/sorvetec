@@ -33,36 +33,23 @@ export default function AtualizaPost() {
   // busca o post na primeira renderização a partir do parâmetro da url
   useEffect(() => {
     if (parametros.id) {
-      apiBlog
-        .get(`api/posts/${parametros.id}`)
-        .then((response) => {
-          console.log(response);
-          setPost(response.data);
-          setTitulo(response.data.post_title);
-        });
+      apiBlog.get(`api/posts/${parametros.id}`).then((response) => {
+        console.log(response);
+        setPost(response.data);
+        setTitulo(response.data.post_title);
+      });
     }
   }, [parametros.id]);
 
   function aoSubmeterForm(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    //pega o token
-    var token = sessionStorage.getItem("token");
-
     apiBlog
-      .put(
-        `api/posts/${parametros.id}`,
-        {
-          post_title: titulo.replace(/<script>[\s\S]*?<\/script>/, ""),
-          post_text: texto.replace(/<script>[\s\S]*?<\/script>/, ""),
-          category_id: categoria,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      .put(`api/posts/${parametros.id}`, {
+        post_title: titulo.replace(/<script>[\s\S]*?<\/script>/, ""),
+        post_text: texto.replace(/<script>[\s\S]*?<\/script>/, ""),
+        category_id: categoria,
+      })
       .then((response) => {
         console.log(response);
         setRespostaApi("");

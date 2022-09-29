@@ -36,9 +36,6 @@ export default function CriarPost() {
   function aoSubmeterForm(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    //pega o token
-    var token = sessionStorage.getItem("token");
-
     const formData = new FormData();
     formData.append(
       "post_title",
@@ -59,7 +56,6 @@ export default function CriarPost() {
         url: "api/posts",
         method: "POST",
         headers: {
-          Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
         },
         data: formData,

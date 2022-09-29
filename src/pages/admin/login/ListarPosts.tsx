@@ -70,9 +70,6 @@ export default function ListarPosts() {
     if (confirm(text) === true) {
       apiBlog
         .delete(`api/posts/${postAhSerExcluido.id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
         })
         .then(() => {
           const listaPosts = posts.filter(

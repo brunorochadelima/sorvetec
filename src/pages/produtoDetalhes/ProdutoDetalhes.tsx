@@ -58,13 +58,13 @@ export default function ProdutoDetalhes() {
   );
 
   //Função verifica se produto está com desconto para fazer a rendericação condicional dos preços
-  function estaEmPromocao() {
+  function EstaEmPromocao() {
     if (promotional_price && promotional_price > 0) {
       return (
         <>
           <p className={style.container_produto__price}>{priceFormatado}</p>
           <Chip
-            label={`🡻 Economia de R$ ${
+            label={`🡫 Economia de R$ ${
               Number(price) - Number(promotional_price)
             },00`}
             color="success"
@@ -141,7 +141,7 @@ export default function ProdutoDetalhes() {
             <h1 className={tema.titulo_h3}>{name}</h1>
             <p className={style.container_produto__codigo}>CÓD: {id}</p>
 
-            {estaEmPromocao()}
+            <EstaEmPromocao/>
 
             <p className={style.container_produto__opcoes_pagamento}>
               {parse(`${payment_option}`)}

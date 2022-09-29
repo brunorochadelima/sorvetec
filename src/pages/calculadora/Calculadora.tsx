@@ -32,7 +32,7 @@ export default function Calculadora() {
     }
   }, []);
 
-  function exibeModal(): JSX.Element {
+  function ExibeModal(): JSX.Element {
     return (
       <Dialog open={modal} maxWidth={"md"}>
         <DialogTitle sx={{ color: "#F280AA", fontWeight: "bold" }}>
@@ -76,7 +76,7 @@ export default function Calculadora() {
 
   return (
     <section className={tema.container} style={{ minHeight: "100vh", marginTop: "1.5rem" }}>
-      {exibeModal()}
+      <ExibeModal/>
       <Grid container spacing={5}>
         <Grid item xs={12} md={6}>
           <h1 className={tema.titulo_h2}>Calculadora de lucro Sorvetec</h1>

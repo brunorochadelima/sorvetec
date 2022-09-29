@@ -29,7 +29,7 @@ function CardProduto(props: IProdutos) {
   );
 
   //Função verifica se produto está com desconto para fazer a rendericação condicional dos preços
-  function estaEmPromocao(): JSX.Element {
+  function EstaEmPromocao(): JSX.Element {
     if (promotional_price > 0) {
       return (
         <>
@@ -73,7 +73,7 @@ function CardProduto(props: IProdutos) {
       <img src={ProductImage[0].thumbs[180].https} alt={name} />
       <h2 className={style.card__nome}>{name}</h2>
 
-      {estaEmPromocao()}
+      <EstaEmPromocao />
 
       <p>
         ou {payment_option_details[1].plots}X de{" "}

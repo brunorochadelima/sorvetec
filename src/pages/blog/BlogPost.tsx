@@ -33,12 +33,12 @@ export default function BlogPost() {
   //https://www.sorvetec.com.br/public/img/uploads/gallery/images/2018/04/foto.png
 
   return (
-    <div className={style.container_conteudo}>
+    <article className={style.container_conteudo}>
       <Helmet>
         <title>{post?.post_title}</title>
       </Helmet>
       <br />
-      <div className={tema.titulo_h2}>{post?.post_title}</div>
+      <h1 className={tema.titulo_h2}>{post?.post_title}</h1>
       <br />
       <hr />
       <div>{parse(`${caminhoImagens}`)}</div>
@@ -46,6 +46,6 @@ export default function BlogPost() {
       <Button variant="contained" size="large" onClick={() => navigate(-1)}>
         ‹ Voltar
       </Button>
-    </div>
+    </article>
   );
 }

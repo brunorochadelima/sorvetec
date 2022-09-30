@@ -26,6 +26,13 @@
     font-size: 1.3rem;
   }
 
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: 2px underline #f280aa;
+    }
+  }
+
   @media (max-width: 640px) {
     text-align: center;
     justify-content: center;

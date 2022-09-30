@@ -1,5 +1,6 @@
 import { ReactComponent as Logo } from "assets/imagens/logo-sorvetec.svg";
 import { ReactComponent as SeloMultivisi } from "assets/imagens/selo-multivisi.svg";
+import { Link } from "react-router-dom";
 import tema from "theme/Base.module.scss";
 import style from "./Footer.module.scss";
 
@@ -27,11 +28,21 @@ export default function Footer() {
           </div>
           <div>
             <h3>Mapa do site</h3>
-            <p>Home</p>
-            <p>Calculadora de lucro</p>
-            <p>Sobre</p>
-            <p>Blog</p>
-            <p>Produtos</p>
+            <Link to="/">
+              <p>Home</p>
+            </Link>
+            <Link to="/calculadora">
+              <p>Calculadora de lucro</p>
+            </Link>
+            <Link to="/quem-somos">
+              <p>Sobre</p>
+            </Link>
+            <Link to="/blog">
+              <p>Blog</p>
+            </Link>
+            <Link to="/catalogo">
+              <p>Máquinas</p>
+            </Link>
           </div>
           <div>
             <h3>Showrooms</h3>

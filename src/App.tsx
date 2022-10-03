@@ -40,19 +40,9 @@ function App() {
         {window.location.pathname === "/login" ||
         window.location.pathname === "/criar-post" ||
         window.location.pathname === "/listar-posts" ||
-        window.location.pathname.substring(0, 15) ===
-          "/atualizar-post" ? null : (
-          <Header />
-        )}
-
-        {/* <Header /> */}
-        <Suspense
-          fallback={
-            <div>
-              <IconLoading />
-            </div>
-          }
-        >
+        window.location.pathname.includes("/atualizar-post") ? null : (<Header />)}
+        
+        <Suspense fallback={<div><IconLoading /></div>}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/catalogo" element={<Catalogo />} />
@@ -93,7 +83,6 @@ function App() {
             />
           </Routes>
           {window.location.pathname !== "/login" ? <Footer /> : null}
-          {/* <Footer /> */}
         </Suspense>
         <BotaoFlutuante />
       </BuscaProvider>

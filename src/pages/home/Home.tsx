@@ -5,7 +5,7 @@ import sorveteExpresso from "assets/imagens/sorvete-expresso.webp";
 import sorveteChapa from "assets/imagens/sorvete-chapa.webp";
 import acai from "assets/imagens/acai.webp";
 import Button from "@mui/material/Button";
-import { lazy, useContext } from "react";
+import { lazy, useContext, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
 import { BuscaContext } from "context/Busca";
 const SliderDepoimento = lazy(() => import("./sliders/SliderDepoimento"));
@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <main>
-      <section className={tema.container} style={{marginTop: "1.5rem"}}>
+      <section className={tema.container} style={{ marginTop: "1.5rem" }}>
         <div className={style.grid_container}>
           <div>
             <h1 className={tema.titulo_h1}>Empreenda com a Sorvetec</h1>
@@ -33,7 +33,11 @@ export default function Home() {
             </p>
           </div>
           <div>
-            <img loading="eager" src={maquinasSorvetec} alt="máquinas de sorvete sorvetec" />
+            <img
+              loading="eager"
+              src={maquinasSorvetec}
+              alt="máquinas de sorvete sorvetec"
+            />
           </div>
         </div>
       </section>
@@ -126,7 +130,9 @@ export default function Home() {
             nossas máquinas e se tornaram empreendedores de sucesso.
           </p>
         </div>
-        <SliderDepoimento />
+        <Suspense fallback={<div>Carregando...</div>}>
+          <SliderDepoimento />
+        </Suspense>
       </section>
 
       {/* Formulário RdStation */}

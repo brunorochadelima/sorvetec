@@ -13,6 +13,7 @@ import tema from "theme/Base.module.scss";
 import style from "./Calculadora.module.scss";
 import { ReactComponent as BagMoney } from "assets/imagens/bag-money.svg";
 import FormRdStation from "components/FormRdStation";
+import { Helmet } from "react-helmet-async";
 
 export default function Calculadora() {
   const [precoVenda, setPrecoVenda] = useState<Number>();
@@ -23,7 +24,7 @@ export default function Calculadora() {
 
   function memorizarSessao() {
     localStorage.setItem("myValueInLocalStorage", "false");
-  };
+  }
 
   useEffect(() => {
     var storage = localStorage.getItem("myValueInLocalStorage");
@@ -49,7 +50,7 @@ export default function Calculadora() {
         </DialogContent>
       </Dialog>
     );
-  };
+  }
 
   const LucroPorCasquinha = Number(precoVenda) - Number(custoProducao);
   const lucroMensal = Number(casquinhasVendidasMes) * LucroPorCasquinha;
@@ -72,111 +73,128 @@ export default function Calculadora() {
   function aoSubmeterForm(evento: React.FormEvent<HTMLFormElement>) {
     evento.preventDefault();
     setMostraResultado(true);
-  };
+  }
 
   return (
-    <section className={tema.container} style={{ minHeight: "100vh", marginTop: "1.5rem" }}>
-      <ExibeModal/>
-      <Grid container spacing={5}>
-        <Grid item xs={12} md={6}>
-          <h1 className={tema.titulo_h2}>Calculadora de lucro Sorvetec</h1>
-          <p>
-            Simule o quanto você pode lucrar produzindo o seu próprio sorvete.
-          </p>
+    <>
+      <Helmet>
+        {/* Google tags */}
+        <title>Calculadora de Lucro Sorvetec</title>
+        <meta
+          name="description"
+          content="Descubra o quanto poderá lucrar investindo em uma Máquina de Sorvete da Sorvetec!"
+        />
+        <link rel="canonical" href={`/calculadora`} />
+      </Helmet>
 
-          <Box component="form" onSubmit={aoSubmeterForm}>
-            <TextField
-              required
-              type="text"
-              label="Preço de venda"
-              onChange={(event) =>
-                setPrecoVenda(parseFloat(event.target.value.replace(",", ".")))
-              }
-              margin="dense"
-              fullWidth
-            >
-              {" "}
-            </TextField>
-            <TextField
-              required
-              label="Custo de produção por casquinha"
-              defaultValue="1.06"
-              onChange={(event) =>
-                setCustoProducao(parseFloat(event.target.value))
-              }
-              margin="dense"
-              fullWidth
-            ></TextField>
-            <TextField
-              required
-              type="number"
-              label="Casquinhas vendidas por mês"
-              onChange={(event) =>
-                setCasquinhasVendidasMes(parseInt(event.target.value))
-              }
-              margin="dense"
-              fullWidth
-            ></TextField>
-            <Button
-              sx={{ my: 2 }}
-              type="submit"
-              variant="contained"
-              size="large"
-              color="secondary"
-              disableElevation
-              fullWidth
-            >
-              Calcular
-            </Button>
-          </Box>
+      <section
+        className={tema.container}
+        style={{ minHeight: "100vh", marginTop: "1.5rem" }}
+      >
+        <ExibeModal />
+        <Grid container spacing={5}>
+          <Grid item xs={12} md={6}>
+            <h1 className={tema.titulo_h2}>Calculadora de lucro Sorvetec</h1>
+            <p>
+              Simule o quanto você pode lucrar produzindo o seu próprio sorvete.
+            </p>
 
-          {mostraResultado && (
-            <Box
-              className={style.boxResultados}
-              sx={{
-                display: "flex",
-                justifyContent: "space-around",
-                alignItems: "center",
-                flexWrap: "wrap",
-              }}
-            >
-              <BagMoney />
-              <div>
-                <p>
-                  Lucro por casquinha:
-                  <span className={style.boxResultados__price}>
-                    {" "}
-                    {LucroPorCasquinhaFormatado}{" "}
-                  </span>
-                </p>
-                <p>
-                  Lucro mensal:{" "}
-                  <span className={style.boxResultados__price}>
-                    {" "}
-                    {lucroMensalFormatado}
-                  </span>
-                </p>
-              </div>
+            <Box component="form" onSubmit={aoSubmeterForm}>
+              <TextField
+                required
+                type="text"
+                label="Preço de venda"
+                onChange={(event) =>
+                  setPrecoVenda(
+                    parseFloat(event.target.value.replace(",", "."))
+                  )
+                }
+                margin="dense"
+                fullWidth
+              >
+                {" "}
+              </TextField>
+              <TextField
+                required
+                label="Custo de produção por casquinha"
+                defaultValue="1.06"
+                onChange={(event) =>
+                  setCustoProducao(parseFloat(event.target.value))
+                }
+                margin="dense"
+                fullWidth
+              ></TextField>
+              <TextField
+                required
+                type="number"
+                label="Casquinhas vendidas por mês"
+                onChange={(event) =>
+                  setCasquinhasVendidasMes(parseInt(event.target.value))
+                }
+                margin="dense"
+                fullWidth
+              ></TextField>
+              <Button
+                sx={{ my: 2 }}
+                type="submit"
+                variant="contained"
+                size="large"
+                color="secondary"
+                disableElevation
+                fullWidth
+              >
+                Calcular
+              </Button>
             </Box>
-          )}
 
-          <p>
-            <strong>AVISO IMPORTANTE:</strong> Não garantimos que a sua empresa
-            irá lucrar o mesmo valor apresentado em nossa calculadora. Os
-            números mostrados são apenas uma referência com base nas informações
-            colhidas.
-          </p>
+            {mostraResultado && (
+              <Box
+                className={style.boxResultados}
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-around",
+                  alignItems: "center",
+                  flexWrap: "wrap",
+                }}
+              >
+                <BagMoney />
+                <div>
+                  <p>
+                    Lucro por casquinha:
+                    <span className={style.boxResultados__price}>
+                      {" "}
+                      {LucroPorCasquinhaFormatado}{" "}
+                    </span>
+                  </p>
+                  <p>
+                    Lucro mensal:{" "}
+                    <span className={style.boxResultados__price}>
+                      {" "}
+                      {lucroMensalFormatado}
+                    </span>
+                  </p>
+                </div>
+              </Box>
+            )}
+
+            <p>
+              <strong>AVISO IMPORTANTE:</strong> Não garantimos que a sua
+              empresa irá lucrar o mesmo valor apresentado em nossa calculadora.
+              Os números mostrados são apenas uma referência com base nas
+              informações colhidas.
+            </p>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <img
+              width={618}
+              height={595}
+              className={style.img}
+              src={calculadoraSorvetec}
+              alt="Calculadora de lucro Sorvetec"
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <img
-            width={618}
-            height={595}
-            className={style.img}
-            src={calculadoraSorvetec}
-            alt="Calculadora de lucro Sorvetec"
-          />
-        </Grid>
-      </Grid>
-    </section>
+      </section>
+    </>
   );
 }

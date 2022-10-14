@@ -9,6 +9,7 @@ import { Box, Button } from "@mui/material";
 import capaBlog from "assets/imagens/capa-blog.webp";
 import capaBlogMobile from "assets/imagens/capa-blog-mobile.webp";
 import apiBlog from "api/apiBlog";
+import { Helmet } from "react-helmet-async";
 
 export default function BlogFeed() {
   const [blogs, setBlogs] = React.useState<IBlogs[]>([]);
@@ -37,12 +38,10 @@ export default function BlogFeed() {
   const getBlogs = useCallback(async () => {
     setLoading(true);
     try {
-      await apiBlog
-        .get(`api/posts`)
-        .then((response) => {
-          setBlogs(response.data.data);
-          setProximaPagina(response.data.next_page_url);
-        });
+      await apiBlog.get(`api/posts`).then((response) => {
+        setBlogs(response.data.data);
+        setProximaPagina(response.data.next_page_url);
+      });
     } catch (erro) {
       console.log(erro);
     } finally {
@@ -73,6 +72,15 @@ export default function BlogFeed() {
 
   return (
     <>
+      <Helmet>
+        {/* Google tags */}
+        <title>Blog da Sorvetec</title>
+        <meta
+          name="description"
+          content="Em nossa página de blog você tira dúvidas, recebe dicas e fica por dentro de tudo o que acontece, não só no mercado de sorvete, mas também de outras delícias geladas."
+        />
+        <link rel="canonical" href={`/blog`} />
+      </Helmet>
       <picture className={style.picture}>
         <source
           width="1920"
@@ -100,7 +108,12 @@ export default function BlogFeed() {
         </div>
         {loading && <IconLoading />}
         <Box sx={{ textAlign: "center", mb: 3 }}>
-          <Button size="large" variant="contained" onClick={verMais} disabled={to >= total}>
+          <Button
+            size="large"
+            variant="contained"
+            onClick={verMais}
+            disabled={to >= total}
+          >
             + Ver mais
           </Button>
         </Box>

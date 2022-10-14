@@ -5,6 +5,7 @@ import style from "./Catalogo.module.scss";
 import tema from "theme/Base.module.scss";
 import { ReactComponent as IconLoading } from "assets/imagens/icon-loading.svg";
 import { IProdutos } from "interfaces/IProdutos";
+import { Helmet } from "react-helmet-async";
 
 export default function Catalogo() {
   const [produtos, setProdutos] = useState<IProdutos[]>([]);
@@ -63,16 +64,28 @@ export default function Catalogo() {
   }, [getProdutos]);
 
   return (
-    <section className={tema.container}>
-      {loading && <IconLoading />}
-      <div className={style.grid_cards}>
-        {produtos.map((produto) => (
-          <div key={produto.Product.id}>
-            <CardProduto {...produto} />
-          </div>
-        ))}
-      </div>
-    </section>
+    <>
+      <Helmet>
+        {/* Google tags */}
+        <title>Máquinas de sorvete Sorvetec</title>
+        <meta
+          name="description"
+          content="As Máquinas de Sorvete SORVETEC são uma excelente opção para quem quer ser um empreendedor e lucrar com Sorvete Expresso, na chapa e açaí."
+        />
+        <link rel="canonical" href={`/catalogo`} />
+      </Helmet>
+
+      <section className={tema.container}>
+        {loading && <IconLoading />}
+        <div className={style.grid_cards}>
+          {produtos.map((produto) => (
+            <div key={produto.Product.id}>
+              <CardProduto {...produto} />
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
 

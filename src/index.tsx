@@ -45,9 +45,6 @@ root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <HelmetProvider>
-        <Helmet>
-          <title>Sorvetec - Sorvete expresso, na chapa e açaí</title>
-        </Helmet>
         <App />
       </HelmetProvider>
     </ThemeProvider>

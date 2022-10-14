@@ -8,6 +8,7 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import apiBlog from "api/apiBlog";
 import { Helmet } from "react-helmet-async";
+import UrlDecoder from "utils/UrlDecoder";
 
 export default function BlogPost() {
   const { id } = useParams();
@@ -30,7 +31,15 @@ export default function BlogPost() {
     .join("https://www.sorvetec.com.br/public/img");
 
   const metaDescription = post?.post_text.substring(1, 150);
-  const tituloSemEspaco = post?.post_title.split(" ").join("-");
+  // const tituloSemEspaco = post?.post_title.split(" ").join("-");
+  //Remove caracters especiais do título
+
+  function titulo() {
+    if (post?.post_title !== undefined) {
+      const tituloSemEspaco = UrlDecoder(post?.post_title);
+      return tituloSemEspaco;
+    }
+  }
 
   const caminhoImagem =
     post?.post_cover.substring(0, 11) === "posts_cover"
@@ -46,14 +55,17 @@ export default function BlogPost() {
         {/* Google tags */}
         <title>{post?.post_title}</title>
         <meta name="description" content={metaDescription} />
-        <link rel="canonical" href={`/blog/${id}/?title=${tituloSemEspaco}`} />
+        <link rel="canonical" href={`/blog/${id}?title=${titulo()}`} />
 
         {/* Open Graph tags */}
         <meta property="og:site_name" content="Blog da Sorvetec" />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={post?.post_title} />
         <meta property="og:description" content={metaDescription} />
-        <meta property="og:url" content={`https://www.sorvetec.com.br/blog/${id}/?title=${tituloSemEspaco}`}/>
+        <meta
+          property="og:url"
+          content={`https://www.sorvetec.com.br/blog/${id}/?title=${titulo()}`}
+        />
         <meta property="og:image" content={caminhoImagem + post?.post_cover} />
         <meta property="article:published_time" content={post?.created_at} />
         <meta property="article:modified_time" content={post?.updated_at} />

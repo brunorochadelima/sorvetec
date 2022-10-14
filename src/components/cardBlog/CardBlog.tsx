@@ -7,8 +7,18 @@ import { useNavigate } from "react-router-dom";
 export default function CardBlog(props: IBlogs) {
   const { id, post_title, post_cover, post_text } = props;
 
-  const tituloSemEspaco = post_title.split(" ").join("-");
+  // const tituloSemEspaco = post_title.split(" ").join("-");
 
+  //Remove caracters especiais do título
+  const str = post_title;
+  const tituloSemEspaco = str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") // Remove acentos
+    .replace(/([^\w]+|\s+)/g, "-") // Substitui espaço e outros caracteres por hífen
+    .replace(/\-\-+/g, "-") // Substitui multiplos hífens por um único hífen
+    .replace(/(^-+|-+$)/, "") // Remove hífens extras do final ou do inicio da string
+    .toLowerCase();
+    
   //Redireciona para post
   const navigate = useNavigate();
   function redirecionaParaPost(id: Number) {

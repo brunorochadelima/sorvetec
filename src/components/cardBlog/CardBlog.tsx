@@ -22,7 +22,7 @@ export default function CardBlog(props: IBlogs) {
   //Redireciona para post
   const navigate = useNavigate();
   function redirecionaParaPost(id: Number) {
-    navigate(`/blog/${id}/?title=${tituloSemEspaco}`);
+    navigate(`/blog/${id}?title=${tituloSemEspaco}`);
   }
 
   const resume = post_text.substring(0, 120);

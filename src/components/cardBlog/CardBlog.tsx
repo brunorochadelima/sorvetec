@@ -18,7 +18,7 @@ export default function CardBlog(props: IBlogs) {
     .replace(/\-\-+/g, "-") // Substitui multiplos hífens por um único hífen
     .replace(/(^-+|-+$)/, "") // Remove hífens extras do final ou do inicio da string
     .toLowerCase();
-    
+
   //Redireciona para post
   const navigate = useNavigate();
   function redirecionaParaPost(id: Number) {

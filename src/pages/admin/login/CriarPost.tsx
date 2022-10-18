@@ -22,6 +22,8 @@ export default function CriarPost() {
   const [categorias, setCategorias] = useState<ICategorias[]>([]);
   const [categoria, setCategoria] = useState("");
   const [texto, setTexto] = useState("");
+  const [url, setUrl] = useState("");
+  const [description, setDescription] = useState("");
   const [respostaApi, setRespostaApi] = useState("");
   const [mostrarAlerta, setMostrarAlerta] = useState(false);
 
@@ -45,6 +47,11 @@ export default function CriarPost() {
     formData.append(
       "post_text",
       texto.replace(/<script>[\s\S]*?<\/script>/, "")
+    );
+    formData.append("post_url", url.replace(/<script>[\s\S]*?<\/script>/, ""));
+    formData.append(
+      "post_meta_description",
+      description.replace(/<script>[\s\S]*?<\/script>/, "")
     );
     if (imagem) {
       formData.append("post_cover", imagem);
@@ -119,6 +126,24 @@ export default function CriarPost() {
             label="Título do post"
             fullWidth
             onChange={(e) => setTitulo(e.target.value)}
+          />
+
+          <TextField
+            sx={{ mt: 3 }}
+            label="Url"
+            placeholder="exemplo-de-url-amigavel"
+            helperText="Não incluir espaços vazios, acentos e caraters especiais como /, *, @, etc. "
+            fullWidth
+            onChange={(e) => setUrl(e.target.value)}
+          />
+
+          <TextField
+            sx={{ mt: 3 }}
+            label="Meta Description"
+            helperText="O Google corta a Meta Description em cerca de 160 caracteres. É preciso que o texto seja menor que isso para aparecer corretamente."
+            fullWidth
+            multiline
+            onChange={(e) => setDescription(e.target.value)}
           />
 
           <Box

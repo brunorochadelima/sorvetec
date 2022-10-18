@@ -3,20 +3,14 @@ import { IBlogs } from "interfaces/IBlogs";
 import parse from "html-react-parser";
 import style from "./CardBlog.module.scss";
 import { useNavigate } from "react-router-dom";
-import UrlDecoder from "utils/UrlDecoder";
 
 export default function CardBlog(props: IBlogs) {
-  const { id, post_title, post_cover, post_text } = props;
-
-  // const tituloSemEspaco = post_title.split(" ").join("-");
-
-  //Remove caracters especiais do título
-  const tituloSemEspaco = UrlDecoder(post_title)  
+  const { id, post_title, post_cover, post_text, post_url } = props;
 
   //Redireciona para post
   const navigate = useNavigate();
-  function redirecionaParaPost(id: Number) {
-    navigate(`/blog/${id}?title=${tituloSemEspaco}`);
+  function redirecionaParaPost(post_url: string) {
+    navigate(`/blog/${post_url}`);
   }
 
   const resume = post_text.substring(0, 120);
@@ -31,14 +25,18 @@ export default function CardBlog(props: IBlogs) {
       : "https://sorvetec.com.br/public/img/uploads/";
 
   return (
-    <div
+    <a
+      href={`/blog/${post_url}`}
+      onClick={(e) => {
+        e.preventDefault();
+        redirecionaParaPost(post_url);
+      }}
       className={style.containerCard}
-      onClick={() => redirecionaParaPost(id)}
     >
       <img src={caminhoImagem + post_cover} alt={post_title} />
       <h2>{post_title}</h2>
-      <div> {parse(`${resume} ...`)}</div>
+      <p> {parse(`${resume} ...`)}</p>
       <Button variant="outlined">Continuar Lendo</Button>
-    </div>
+    </a>
   );
 }

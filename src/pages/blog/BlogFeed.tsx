@@ -31,10 +31,6 @@ export default function BlogFeed() {
     });
   }
 
-  // function verMais() {
-  //   setProximaPagina(proximaPagina + 8);
-  // }
-
   const getBlogs = useCallback(async () => {
     setLoading(true);
     try {
@@ -49,23 +45,6 @@ export default function BlogFeed() {
     }
   }, []);
 
-  // const getBlogs = useCallback(async () => {
-  //   setLoading(true);
-  //   try {
-  //     await axios
-  //       .get(
-  //         `https://api.sorvetec.com.br/api/v1/posts/offset=0/limit=${proximaPagina}`
-  //       )
-  //       .then((response) => {
-  //         setBlogs(response.data);
-  //       });
-  //   } catch (erro) {
-  //     console.log(erro);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }, [proximaPagina]);
-
   React.useEffect(() => {
     getBlogs();
   }, [getBlogs]);
@@ -79,7 +58,7 @@ export default function BlogFeed() {
           name="description"
           content="Em nossa página de blog você tira dúvidas, recebe dicas e fica por dentro de tudo o que acontece, não só no mercado de sorvete, mas também de outras delícias geladas."
         />
-        <link rel="canonical" href={`/blog`} />
+        <link rel="canonical" href={`https://www.sorvetec.com.br/blog`} />
       </Helmet>
       <picture className={style.picture}>
         <source

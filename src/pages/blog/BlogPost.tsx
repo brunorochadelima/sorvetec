@@ -33,11 +33,40 @@ export default function BlogPost() {
 
   const caminhoImagemCover =
     post?.post_cover.substring(0, 11) === "posts_cover"
-      ? "https://sorvetec.com.br/laravel/public/storage/"
-      : "https://sorvetec.com.br/public/img/uploads/";
+      ? `https://sorvetec.com.br/laravel/public/storage/${post?.post_cover}`
+      : `https://sorvetec.com.br/public/img/uploads/${post?.post_cover}`;
 
   //Exemplo caminho imagem válido para corpo texto:
   //https://www.sorvetec.com.br/public/img/uploads/gallery/images/2018/04/foto.png
+
+  // Adicionando dados estruturados - https://search.google.com/test/rich-results
+  const articleStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://www.sorvetec.com.br/${post?.post_url}`,
+    },
+
+    headline: post?.post_title,
+    description: post?.post_meta_description,
+    image: caminhoImagemCover,
+    datePublished: post?.created_at,
+    dateModified: post?.updated_at,
+
+    author: {
+      "@type": "Organization",
+      name: "Sorvetec",
+      url: "https://www.sorvetec.com.br",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Sorvetec",
+      url: "https://www.sorvetec.com.br",
+    },
+
+    url: `https://www.sorvetec.com.br/${post?.post_url}`,
+  };
 
   return (
     <>
@@ -45,7 +74,10 @@ export default function BlogPost() {
         {/* Google tags */}
         <title>{post?.post_title}</title>
         <meta name="description" content={metaDescription} />
-        <link rel='canonical' href={`https://www.sorvetec.com.br/blog/${post_url}`} />
+        <link
+          rel="canonical"
+          href={`https://www.sorvetec.com.br/blog/${post_url}`}
+        />
 
         {/* Open Graph tags */}
         <meta property="og:site_name" content="Blog da Sorvetec" />
@@ -53,13 +85,19 @@ export default function BlogPost() {
         <meta property="og:type" content="article" />
         <meta property="og:title" content={post?.post_title} />
         <meta property="og:description" content={metaDescription} />
-        <meta property="og:url" content={`https://www.sorvetec.com.br/blog/${post_url}`}/>
-        <meta property="og:image" content={caminhoImagemCover + post?.post_cover}/>
+        <meta
+          property="og:url"
+          content={`https://www.sorvetec.com.br/blog/${post_url}`}
+        />
+        <meta property="og:image" content={caminhoImagemCover} />
         <meta property="article:published_time" content={post?.created_at} />
         <meta property="article:modified_time" content={post?.updated_at} />
       </Helmet>
 
       <article className={style.container_conteudo}>
+        <script type="application/ld+json">
+          {JSON.stringify(articleStructuredData)}
+        </script>
         <br />
         <h1 className={tema.titulo_h2}>{post?.post_title}</h1>
         <br />

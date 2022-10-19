@@ -132,7 +132,7 @@ export default function CriarPost() {
             sx={{ mt: 3 }}
             label="Url"
             placeholder="exemplo-de-url-amigavel"
-            helperText="Não incluir espaços vazios, acentos e caraters especiais como /, *, @, etc. "
+            helperText="Não incluir espaços vazios, acentos e caraters especiais como #, *, @, etc. "
             fullWidth
             onChange={(e) => setUrl(e.target.value)}
           />

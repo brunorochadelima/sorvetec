@@ -6,7 +6,7 @@ var token = sessionStorage.getItem("token");
 
 const apiBlog = axios.create({
   baseURL: "https://www.sorvetec.com.br/laravel/public/",
-  headers: { Authorization: `Bearer ${token}` },
+  headers: {Authorization:`Bearer ${token}`},
 });
 
 export default apiBlog;

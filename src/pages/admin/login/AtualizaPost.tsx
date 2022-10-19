@@ -23,6 +23,8 @@ export default function AtualizaPost() {
   const [titulo, setTitulo] = useState("");
   const [categorias, setCategorias] = useState<ICategorias[]>([]);
   const [categoria, setCategoria] = useState("");
+  const [url, setUrl] = useState("");
+  const [description, setDescription] = useState("");
   const [texto, setTexto] = useState("");
   const [respostaApi, setRespostaApi] = useState("");
   const [mostrarAlerta, setMostrarAlerta] = useState(false);
@@ -37,6 +39,8 @@ export default function AtualizaPost() {
         console.log(response);
         setPost(response.data);
         setTitulo(response.data.post_title);
+        setUrl(response.data.post_url);
+        setDescription(response.data.post_meta_description);
       });
     }
   }, [parametros.id]);
@@ -98,6 +102,26 @@ export default function AtualizaPost() {
             fullWidth
             value={titulo}
             onChange={(e) => setTitulo(e.target.value)}
+          />
+
+          <TextField
+            sx={{ mt: 3 }}
+            label="Url"
+            placeholder="exemplo-de-url-amigavel"
+            helperText="Não incluir espaços vazios, acentos e caraters especiais como #, *, @, etc. "
+            fullWidth
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+          />
+
+          <TextField
+            sx={{ mt: 3 }}
+            label="Meta Description"
+            helperText="O Google corta a Meta Description em cerca de 160 caracteres. É preciso que o texto seja menor que isso para aparecer corretamente."
+            fullWidth
+            value={description}
+            multiline
+            onChange={(e) => setDescription(e.target.value)}
           />
 
           <Box sx={{ my: 3 }}>

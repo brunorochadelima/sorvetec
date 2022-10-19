@@ -63,7 +63,7 @@ function CardProduto(props: IProdutos) {
 
   // Direciona para detalhes do produto
   function redirecionaParaDetalhes(produtoID: number): void {
-    navigate(`/catalogo/${produtoID}?${nomeProdutoSemEspaco}`);
+    navigate(`/produtos/${produtoID}?${nomeProdutoSemEspaco}`);
   }
 
   return (

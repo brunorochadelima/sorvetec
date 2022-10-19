@@ -9,7 +9,7 @@ import ScrollToTop from "utils/ScrollToTop";
 import { isAuthenticated } from "pages/admin/login/auth";
 
 const Home = lazy(() => import("pages/home/Home"));
-const Catalogo = lazy(() => import("pages/catalogo/Catalogo"));
+const Produtos = lazy(() => import("pages/produtos/Produtos"));
 const QuemSomos = lazy(() => import("pages/quemSomos/QuemSomos"));
 const Pagina404 = lazy(() => import("pages/pagina404/Pagina404"));
 const Busca = lazy(() => import("pages/busca/Busca"));
@@ -45,8 +45,8 @@ function App() {
         <Suspense fallback={<div><IconLoading /></div>}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/catalogo" element={<Catalogo />} />
-            <Route path="catalogo/:id" element={<ProdutoDetalhes />} />
+            <Route path="/produtos" element={<Produtos />} />
+            <Route path="produtos/:id" element={<ProdutoDetalhes />} />
             <Route path="/calculadora" element={<Calculadora />} />
             <Route path="/busca" element={<Busca />} />
             <Route path="/quem-somos" element={<QuemSomos />} />

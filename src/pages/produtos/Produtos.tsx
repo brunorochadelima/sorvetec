@@ -1,13 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
 import api from "api/api";
 import CardProduto from "components/cardProduto/CardProduto";
-import style from "./Catalogo.module.scss";
+import style from "./Produtos.module.scss";
 import tema from "theme/Base.module.scss";
 import { ReactComponent as IconLoading } from "assets/imagens/icon-loading.svg";
 import { IProdutos } from "interfaces/IProdutos";
 import { Helmet } from "react-helmet-async";
 
-export default function Catalogo() {
+export default function Produtos() {
   const [produtos, setProdutos] = useState<IProdutos[]>([]);
   const [loading, setLoading] = React.useState(true);
 
@@ -72,7 +72,7 @@ export default function Catalogo() {
           name="description"
           content="As Máquinas de Sorvete SORVETEC são uma excelente opção para quem quer ser um empreendedor e lucrar com Sorvete Expresso, na chapa e açaí."
         />
-        <link rel="canonical" href={`/catalogo`} />
+        <link rel="canonical" href={`/produtos`} />
       </Helmet>
 
       <section className={tema.container}>

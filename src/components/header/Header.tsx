@@ -20,7 +20,7 @@ const pages = [
   },
   {
     name: "Máquinas",
-    link: "/catalogo",
+    link: "/produtos",
   },
   {
     name: "Calculadora de lucro",

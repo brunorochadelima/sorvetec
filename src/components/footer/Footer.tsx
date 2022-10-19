@@ -40,7 +40,7 @@ export default function Footer() {
             <Link to="/blog">
               <p>Blog</p>
             </Link>
-            <Link to="/catalogo">
+            <Link to="/produtos">
               <p>Máquinas</p>
             </Link>
           </div>

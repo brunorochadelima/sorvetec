@@ -16,6 +16,7 @@ import { EditorTexto } from "./EditorTexto";
 import Navbar from "./Navbar";
 import { BiAddToQueue } from "react-icons/bi";
 import apiBlog from "api/apiBlog";
+import style from "./CriarPost.module.scss";
 
 export default function CriarPost() {
   const [titulo, setTitulo] = useState("");
@@ -199,6 +200,7 @@ export default function CriarPost() {
 
             <Box sx={{ mt: 3 }}>
               <InputLabel htmlFor="upload-photo">
+                {imagem && imagem.name}
                 <input
                   style={{ display: "none" }}
                   id="upload-photo"
@@ -208,6 +210,7 @@ export default function CriarPost() {
                   required
                 />
                 <Button
+                  sx={{ m: 2 }}
                   color="primary"
                   component="span"
                   variant="outlined"

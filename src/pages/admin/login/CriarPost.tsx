@@ -7,6 +7,7 @@ import {
   MenuItem,
   Select,
   TextField,
+  Snackbar,
 } from "@mui/material";
 import { ICategorias } from "interfaces/ICategorias";
 import React, { useEffect, useState } from "react";
@@ -93,11 +94,27 @@ export default function CriarPost() {
   }, []);
 
   //Alerta erro ou sucesso após clicar no botão Criar
-  function alert(): JSX.Element {
+  function Alerta() {
     if (respostaApi) {
-      return <Alert severity="error">{respostaApi}</Alert>;
+      return (
+        <Snackbar
+          open={mostrarAlerta}
+          autoHideDuration={6000}
+          onClose={() => setMostrarAlerta(false)}
+        >
+          <Alert severity="error">{respostaApi}</Alert>
+        </Snackbar>
+      );
     } else {
-      return <Alert severity="success">Post criado com sucesso!</Alert>;
+      return (
+        <Snackbar
+          open={mostrarAlerta}
+          autoHideDuration={6000}
+          onClose={() => setMostrarAlerta(false)}
+        >
+          <Alert severity="success">Post criado com sucesso!</Alert>
+        </Snackbar>
+      );
     }
   }
 
@@ -180,7 +197,7 @@ export default function CriarPost() {
               />
             </Box> */}
 
-            <Box sx={{mt: 3}}>
+            <Box sx={{ mt: 3 }}>
               <InputLabel htmlFor="upload-photo">
                 <input
                   style={{ display: "none" }}
@@ -190,8 +207,13 @@ export default function CriarPost() {
                   onChange={selecionarImagem}
                   required
                 />
-                <Button color="primary" component="span" variant="outlined" size="large" >
-                 + Upload Imagem de capa
+                <Button
+                  color="primary"
+                  component="span"
+                  variant="outlined"
+                  size="large"
+                >
+                  + Upload Imagem de capa
                 </Button>
               </InputLabel>
             </Box>
@@ -216,7 +238,7 @@ export default function CriarPost() {
             </Button>
           </Box>
 
-          {mostrarAlerta && alert()}
+          <Alerta />
           <br />
         </Box>
       </div>

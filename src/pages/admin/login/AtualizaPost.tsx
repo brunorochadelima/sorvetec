@@ -11,6 +11,7 @@ import {
   Box,
   Container,
   Alert,
+  Snackbar,
 } from "@mui/material";
 import { EditorTexto } from "./EditorTexto";
 import { ICategorias } from "interfaces/ICategorias";
@@ -80,11 +81,27 @@ export default function AtualizaPost() {
   }, []);
 
   //Alerta erro ou sucesso após clicar no botão Atualizar
-  function alert(): JSX.Element {
+  function Alerta() {
     if (respostaApi) {
-      return <Alert severity="error">{respostaApi}</Alert>;
+      return (
+        <Snackbar
+          open={mostrarAlerta}
+          autoHideDuration={6000}
+          onClose={() => setMostrarAlerta(false)}
+        >
+          <Alert severity="error">{respostaApi}</Alert>
+        </Snackbar>
+      );
     } else {
-      return <Alert severity="success">Post atualizado!</Alert>;
+      return (
+        <Snackbar
+          open={mostrarAlerta}
+          autoHideDuration={6000}
+          onClose={() => setMostrarAlerta(false)}
+        >
+          <Alert severity="success">Post atualizado!</Alert>
+        </Snackbar>
+      );
     }
   }
 
@@ -152,7 +169,7 @@ export default function AtualizaPost() {
             </Button>
           </Box>
           <>
-            {mostrarAlerta && alert()}
+            <Alerta/>
             <br />
           </>
         </Box>

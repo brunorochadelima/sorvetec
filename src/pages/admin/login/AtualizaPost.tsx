@@ -54,6 +54,11 @@ export default function AtualizaPost() {
         post_title: titulo.replace(/<script>[\s\S]*?<\/script>/, ""),
         post_text: texto.replace(/<script>[\s\S]*?<\/script>/, ""),
         category_id: categoria,
+        post_url: url.replace(/<script>[\s\S]*?<\/script>/, ""),
+        post_meta_description: description.replace(
+          /<script>[\s\S]*?<\/script>/,
+          ""
+        ),
       })
       .then((response) => {
         console.log(response);

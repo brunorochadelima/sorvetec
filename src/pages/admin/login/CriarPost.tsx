@@ -16,7 +16,6 @@ import { EditorTexto } from "./EditorTexto";
 import Navbar from "./Navbar";
 import { BiAddToQueue } from "react-icons/bi";
 import apiBlog from "api/apiBlog";
-import style from "./CriarPost.module.scss";
 
 export default function CriarPost() {
   const [titulo, setTitulo] = useState("");

@@ -175,10 +175,7 @@ export default function AtualizaPost() {
               Atualizar post
             </Button>
           </Box>
-          <>
             <Alerta />
-            <br />
-          </>
         </Box>
       </div>
     </Container>

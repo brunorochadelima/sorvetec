@@ -242,7 +242,6 @@ export default function CriarPost() {
               Criar post
             </Button>
           </Box>
-
           <Alerta />
           <br />
         </Box>

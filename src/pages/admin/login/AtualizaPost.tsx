@@ -136,6 +136,7 @@ export default function AtualizaPost() {
             label="Meta Description"
             helperText="O Google corta a Meta Description em cerca de 160 caracteres. É preciso que o texto seja menor que isso para aparecer corretamente."
             fullWidth
+            required
             value={description}
             multiline
             onChange={(e) => setDescription(e.target.value)}
@@ -146,6 +147,7 @@ export default function AtualizaPost() {
             <Select
               sx={{ minWidth: "300px" }}
               labelId="categoria"
+              required
               id="categoria_post"
               value={categoria}
               onChange={(e) => setCategoria(e.target.value)}
@@ -169,7 +171,7 @@ export default function AtualizaPost() {
             </Button>
           </Box>
           <>
-            <Alerta/>
+            <Alerta />
             <br />
           </>
         </Box>

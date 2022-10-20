@@ -143,6 +143,7 @@ export default function CriarPost() {
           <TextField
             label="Título do post"
             fullWidth
+            required
             onChange={(e) => setTitulo(e.target.value)}
           />
 
@@ -152,6 +153,7 @@ export default function CriarPost() {
             placeholder="exemplo-de-url-amigavel"
             helperText="Não incluir espaços vazios, acentos e caraters especiais como #, *, @, etc. "
             fullWidth
+            required
             onChange={(e) => setUrl(e.target.value)}
           />
 
@@ -160,6 +162,7 @@ export default function CriarPost() {
             label="Meta Description"
             helperText="O Google corta a Meta Description em cerca de 160 caracteres. É preciso que o texto seja menor que isso para aparecer corretamente."
             fullWidth
+            required
             multiline
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -179,6 +182,7 @@ export default function CriarPost() {
                 labelId="categoria"
                 id="categoria_post"
                 value={categoria}
+                required
                 onChange={(e) => setCategoria(e.target.value)}
               >
                 {categorias.map((category) => (
@@ -207,7 +211,6 @@ export default function CriarPost() {
                   name="upload-photo"
                   type="file"
                   onChange={selecionarImagem}
-                  required
                 />
                 <Button
                   sx={{ m: 2 }}

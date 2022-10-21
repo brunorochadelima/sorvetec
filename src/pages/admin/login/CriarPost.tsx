@@ -16,6 +16,7 @@ import { EditorTexto } from "./EditorTexto";
 import Navbar from "./Navbar";
 import { BiAddToQueue } from "react-icons/bi";
 import apiBlog from "api/apiBlog";
+import { MdOutlineAddPhotoAlternate } from "react-icons/md";
 
 export default function CriarPost() {
   const [titulo, setTitulo] = useState("");
@@ -212,13 +213,14 @@ export default function CriarPost() {
                   onChange={selecionarImagem}
                 />
                 <Button
+                startIcon={<MdOutlineAddPhotoAlternate size={30}/>}
                   sx={{ m: 2 }}
                   color="primary"
                   component="span"
-                  variant="outlined"
+                  variant="contained"
                   size="large"
                 >
-                  + Upload Imagem de capa
+                   Upload Imagem de capa
                 </Button>
               </InputLabel>
             </Box>

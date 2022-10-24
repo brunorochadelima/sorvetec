@@ -1,5 +1,6 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import "@justinribeiro/lite-youtube";
 
 // Import Swiper styles
 import "swiper/css";
@@ -10,7 +11,7 @@ import "swiper/css/navigation";
 import "./sliderDepoimento.css";
 
 // import required modules
-import {Pagination, Navigation } from "swiper";
+import { Pagination, Navigation } from "swiper";
 
 export default function SliderDepoimento() {
   return (
@@ -43,47 +44,16 @@ export default function SliderDepoimento() {
         className="container_depoimentos"
       >
         <SwiperSlide>
-          <iframe
-            className="swiper-lazy"
-            loading="lazy"
-            width="100%"
-            height="300"
-            src="https://www.youtube.com/embed/n5o09NbsAIc"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+          <lite-youtube videoid="n5o09NbsAIc"></lite-youtube>
         </SwiperSlide>
 
         <SwiperSlide>
-          <iframe
-            className="swiper-lazy"
-            loading="lazy"
-            width="100%"
-            height="300"
-            src="https://www.youtube.com/embed/2QPBXs0_0KM"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+          <lite-youtube videoid="2QPBXs0_0KM"></lite-youtube>
         </SwiperSlide>
 
         <SwiperSlide>
-          <iframe
-            className="swiper-lazy"
-            loading="lazy"
-            width="100%"
-            height="300"
-            src="https://www.youtube.com/embed/p_yCYZ6Hw0o"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+          <lite-youtube videoid="p_yCYZ6Hw0o"></lite-youtube>
         </SwiperSlide>
-
       </Swiper>
     </>
   );

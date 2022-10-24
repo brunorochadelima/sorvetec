@@ -35,6 +35,8 @@ export default function Home() {
           <div>
             <img
               loading="eager"
+              width={788}
+              height={608}
               src={maquinasSorvetec}
               alt="máquinas de sorvete sorvetec"
             />
@@ -62,7 +64,13 @@ export default function Home() {
           </div>
 
           <div className={style.tipos_sorvete__item}>
-            <img loading="lazy" src={sorveteExpresso} alt="sorvete expresso" />
+            <img
+              loading="lazy"
+              src={sorveteExpresso}
+              width={789}
+              height={692}
+              alt="sorvete expresso"
+            />
             <div>
               <h3 className={tema.titulo_h3}>Sorvete expresso</h3>
               <p>
@@ -98,11 +106,23 @@ export default function Home() {
                 Conheça as máquinas
               </Button>
             </div>
-            <img loading="lazy" src={sorveteChapa} alt="sorvete na chapa" />
+            <img
+              loading="lazy"
+              src={sorveteChapa}
+              width={655}
+              height={566}
+              alt="sorvete na chapa"
+            />
           </div>
 
           <div className={style.tipos_sorvete__item}>
-            <img loading="lazy" src={acai} alt="sorvete expresso" />
+            <img
+              loading="lazy"
+              src={acai}
+              width={593}
+              height={565}
+              alt="sorvete expresso"
+            />
             <div>
               <h3 className={tema.titulo_h3}>Açaí expresso</h3>
               <p>Fature bastante produzindo o seu próprio açaí expresso</p>

@@ -21,12 +21,8 @@ import apiBlog from "api/apiBlog";
 
 export default function AtualizaPost() {
   const [post, setPost] = useState<IBlogs>();
-  const [titulo, setTitulo] = useState("");
   const [categorias, setCategorias] = useState<ICategorias[]>([]);
   const [categoria, setCategoria] = useState("");
-  const [url, setUrl] = useState("");
-  const [description, setDescription] = useState("");
-  const [texto, setTexto] = useState("");
   const [respostaApi, setRespostaApi] = useState("");
   const [mostrarAlerta, setMostrarAlerta] = useState(false);
 
@@ -39,9 +35,6 @@ export default function AtualizaPost() {
       apiBlog.get(`api/posts/${parametros.id}`).then((response) => {
         console.log(response);
         setPost(response.data);
-        setTitulo(response.data.post_title);
-        setUrl(response.data.post_url);
-        setDescription(response.data.post_meta_description);
       });
     }
   }, [parametros.id]);
@@ -51,11 +44,11 @@ export default function AtualizaPost() {
 
     apiBlog
       .put(`api/posts/${parametros.id}`, {
-        post_title: titulo.replace(/<script>[\s\S]*?<\/script>/, ""),
-        post_text: texto.replace(/<script>[\s\S]*?<\/script>/, ""),
+        post_title: post?.post_title.replace(/<script>[\s\S]*?<\/script>/, ""),
+        post_text: post?.post_text.replace(/<script>[\s\S]*?<\/script>/, ""),
         category_id: categoria,
-        post_url: url.replace(/<script>[\s\S]*?<\/script>/, ""),
-        post_meta_description: description.replace(
+        post_url: post?.post_url.replace(/<script>[\s\S]*?<\/script>/, ""),
+        post_meta_description: post?.post_meta_description.replace(
           /<script>[\s\S]*?<\/script>/,
           ""
         ),
@@ -110,6 +103,18 @@ export default function AtualizaPost() {
     }
   }
 
+  //Captura evento onChange do input e atualiza o Hook post
+  function alterarPost(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
+    let nome = e.target.name;
+    let valor = e.target.value;
+
+    if (post !== undefined) {
+      setPost({ ...post, [nome]: valor });
+    }
+  }
+
   return (
     <Container>
       <Navbar />
@@ -122,8 +127,10 @@ export default function AtualizaPost() {
           <TextField
             label="Título do post"
             fullWidth
-            value={titulo}
-            onChange={(e) => setTitulo(e.target.value)}
+            focused
+            value={post?.post_title}
+            name="post_title"
+            onChange={alterarPost}
           />
 
           <TextField
@@ -132,19 +139,24 @@ export default function AtualizaPost() {
             placeholder="exemplo-de-url-amigavel"
             helperText="Não incluir espaços vazios, acentos e caraters especiais como #, *, @, etc. "
             fullWidth
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
+            focused
+            value={post?.post_url}
+            name="post_url"
+            onChange={alterarPost}
           />
+          <pre>{JSON.stringify(post)}</pre>
 
           <TextField
             sx={{ mt: 3 }}
             label="Meta Description"
             helperText="O Google corta a Meta Description em cerca de 160 caracteres. É preciso que o texto seja menor que isso para aparecer corretamente."
+            focused
             fullWidth
             required
-            value={description}
+            value={post?.post_meta_description}
             multiline
-            onChange={(e) => setDescription(e.target.value)}
+            name="post_meta_description"
+            onChange={alterarPost}
           />
 
           <Box sx={{ my: 3 }}>
@@ -166,7 +178,11 @@ export default function AtualizaPost() {
           </Box>
 
           <EditorTexto
-            onBlur={(novoTexto: string) => setTexto(novoTexto)}
+            onBlur={(novoTexto: string) => {
+              if (post) {
+                setPost({ ...post, post_text: novoTexto });
+              }
+            }}
             value={post && post.post_text}
           />
 
@@ -175,7 +191,7 @@ export default function AtualizaPost() {
               Atualizar post
             </Button>
           </Box>
-            <Alerta />
+          <Alerta />
         </Box>
       </div>
     </Container>

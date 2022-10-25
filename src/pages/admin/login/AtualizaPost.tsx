@@ -144,8 +144,7 @@ export default function AtualizaPost() {
             name="post_url"
             onChange={alterarPost}
           />
-          <pre>{JSON.stringify(post)}</pre>
-
+          
           <TextField
             sx={{ mt: 3 }}
             label="Meta Description"

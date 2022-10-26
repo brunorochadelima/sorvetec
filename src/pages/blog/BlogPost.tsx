@@ -57,12 +57,17 @@ export default function BlogPost() {
     author: {
       "@type": "Organization",
       name: "Sorvetec",
-      url: "https://www.sorvetec.com.br",
     },
     publisher: {
       "@type": "Organization",
       name: "Sorvetec",
       url: "https://www.sorvetec.com.br",
+      logo: {
+        "@type": "ImageObject",
+        "url": "https://www.sorvetec.com.br/logo192.png",
+        "height" : 192, 
+        "width" : 192 
+      }
     },
 
     url: `https://www.sorvetec.com.br/${post?.post_url}`,

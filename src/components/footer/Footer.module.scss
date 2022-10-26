@@ -3,21 +3,21 @@
   padding-top: 1rem;
 }
 
-.rodape {
+.footer {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: space-between;
-
   background-color: #ffe5d0;
   padding-top: 1rem;
 
-  h3 {
+  &__title {
     color: #46474b;
+    font-size: 1.3rem !important;
+    font-weight: bold;
   }
 
   p {
-    @extend h3;
     font-size: 1rem;
     line-height: 0.8;
   }

@@ -8,15 +8,15 @@ export default function Footer() {
   return (
     <div className={style.background}>
       <footer className={tema.container}>
-        <div className={style.rodape}>
-          <div className={style.rodape__logos}>
+        <div className={style.footer}>
+          <div className={style.footer__logos}>
             <Logo />
             <a href="https://www.multivisi.com.br/">
               <SeloMultivisi />
             </a>
           </div>
           <div>
-            <h3>Fale com a gente</h3>
+            <p className={style.footer__title}>Fale com a gente</p>
             <p>Televendas:</p>
             <p>
               <b>(34) 3257 0800</b>
@@ -27,7 +27,7 @@ export default function Footer() {
             </p>
           </div>
           <div>
-            <h3>Mapa do site</h3>
+            <p className={style.footer__title}>Mapa do site</p>
             <Link to="/">
               <p>Home</p>
             </Link>
@@ -45,7 +45,7 @@ export default function Footer() {
             </Link>
           </div>
           <div>
-            <h3>Showrooms</h3>
+            <p className={style.footer__title}>Showrooms</p>
             <p>Uberlândia</p>
             <p>São Paulo</p>
             <p>Belo Horizonte</p>

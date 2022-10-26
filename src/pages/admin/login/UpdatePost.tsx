@@ -13,13 +13,13 @@ import {
   Alert,
   Snackbar,
 } from "@mui/material";
-import { EditorTexto } from "./EditorTexto";
+import { TextEditor } from "./TextEditor";
 import { ICategorias } from "interfaces/ICategorias";
 import { IBlogs } from "interfaces/IBlogs";
 import { BiEdit } from "react-icons/bi";
 import apiBlog from "api/apiBlog";
 
-export default function AtualizaPost() {
+export default function UpdatePost() {
   const [post, setPost] = useState<IBlogs>();
   const [categorias, setCategorias] = useState<ICategorias[]>([]);
   const [categoria, setCategoria] = useState("");
@@ -176,7 +176,7 @@ export default function AtualizaPost() {
             </Select>
           </Box>
 
-          <EditorTexto
+          <TextEditor
             onBlur={(novoTexto: string) => {
               if (post) {
                 setPost({ ...post, post_text: novoTexto });

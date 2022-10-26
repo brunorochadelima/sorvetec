@@ -23,7 +23,7 @@ import tema from "theme/Base.module.scss";
 import apiBlog from "api/apiBlog";
 import { CgList } from "react-icons/cg";
 
-export default function ListarPosts() {
+export default function ReadPosts() {
   const [posts, setPosts] = useState<IBlogs[]>([]);
   const [proximaPagina, setProximaPagina] = useState("");
   const [paginaAnterior, setPaginaAnterior] = useState("");
@@ -34,9 +34,6 @@ export default function ListarPosts() {
       setPosts(response.data.data);
     });
   }, [pesquisaPost]);
-
-  //pega o token
-  var token = sessionStorage.getItem("token");
 
   useEffect(() => {
     apiBlog

@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import JoditEditor from "jodit-react";
 
-export const EditorTexto = (props) => {
+export const TextEditor = (props) => {
   const editor = useRef(null);
 
   const config = {

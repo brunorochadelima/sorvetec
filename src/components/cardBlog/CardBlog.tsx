@@ -5,7 +5,7 @@ import style from "./CardBlog.module.scss";
 import { useNavigate } from "react-router-dom";
 
 export default function CardBlog(props: IBlogs) {
-  const { id, post_title, post_cover, post_text, post_url } = props;
+  const { post_title, post_cover, post_text, post_url } = props;
 
   //Redireciona para post
   const navigate = useNavigate();

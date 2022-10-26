@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import parse from "html-react-parser";
 import tema from "theme/Base.module.scss";
-import style from "./ProdutoDetalhes.module.scss";
+import style from "./Product.module.scss";
 import { BsWhatsapp } from "react-icons/bs";
 import { FiShoppingCart } from "react-icons/fi";
 import Chip from "@mui/material/Chip";

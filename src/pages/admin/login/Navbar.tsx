@@ -23,8 +23,6 @@ function Navbar() {
   const [open, setOpen] = useState(true);
 
   const navigate = useNavigate();
-  //pega o token
-  var token = sessionStorage.getItem("token");
 
   function logout() {
     apiBlog

@@ -9,20 +9,20 @@ import ScrollToTop from "utils/ScrollToTop";
 import { isAuthenticated } from "pages/admin/login/auth";
 
 const Home = lazy(() => import("pages/home/Home"));
-const Produtos = lazy(() => import("pages/produtos/Produtos"));
+const Produtos = lazy(() => import("pages/productCatalog/Catalog"));
 const QuemSomos = lazy(() => import("pages/quemSomos/QuemSomos"));
-const Pagina404 = lazy(() => import("pages/pagina404/Pagina404"));
+const Pagina404 = lazy(() => import("pages/404/404"));
 const Busca = lazy(() => import("pages/busca/Busca"));
 const ProdutoDetalhes = lazy(
-  () => import("pages/produtoDetalhes/ProdutoDetalhes")
+  () => import("pages/product/Product")
 );
 const Calculadora = lazy(() => import("pages/calculadora/Calculadora"));
 const BlogFeed = lazy(() => import("pages/blog/BlogFeed"));
 const BlogPost = lazy(() => import("pages/blog/BlogPost"));
 const Login = lazy(() => import("pages/admin/login/Login"));
-const CriarPost = lazy(() => import("pages/admin/login/CriarPost"));
-const ListarPosts = lazy(() => import("pages/admin/login/ListarPosts"));
-const AtualizaPost = lazy(() => import("pages/admin/login/AtualizaPost"));
+const CriarPost = lazy(() => import("pages/admin/login/CreatePost"));
+const ListarPosts = lazy(() => import("pages/admin/login/ReadPosts"));
+const AtualizaPost = lazy(() => import("pages/admin/login/UpdatePost"));
 
 //https://dev.to/iamandrewluca/private-route-in-react-router-v6-lg5
 

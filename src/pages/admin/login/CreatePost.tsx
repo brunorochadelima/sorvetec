@@ -12,13 +12,13 @@ import {
 import { ICategorias } from "interfaces/ICategorias";
 import React, { useEffect, useState } from "react";
 import tema from "theme/Base.module.scss";
-import { EditorTexto } from "./EditorTexto";
+import { TextEditor } from "./TextEditor";
 import Navbar from "./Navbar";
 import { BiAddToQueue } from "react-icons/bi";
 import apiBlog from "api/apiBlog";
 import { MdOutlineAddPhotoAlternate } from "react-icons/md";
 
-export default function CriarPost() {
+export default function CreatePost() {
   const [titulo, setTitulo] = useState("");
   const [imagem, setImagem] = useState<File | null>(null);
   const [categorias, setCategorias] = useState<ICategorias[]>([]);
@@ -226,7 +226,7 @@ export default function CriarPost() {
             </Box>
           </Box>
 
-          <EditorTexto
+          <TextEditor
             onBlur={(novoTexto: string) => setTexto(novoTexto)}
             value={texto}
           />

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import api from "api/api";
 import CardProduto from "components/cardProduto/CardProduto";
-import style from "./Produtos.module.scss";
+import style from "./Catalog.module.scss";
 import tema from "theme/Base.module.scss";
 import { ReactComponent as IconLoading } from "assets/imagens/icon-loading.svg";
 import { IProdutos } from "interfaces/IProdutos";

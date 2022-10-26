@@ -2,7 +2,7 @@ import React from 'react'
 import img404 from 'assets/imagens/erro404.png'
 import { Button } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
-import style from "./Pagina404.module.scss"
+import style from "./404.module.scss"
 
 export default function Pagina404() {
 

@@ -17,6 +17,8 @@ import { Pagination, Navigation } from "swiper";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Alert, Button, Snackbar } from "@mui/material";
+import { Helmet } from "react-helmet-async";
+import { IProduto } from "interfaces/IProduto";
 
 export default function ProdutoDetalhes() {
   const { id } = useParams();
@@ -29,6 +31,7 @@ export default function ProdutoDetalhes() {
   const [availability, setAvailability] = useState();
   const [cart_url, setCart_url] = useState("");
   const [avisoEstoque, setAvisoEstoque] = useState(false);
+  const [metaTags, setMetaTags] = useState<any[]>([]);
 
   useEffect(() => {
     api.get(`web_api/products/${id}`).then((response) => {
@@ -39,6 +42,7 @@ export default function ProdutoDetalhes() {
       setProductImage(response.data.Product.ProductImage);
       setPayment_option(response.data.Product.payment_option_html);
       setAvailability(response.data.Product.availability);
+      setMetaTags(response.data.Product.metatag);
     });
   }, [id]);
 
@@ -82,7 +86,7 @@ export default function ProdutoDetalhes() {
         <span>{priceFormatado}</span>
       </p>
     );
-  };
+  }
 
   // Adiciona ao carrinho
   function adicionarProdutoCarrinho() {
@@ -103,7 +107,7 @@ export default function ProdutoDetalhes() {
         // setAvisoEstoque(error.response.data.causes[0]);
         setAvisoEstoque(true);
       });
-  };
+  }
 
   //Redireciona para checkout quando o hook cart_url recebe a url
   useEffect(() => {
@@ -114,6 +118,14 @@ export default function ProdutoDetalhes() {
 
   return (
     <>
+      <Helmet>
+        {/* Google tags */}
+        <title>{metaTags.length && metaTags[2].content}</title>
+        <meta
+          name="description"
+          content={metaTags.length && metaTags[0].content}
+        />
+      </Helmet>
       <section className={tema.container}>
         {/* Slider fotos produto */}
 
@@ -141,7 +153,7 @@ export default function ProdutoDetalhes() {
             <h1 className={tema.titulo_h3}>{name}</h1>
             <p className={style.container_produto__codigo}>CÓD: {id}</p>
 
-            <EstaEmPromocao/>
+            <EstaEmPromocao />
 
             <p className={style.container_produto__opcoes_pagamento}>
               {parse(`${payment_option}`)}

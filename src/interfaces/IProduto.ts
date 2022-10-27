@@ -13,4 +13,14 @@ export interface IProduto {
     }
   ];
   id: number;
+  url: {
+    https: string;
+  };
+
+  content: string;
+  // metatags: [
+  //   {
+  //     content: string;
+  //   }
+  // ];
 }

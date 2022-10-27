@@ -15,6 +15,7 @@ function CardProduto(props: IProdutos) {
       payment_option_details,
       ProductImage,
       id,
+      url,
     },
   } = props;
 
@@ -59,15 +60,28 @@ function CardProduto(props: IProdutos) {
     );
   }
 
-  const nomeProdutoSemEspaco = name.split(" ").join("-");
-
   // Direciona para detalhes do produto
   function redirecionaParaDetalhes(produtoID: number): void {
-    navigate(`/produtos/${produtoID}?${nomeProdutoSemEspaco}`);
+    navigate(
+      `/produtos/${produtoID}/${url.https.replace(
+        "https://www.multivisi.com.br/",
+        ""
+      )}`
+    );
   }
 
   return (
-    <div className={style.card} onClick={() => redirecionaParaDetalhes(id)}>
+    <a
+      href={`/produtos/${id}/${url.https.replace(
+        "https://www.multivisi.com.br/",
+        ""
+      )}`}
+      onClick={(e) => {
+        e.preventDefault();
+        redirecionaParaDetalhes(id);
+      }}
+      className={style.card}
+    >
       {promotional_price > 0 && calculaDesconto()}
 
       <img src={ProductImage[0].thumbs[180].https} alt={name} />
@@ -79,7 +93,7 @@ function CardProduto(props: IProdutos) {
         ou {payment_option_details[1].plots}X de{" "}
         {payment_option_details[1].value} no cartão
       </p>
-    </div>
+    </a>
   );
 }
 

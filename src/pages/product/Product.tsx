@@ -116,14 +116,18 @@ export default function ProdutoDetalhes() {
     }
   }, [cart_url]);
 
+  //metaTags
+  const titulo = metaTags.filter(({ type }) => type === "title");
+  const meta_descricao = metaTags.filter(({ type }) => type === "description");
+
   return (
     <>
       <Helmet>
         {/* Google tags */}
-        <title>{metaTags.length && metaTags[2].content}</title>
+        <title>{titulo.length && titulo[0].content}</title>
         <meta
           name="description"
-          content={metaTags.length && metaTags[0].content}
+          content={meta_descricao.length && meta_descricao[0].content}
         />
       </Helmet>
       <section className={tema.container}>

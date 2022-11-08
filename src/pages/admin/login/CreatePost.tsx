@@ -160,7 +160,6 @@ export default function CreatePost() {
           <TextField
             sx={{ mt: 3 }}
             label="Meta Description"
-            helperText="O Google corta a Meta Description em cerca de 160 caracteres. É preciso que o texto seja menor que isso para aparecer corretamente."
             fullWidth
             required
             multiline

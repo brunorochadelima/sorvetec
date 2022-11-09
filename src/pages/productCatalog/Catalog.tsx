@@ -72,7 +72,7 @@ export default function Produtos() {
           name="description"
           content="As Máquinas de Sorvete SORVETEC são uma excelente opção para quem quer ser um empreendedor e lucrar com Sorvete Expresso, na chapa e açaí."
         />
-        <link rel="canonical" href="https://sorvetec.com.br/produtos" />
+        <link rel="canonical" href="https://www.sorvetec.com.br/produtos" />
       </Helmet>
 
       <section className={tema.container}>

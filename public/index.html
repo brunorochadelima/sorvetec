@@ -71,10 +71,22 @@
 
     <!-- Open Graph Facebook tags -->
     <meta property="og:site_name" content="Sorvetec" />
-    <meta property="og:type" content="website" data-rh="true"/>
-    <meta property="og:title" content="As Máquinas de Sorvete da Sorvetec possuem o melhor custo-benefício para o seu negócio. Sorvete Expresso, na chapa e açaí." data-rh="true"/>
-    <meta property="og:description" content="As Máquinas de Sorvete da Sorvetec possuem o melhor custo-benefício para o seu negócio. Sorvete Expresso, na chapa e açaí." data-rh="true"/>
-    <meta property="og:url" content="https://www.sorvetec.com.br/" data-rh="true"/>
+    <meta property="og:type" content="website" data-rh="true" />
+    <meta
+      property="og:title"
+      content="As Máquinas de Sorvete da Sorvetec possuem o melhor custo-benefício para o seu negócio. Sorvete Expresso, na chapa e açaí."
+      data-rh="true"
+    />
+    <meta
+      property="og:description"
+      content="As Máquinas de Sorvete da Sorvetec possuem o melhor custo-benefício para o seu negócio. Sorvete Expresso, na chapa e açaí."
+      data-rh="true"
+    />
+    <meta
+      property="og:url"
+      content="https://www.sorvetec.com.br/"
+      data-rh="true"
+    />
     <meta property="og:image" content=%PUBLIC_URL%/logo512.png data-rh="true"/>
   </head>
   <body>
@@ -82,6 +94,33 @@
     <div id="root"></div>
 
     <!-- Formulário Rd Station -->
-    <script defer src="https://d335luupugsy2.cloudfront.net/js/rdstation-forms/stable/rdstation-forms.min.js"></script>
+    <script
+      defer
+      src="https://d335luupugsy2.cloudfront.net/js/rdstation-forms/stable/rdstation-forms.min.js"
+    ></script>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "url": "https://www.sorvetec.com.br/",
+        "name": "Sorvetec",
+        "logo": "%PUBLIC_URL%/logo192.png",
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "(34) 3257-0800",
+            "contactType": "customer service"
+          }
+        ],
+        "address": {
+          "addressCountry": "Brasil",
+          "postalCode": "38400-618",
+          "addressLocality": "Uberlândia-MG",
+          "streetAddress": "Rua Tupaciguara, 455, NS Aparecida"
+        }
+      }
+    </script>
+
+    
   </body>
 </html>

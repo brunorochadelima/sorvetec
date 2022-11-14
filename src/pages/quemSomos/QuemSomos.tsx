@@ -19,7 +19,7 @@ export default function QuemSomos() {
             Reunimos{" "}
             <b>qualidade, praticidade e usabilidade dos equipamentos,</b> a fim
             de projetar, desenvolver e comercializar máquinas modernas para
-            sorvete expresso, na chapa e de massa. Nossos equipamentos possuem
+            sorvete expresso, na chapa e açaí. Nossos equipamentos possuem
             certificação e aprovação do INMETRO, garantindo a qualidade e
             durabilidade do produto.
           </p>

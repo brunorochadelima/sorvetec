@@ -57,11 +57,9 @@ export default function Footer() {
             <p>Curitiba</p>
             <p>Salvador</p>
             <p>Ribeirão Preto</p>
-            <p>Cuiabá</p>
-            <p>São José Dos Campos</p>
+            <p>Cuiabá</p>            
             <p>Sorocaba</p>
-            <p>Belém</p>
-            <p>Manaus</p>
+            <p>Belém</p>            
             <p>Vila Velha</p>
           </div>
         </div>

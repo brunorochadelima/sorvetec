@@ -4,3 +4,5 @@ Disallow: /login
 Disallow: /criar-post
 Disallow: /listar-posts
 Disallow: /atualizar-post/
+
+Sitemap: https://www.sorvetec.com.br/sitemap.xml

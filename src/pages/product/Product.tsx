@@ -26,6 +26,11 @@ type PaymentOption = {
   value: number;
 };
 
+type ArrayImage = {
+  https: string;
+  http: string;
+};
+
 export default function ProdutoDetalhes() {
   const { id } = useParams();
   const [name, setName] = useState();
@@ -33,7 +38,7 @@ export default function ProdutoDetalhes() {
   const [pricePor, setPricePor] = useState();
   const [promotionalPrice, setPromotionalPrice] = useState();
   const [description, setDescription] = useState();
-  const [productImage, setProductImage] = useState<any[]>([]);
+  const [productImage, setProductImage] = useState<ArrayImage[]>([]);
   const [payment_option, setPayment_option] = useState<PaymentOption>();
   const [availability, setAvailability] = useState();
   const [cart_url, setCart_url] = useState("");
@@ -98,8 +103,10 @@ export default function ProdutoDetalhes() {
     }
     return (
       <p>
-        <span className={style.container_produto__promocional_price}>{pricePorFormatado}</span><br />
-        à vista no boleto, transferência bancária ou PIX
+        <span className={style.container_produto__promocional_price}>
+          {pricePorFormatado}
+        </span>
+        <br />à vista no boleto, transferência bancária ou PIX
       </p>
     );
   }

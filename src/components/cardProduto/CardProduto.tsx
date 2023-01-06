@@ -20,13 +20,26 @@ function CardProduto(props: IProdutos) {
   } = props;
 
   // converter valores do produto para R$
-  const priceFormatado = Number(price).toLocaleString("pt-BR", {
+  const priceDe = Number(price).toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL",
   });
-  const promotional_priceFormatado = Number(promotional_price).toLocaleString(
+
+  function pricePor() {
+    if ((payment_option_details[0].display_name = "Mercado Pago")) {
+      const pricePorNumber = Number(
+        payment_option_details[0].value
+      ).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+      return pricePorNumber;
+    }
+  }
+
+  const pricePlots = Number(payment_option_details[2].value).toLocaleString(
     "pt-BR",
-    { style: "currency", currency: "BRL" }
+    {
+      style: "currency",
+      currency: "BRL",
+    }
   );
 
   //Função verifica se produto está com desconto para fazer a rendericação condicional dos preços
@@ -34,19 +47,18 @@ function CardProduto(props: IProdutos) {
     if (promotional_price > 0) {
       return (
         <>
-          <p className={style.card__precoDe}>De: {priceFormatado}</p>
+          <p className={style.card__precoDe}>{priceDe}</p>
           <p className={style.card__precoPor}>
-            Por:{" "}
-            <span>
-              {Number(promotional_price) > 0 ? promotional_priceFormatado : " "}
-            </span>
+            <span>{Number(promotional_price) > 0 ? pricePor() : " "}</span>
+            <br /> à vista
           </p>
         </>
       );
     }
     return (
       <p className={style.card__precoPor}>
-        <span>{priceFormatado}</span>
+        <span>{pricePor()}</span>
+        <br />à vista
       </p>
     );
   }
@@ -55,7 +67,8 @@ function CardProduto(props: IProdutos) {
   function calculaDesconto(): JSX.Element {
     return (
       <div className={style.card__tag_desconto}>
-        {Math.floor(((price - promotional_price) / price) * 100)}% de desconto
+        {Math.floor(((price - payment_option_details[0].value) / price) * 100)}%
+        de desconto
       </div>
     );
   }
@@ -90,8 +103,7 @@ function CardProduto(props: IProdutos) {
       <EstaEmPromocao />
 
       <p>
-        ou {payment_option_details[1].plots}X de{" "}
-        {payment_option_details[1].value} no cartão
+        ou {payment_option_details[2].plots}X de {pricePlots} no cartão
       </p>
     </a>
   );

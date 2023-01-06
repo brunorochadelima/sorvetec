@@ -20,14 +20,21 @@ import { Alert, Button, Snackbar } from "@mui/material";
 import { Helmet } from "react-helmet-async";
 import { IProduto } from "interfaces/IProduto";
 
+type PaymentOption = {
+  display_name: string;
+  plots: number;
+  value: number;
+};
+
 export default function ProdutoDetalhes() {
   const { id } = useParams();
   const [name, setName] = useState();
-  const [price, setPrice] = useState(" ");
-  const [promotional_price, setPromotional_price] = useState();
+  const [priceDe, setPriceDe] = useState();
+  const [pricePor, setPricePor] = useState();
+  const [promotionalPrice, setPromotionalPrice] = useState();
   const [description, setDescription] = useState();
   const [productImage, setProductImage] = useState<any[]>([]);
-  const [payment_option, setPayment_option] = useState();
+  const [payment_option, setPayment_option] = useState<PaymentOption>();
   const [availability, setAvailability] = useState();
   const [cart_url, setCart_url] = useState("");
   const [avisoEstoque, setAvisoEstoque] = useState(false);
@@ -36,11 +43,12 @@ export default function ProdutoDetalhes() {
   useEffect(() => {
     api.get(`web_api/products/${id}`).then((response) => {
       setName(response.data.Product.name);
-      setPrice(response.data.Product.price);
-      setPromotional_price(response.data.Product.promotional_price);
+      setPriceDe(response.data.Product.price);
+      setPricePor(response.data.Product.payment_option_details[0].value);
+      setPromotionalPrice(response.data.Product.promotional_price);
       setDescription(response.data.Product.description);
       setProductImage(response.data.Product.ProductImage);
-      setPayment_option(response.data.Product.payment_option_html);
+      setPayment_option(response.data.Product.payment_option_details[2]);
       setAvailability(response.data.Product.availability);
       setMetaTags(response.data.Product.metatag);
     });
@@ -52,38 +60,46 @@ export default function ProdutoDetalhes() {
   });
 
   // converter valores do produto para R$
-  const priceFormatado = Number(price).toLocaleString("pt-BR", {
+  const priceFormatado = Number(priceDe).toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL",
   });
-  const promotional_priceFormatado = Number(promotional_price).toLocaleString(
-    "pt-BR",
-    { style: "currency", currency: "BRL" }
-  );
+  const pricePorFormatado = Number(pricePor).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+  const pricePlotsValue =
+    payment_option &&
+    Number(payment_option.value).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
 
   //Função verifica se produto está com desconto para fazer a rendericação condicional dos preços
   function EstaEmPromocao() {
-    if (promotional_price && promotional_price > 0) {
+    if (promotionalPrice && promotionalPrice > 0) {
       return (
         <>
           <p className={style.container_produto__price}>{priceFormatado}</p>
           <Chip
-            label={`🡫 Economia de R$ ${
-              Number(price) - Number(promotional_price)
-            },00`}
+            label={`🡫 Economia de ${(
+              Number(priceDe) - Number(pricePor)
+            ).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`}
             color="success"
           />
-          <p className={style.container_produto__promocional_price}>
-            <span>
-              {Number(promotional_price) > 0 ? promotional_priceFormatado : " "}
+          <p>
+            <span className={style.container_produto__promocional_price}>
+              {Number(promotionalPrice) > 0 ? pricePorFormatado : " "}
             </span>
+            <br />à vista no boleto, transferência bancária ou PIX
           </p>
         </>
       );
     }
     return (
-      <p className={style.container_produto__promocional_price}>
-        <span>{priceFormatado}</span>
+      <p>
+        <span className={style.container_produto__promocional_price}>{pricePorFormatado}</span><br />
+        à vista no boleto, transferência bancária ou PIX
       </p>
     );
   }
@@ -93,7 +109,7 @@ export default function ProdutoDetalhes() {
     api
       .post("web_api/cart/", {
         Cart: {
-          session_id: price,
+          session_id: priceDe,
           product_id: id,
           quantity: 1,
           variant_id: 0,
@@ -160,7 +176,16 @@ export default function ProdutoDetalhes() {
             <EstaEmPromocao />
 
             <p className={style.container_produto__opcoes_pagamento}>
-              {parse(`${payment_option}`)}
+              {payment_option &&
+                (payment_option.plots * payment_option.value).toLocaleString(
+                  "pt-BR",
+                  {
+                    style: "currency",
+                    currency: "BRL",
+                  }
+                )}{" "}
+              em {payment_option && payment_option.plots}x de {pricePlotsValue}{" "}
+              sem juros no cartão de crédito
             </p>
 
             {/* Aviso estoque baixo */}

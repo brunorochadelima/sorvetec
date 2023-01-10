@@ -19,6 +19,10 @@ export default function BlogPost() {
       apiBlog.get(`api/posts?url=${post_url}`).then((response) => {
         console.log(response.data.data[0]);
         setPost(response.data.data[0]);
+
+        if (!response.data.data[0]) {
+          window.location.href = '/laravel/public/404';
+        }
       });
     } catch (error) {
       console.log(error);

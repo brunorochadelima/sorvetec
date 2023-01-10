@@ -101,12 +101,12 @@ export default function BlogPost() {
         <meta property="og:image" content={caminhoImagemCover} />
         <meta property="article:published_time" content={post?.created_at} />
         <meta property="article:modified_time" content={post?.updated_at} />
-      </Helmet>
-
-      <article className={style.container_conteudo}>
         <script type="application/ld+json">
           {JSON.stringify(articleStructuredData)}
         </script>
+      </Helmet>
+
+      <article className={style.container_conteudo}>
         <br />
         <h1 className={tema.titulo_h2}>{post?.post_title}</h1>
         <br />

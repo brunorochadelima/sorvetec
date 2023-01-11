@@ -56,6 +56,10 @@ export default function ProdutoDetalhes() {
       setPayment_option(response.data.Product.payment_option_details[2]);
       setAvailability(response.data.Product.availability);
       setMetaTags(response.data.Product.metatag);
+    })
+    .catch((error) => {
+      window.location.href = '/laravel/public/404';     
+      console.error(error);
     });
   }, [id]);
 

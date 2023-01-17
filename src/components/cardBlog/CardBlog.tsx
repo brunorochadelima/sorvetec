@@ -25,18 +25,20 @@ export default function CardBlog(props: IBlogs) {
       : "https://sorvetec.com.br/public/img/uploads/";
 
   return (
-    <a
-      href={`/blog/${post_url}`}
-      onClick={(e) => {
-        e.preventDefault();
-        redirecionaParaPost(post_url);
-      }}
-      className={style.containerCard}
-    >
-      <img src={caminhoImagem + post_cover} alt={post_title} />
-      <h2>{post_title}</h2>
-      {parse(`${resume} ...`)}
-      <Button variant="outlined">Continuar Lendo</Button>
-    </a>
+    <>
+      <a
+        href={`/blog/${post_url}`}
+        onClick={(e) => {
+          e.preventDefault();
+          redirecionaParaPost(post_url);
+        }}
+        className={style.containerCard}
+      >
+        <img src={caminhoImagem + post_cover} alt={post_title} />
+        <h2>{post_title}</h2>
+        {parse(`${resume} ...`)}
+        <Button variant="outlined">Continuar Lendo</Button>
+      </a>
+    </>
   );
 }

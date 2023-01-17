@@ -1,5 +1,5 @@
 import { IBlogs } from "interfaces/IBlogs";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import parse from "html-react-parser";
 import tema from "theme/Base.module.scss";
@@ -8,20 +8,23 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import apiBlog from "api/apiBlog";
 import { Helmet } from "react-helmet-async";
+import { ReactComponent as IconLoading } from "assets/imagens/icon-loading.svg";
 
 export default function BlogPost() {
   const { post_url } = useParams();
   const [post, setPost] = useState<IBlogs>();
   const navigate = useNavigate();
+  const [load, setLoad] = useState(true);
 
   useEffect(() => {
     try {
       apiBlog.get(`api/posts?url=${post_url}`).then((response) => {
         console.log(response.data.data[0]);
         setPost(response.data.data[0]);
+        setLoad(false)
 
         if (!response.data.data[0]) {
-          window.location.href = '/laravel/public/404';
+          window.location.href = "/laravel/public/404";
         }
       });
     } catch (error) {
@@ -68,10 +71,10 @@ export default function BlogPost() {
       url: "https://www.sorvetec.com.br",
       logo: {
         "@type": "ImageObject",
-        "url": "https://www.sorvetec.com.br/logo192.png",
-        "height" : 192, 
-        "width" : 192 
-      }
+        url: "https://www.sorvetec.com.br/logo192.png",
+        height: 192,
+        width: 192,
+      },
     },
 
     url: `https://www.sorvetec.com.br/${post?.post_url}`,
@@ -105,8 +108,9 @@ export default function BlogPost() {
           {JSON.stringify(articleStructuredData)}
         </script>
       </Helmet>
-
+          
       <article className={style.container_conteudo}>
+        {load && <div style={{height: '100vh'}}><IconLoading /></div>}
         <br />
         <h1 className={tema.titulo_h2}>{post?.post_title}</h1>
         <br />

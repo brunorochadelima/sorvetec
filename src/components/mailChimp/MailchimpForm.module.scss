@@ -1,0 +1,54 @@
+@import "../../theme/variaveis";
+
+.formContainer {
+  background: $amarelo;
+  padding: 0 0.5rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  color: $dark;
+}
+
+.mc_field_group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 350px;
+  width: 100%;
+}
+
+input.email,
+input.nome {
+  border: none;
+  border-radius: 30px;
+  padding: 0.8rem;
+  flex-grow: 1; 
+}
+
+.button__submit {
+  background: $rosa;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  color: #fff;
+  width: 100%;
+}
+
+.optionalParent {
+  width: 100%;
+  max-width: 350px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    flex-direction: row;
+  }
+}

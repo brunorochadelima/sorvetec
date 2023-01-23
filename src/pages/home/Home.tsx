@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { BuscaContext } from "context/Busca";
 import { Helmet } from "react-helmet-async";
 const SliderDepoimento = lazy(() => import("./sliders/SliderDepoimento"));
-const IntegratedForm = lazy(() => import("components/FormRdStation"));
+const MailchimpForm = lazy(() => import("components/mailChimp/MailchimpForm"));
 
 export default function Home() {
   const navigate = useNavigate();
@@ -63,7 +63,7 @@ export default function Home() {
                 Lucre com diversos tipos de sorvete
               </h2>
               <p>
-                As nossas máquinas possibilitam a variedade de cadárpio que a
+                As nossas máquinas possibilitam a variedade de cardápio que a
                 sua empresa precisa
               </p>
             </div>
@@ -157,17 +157,10 @@ export default function Home() {
           </div>
           <Suspense fallback={<div>Carregando...</div>}>
             <SliderDepoimento />
+            <br />
+            <MailchimpForm />
           </Suspense>
         </section>
-
-        {/* Formulário RdStation */}
-        <br />
-        <br />
-        <div style={{ backgroundColor: "#FFC048" }}>
-          <div className={tema.container}>
-            <IntegratedForm />
-          </div>
-        </div>
       </main>
     </>
   );

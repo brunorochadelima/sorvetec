@@ -12,7 +12,7 @@ import calculadoraSorvetec from "assets/imagens/calculadora-sorvetec.webp";
 import tema from "theme/Base.module.scss";
 import style from "./Calculadora.module.scss";
 import { ReactComponent as BagMoney } from "assets/imagens/bag-money.svg";
-import FormRdStation from "components/FormRdStation";
+import MailchimpForm from "components/mailChimp/MailchimpForm";
 import { Helmet } from "react-helmet-async";
 
 export default function Calculadora() {
@@ -46,7 +46,7 @@ export default function Calculadora() {
           sorvete.
           <br />
           <br />
-          <FormRdStation />
+          <MailchimpForm />
         </DialogContent>
       </Dialog>
     );

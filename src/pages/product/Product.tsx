@@ -174,7 +174,7 @@ export default function ProdutoDetalhes() {
           >
             {imagens.map((item, index) => (
               <SwiperSlide key={index}>
-                <img src={item} alt={name} decoding="async" />
+                <img src={item} alt={name} width="900" height="900" decoding="async" />
               </SwiperSlide>
             ))}
           </Swiper>

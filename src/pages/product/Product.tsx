@@ -26,11 +26,6 @@ type PaymentOption = {
   value: number;
 };
 
-type ArrayImage = {
-  https: string;
-  http: string;
-};
-
 export default function ProdutoDetalhes() {
   const { id } = useParams();
   const [name, setName] = useState();
@@ -38,7 +33,7 @@ export default function ProdutoDetalhes() {
   const [pricePor, setPricePor] = useState();
   const [promotionalPrice, setPromotionalPrice] = useState();
   const [description, setDescription] = useState();
-  const [productImage, setProductImage] = useState<ArrayImage[]>([]);
+  const [productImage, setProductImage] = useState([]);
   const [payment_option, setPayment_option] = useState<PaymentOption>();
   const [availability, setAvailability] = useState();
   const [cart_url, setCart_url] = useState("");
@@ -46,44 +41,54 @@ export default function ProdutoDetalhes() {
   const [metaTags, setMetaTags] = useState<any[]>([]);
 
   useEffect(() => {
-    api.get(`web_api/products/${id}`).then((response) => {
-      setName(response.data.Product.name);
-      setPriceDe(response.data.Product.price);
-      setPricePor(response.data.Product.payment_option_details[0].value);
-      setPromotionalPrice(response.data.Product.promotional_price);
-      setDescription(response.data.Product.description);
-      setProductImage(response.data.Product.ProductImage);
-      setPayment_option(response.data.Product.payment_option_details[2]);
-      setAvailability(response.data.Product.availability);
-      setMetaTags(response.data.Product.metatag);
-    })
-    .catch((error) => {
-      window.location.href = '/laravel/public/404';     
-      console.error(error);
-    });
+    api
+      .get(`web_api/products/${id}`)
+      .then((response) => {
+        setName(response.data.Product.name);
+        setPriceDe(response.data.Product.price);
+        setPricePor(response.data.Product.payment_option_details[0].value);
+        setPromotionalPrice(response.data.Product.promotional_price);
+        setDescription(response.data.Product.description);
+        setProductImage(
+          response.data.Product.ProductImage.map(
+            (item: { https: string }) => item.https
+          )
+        );
+        setPayment_option(response.data.Product.payment_option_details[2]);
+        setAvailability(response.data.Product.availability);
+        setMetaTags(response.data.Product.metatag);
+      })
+      .catch((error) => {
+        window.location.href = "/laravel/public/404";
+        console.error(error);
+      });
   }, [id]);
 
-  // mapeia o array de objetos productImage e retorna apenas uma propriedade de cada item (o https)
-  var imagens = productImage.map((item, indice) => item.https);
-
   // converter valores do produto para R$
-  const priceBr = new Intl.NumberFormat("pt-BR", {style: "currency", currency: "BRL"})
+  const priceBr = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
 
   //Função verifica se produto está com desconto para fazer a rendericação condicional dos preços
   function EstaEmPromocao() {
     if (promotionalPrice && promotionalPrice > 0) {
       return (
         <>
-          <p className={style.container_produto__price}>{priceBr.format(Number(priceDe))}</p>
+          <p className={style.container_produto__price}>
+            {priceBr.format(Number(priceDe))}
+          </p>
           <Chip
-            label={`🡫 Economia de ${(
+            label={`🡫 Economia de ${priceBr.format(
               Number(priceDe) - Number(pricePor)
-            ).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`}
+            )}`}
             color="success"
           />
           <p>
             <span className={style.container_produto__promocional_price}>
-              {Number(promotionalPrice) > 0 ? priceBr.format(Number(pricePor)) : " "}
+              {Number(promotionalPrice) > 0
+                ? priceBr.format(Number(pricePor))
+                : " "}
             </span>
             <br />à vista no boleto, transferência bancária ou PIX
           </p>
@@ -157,9 +162,15 @@ export default function ProdutoDetalhes() {
             modules={[Pagination, Navigation]}
             className={style.mySwiper}
           >
-            {imagens.map((item, index) => (
+            {productImage.map((item, index) => (
               <SwiperSlide key={index}>
-                <img src={item} alt={name} width="900" height="900" decoding="async" />
+                <img
+                  src={item}
+                  alt={name}
+                  width="900"
+                  height="900"
+                  decoding="async"
+                />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -173,15 +184,9 @@ export default function ProdutoDetalhes() {
 
             <p className={style.container_produto__opcoes_pagamento}>
               {payment_option &&
-                (payment_option.plots * payment_option.value).toLocaleString(
-                  "pt-BR",
-                  {
-                    style: "currency",
-                    currency: "BRL",
-                  }
-                )}{" "}
-              em {payment_option && payment_option.plots}x de {priceBr.format(Number(payment_option?.value))}{" "}
-              sem juros no cartão de crédito
+                priceBr.format(payment_option.plots * payment_option.value)} em {payment_option && payment_option.plots}x de{" "}
+              {priceBr.format(Number(payment_option?.value))} sem juros no
+              cartão de crédito
             </p>
 
             {/* Aviso estoque baixo */}

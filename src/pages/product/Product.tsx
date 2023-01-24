@@ -64,9 +64,7 @@ export default function ProdutoDetalhes() {
   }, [id]);
 
   // mapeia o array de objetos productImage e retorna apenas uma propriedade de cada item (o https)
-  var imagens = productImage.map(function (item, indice) {
-    return item.https;
-  });
+  var imagens = productImage.map((item, indice) => item.https);
 
   // converter valores do produto para R$
   const priceBr = new Intl.NumberFormat("pt-BR", {style: "currency", currency: "BRL"})

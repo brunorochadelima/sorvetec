@@ -69,27 +69,14 @@ export default function ProdutoDetalhes() {
   });
 
   // converter valores do produto para R$
-  const priceFormatado = Number(priceDe).toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  });
-  const pricePorFormatado = Number(pricePor).toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  });
-  const pricePlotsValue =
-    payment_option &&
-    Number(payment_option.value).toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
+  const priceBr = new Intl.NumberFormat("pt-BR", {style: "currency", currency: "BRL"})
 
   //Função verifica se produto está com desconto para fazer a rendericação condicional dos preços
   function EstaEmPromocao() {
     if (promotionalPrice && promotionalPrice > 0) {
       return (
         <>
-          <p className={style.container_produto__price}>{priceFormatado}</p>
+          <p className={style.container_produto__price}>{priceBr.format(Number(priceDe))}</p>
           <Chip
             label={`🡫 Economia de ${(
               Number(priceDe) - Number(pricePor)
@@ -98,7 +85,7 @@ export default function ProdutoDetalhes() {
           />
           <p>
             <span className={style.container_produto__promocional_price}>
-              {Number(promotionalPrice) > 0 ? pricePorFormatado : " "}
+              {Number(promotionalPrice) > 0 ? priceBr.format(Number(pricePor)) : " "}
             </span>
             <br />à vista no boleto, transferência bancária ou PIX
           </p>
@@ -108,7 +95,7 @@ export default function ProdutoDetalhes() {
     return (
       <p>
         <span className={style.container_produto__promocional_price}>
-          {pricePorFormatado}
+          {priceBr.format(Number(pricePor))}
         </span>
         <br />à vista no boleto, transferência bancária ou PIX
       </p>
@@ -195,7 +182,7 @@ export default function ProdutoDetalhes() {
                     currency: "BRL",
                   }
                 )}{" "}
-              em {payment_option && payment_option.plots}x de {pricePlotsValue}{" "}
+              em {payment_option && payment_option.plots}x de {priceBr.format(Number(payment_option?.value))}{" "}
               sem juros no cartão de crédito
             </p>
 

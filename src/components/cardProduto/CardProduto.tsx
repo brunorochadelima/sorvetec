@@ -20,34 +20,24 @@ function CardProduto(props: IProdutos) {
   } = props;
 
   // converter valores do produto para R$
-  const priceDe = Number(price).toLocaleString("pt-BR", {
+  const priceBr = new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
   });
 
   function pricePor() {
     if ((payment_option_details[0].display_name = "Mercado Pago")) {
-      const pricePorNumber = Number(
-        payment_option_details[0].value
-      ).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+      const pricePorNumber = priceBr.format(payment_option_details[0].value);
       return pricePorNumber;
     }
   }
-
-  const pricePlots = Number(payment_option_details[2].value).toLocaleString(
-    "pt-BR",
-    {
-      style: "currency",
-      currency: "BRL",
-    }
-  );
 
   //Função verifica se produto está com desconto para fazer a rendericação condicional dos preços
   function EstaEmPromocao(): JSX.Element {
     if (promotional_price > 0) {
       return (
         <>
-          <p className={style.card__precoDe}>{priceDe}</p>
+          <p className={style.card__precoDe}>{priceBr.format(price)}</p>
           <p className={style.card__precoPor}>
             <span>{Number(promotional_price) > 0 ? pricePor() : " "}</span>
             <br /> à vista
@@ -102,8 +92,9 @@ function CardProduto(props: IProdutos) {
 
       <EstaEmPromocao />
 
-      <p>
-        ou {payment_option_details[2].plots}X de {pricePlots} no cartão
+      <p className={style.card__price_plots}>
+        ou {payment_option_details[2].plots}X de{" "}
+        {priceBr.format(payment_option_details[2].value)} no cartão
       </p>
     </a>
   );

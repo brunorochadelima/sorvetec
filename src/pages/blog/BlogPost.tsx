@@ -21,7 +21,7 @@ export default function BlogPost() {
       apiBlog.get(`api/posts?url=${post_url}`).then((response) => {
         console.log(response.data.data[0]);
         setPost(response.data.data[0]);
-        setLoad(false)
+        setLoad(false);
 
         if (!response.data.data[0]) {
           window.location.href = "/laravel/public/404";
@@ -46,38 +46,26 @@ export default function BlogPost() {
   //Exemplo caminho imagem válido para corpo texto:
   //https://www.sorvetec.com.br/public/img/uploads/gallery/images/2018/04/foto.png
 
-  // Adicionando dados estruturados - https://search.google.com/test/rich-results
-  const articleStructuredData = {
+  const schema = {
     "@context": "https://schema.org",
-    "@type": "Article",
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `https://www.sorvetec.com.br/${post?.post_url}`,
-    },
-
+    "@type": "BlogPosting",
     headline: post?.post_title,
-    description: post?.post_meta_description,
-    image: caminhoImagemCover,
-    datePublished: post?.created_at,
-    dateModified: post?.updated_at,
-
     author: {
       "@type": "Organization",
       name: "Sorvetec",
+      url: "https://www.sorvetec.com.br"
     },
-    publisher: {
-      "@type": "Organization",
-      name: "Sorvetec",
-      url: "https://www.sorvetec.com.br",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://www.sorvetec.com.br/logo192.png",
-        height: 192,
-        width: 192,
-      },
+    datePublished: post?.created_at,
+    image: {
+      "@type": "ImageObject",
+      url: caminhoImagemCover,
+      width: 280,
+      height: 203,
     },
-
-    url: `https://www.sorvetec.com.br/${post?.post_url}`,
+    articleBody: caminho_texto_imagens,
+    articleSection: "Máquinas de sorvete",
+    keywords: "sorvete, sorvetec, máquinas de sorvete",
+    url: `https://www.sorvetec.com.br/blog/${post_url}`
   };
 
   return (
@@ -90,27 +78,15 @@ export default function BlogPost() {
           rel="canonical"
           href={`https://www.sorvetec.com.br/blog/${post_url}`}
         />
-
-        {/* Open Graph tags */}
-        <meta property="og:site_name" content="Blog da Sorvetec" />
-        <meta property="og:locale" content="pt_BR" />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={post?.post_title} />
-        <meta property="og:description" content={metaDescription} />
-        <meta
-          property="og:url"
-          content={`https://www.sorvetec.com.br/blog/${post_url}`}
-        />
-        <meta property="og:image" content={caminhoImagemCover} />
-        <meta property="article:published_time" content={post?.created_at} />
-        <meta property="article:modified_time" content={post?.updated_at} />
-        <script type="application/ld+json">
-          {JSON.stringify(articleStructuredData)}
-        </script>
+        <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
-          
+
       <article className={style.container_conteudo}>
-        {load && <div style={{height: '100vh'}}><IconLoading /></div>}
+        {load && (
+          <div style={{ height: "100vh" }}>
+            <IconLoading />
+          </div>
+        )}
         <br />
         <h1 className={tema.titulo_h2}>{post?.post_title}</h1>
         <br />

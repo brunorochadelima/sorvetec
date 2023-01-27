@@ -137,6 +137,26 @@ export default function ProdutoDetalhes() {
   const titulo = metaTags.filter(({ type }) => type === "title");
   const meta_descricao = metaTags.filter(({ type }) => type === "description");
 
+  const schema = {
+    "@context": "http://schema.org",
+    "@type": "Product",
+    name: name,
+    image: productImage[0],
+    description: meta_descricao.length && meta_descricao[0].content,
+    url: "",
+    brand: {
+      "@type": "Brand",
+      name: "Sorvetec",
+      logo: "https://www.sorvetec.com.br/logo192.png",
+    },
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "BRL",
+      price: Number(pricePor),
+      availability: "https://schema.org/InStock",
+    },
+  };
+
   return (
     <>
       <Helmet>
@@ -146,6 +166,7 @@ export default function ProdutoDetalhes() {
           name="description"
           content={meta_descricao.length && meta_descricao[0].content}
         />
+        <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
       <section className={tema.container}>
         {/* Slider fotos produto */}
@@ -184,7 +205,10 @@ export default function ProdutoDetalhes() {
 
             <p className={style.container_produto__opcoes_pagamento}>
               {payment_option &&
-                priceBr.format(payment_option.plots * payment_option.value)} em {payment_option && payment_option.plots}x de{" "}
+                priceBr.format(
+                  payment_option.plots * payment_option.value
+                )}{" "}
+              em {payment_option && payment_option.plots}x de{" "}
               {priceBr.format(Number(payment_option?.value))} sem juros no
               cartão de crédito
             </p>

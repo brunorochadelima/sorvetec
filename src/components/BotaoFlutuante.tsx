@@ -7,7 +7,7 @@ import { ImFacebook } from "react-icons/im";
 export default function BotaoFlutuante() {
   function openWhatsapp() {
     window.open(
-      "https://api.whatsapp.com/send?phone=553432570800&text=Ol%C3%A1%20Multivisi",
+      "https://api.whatsapp.com/send?phone=553432570810&text=Ol%C3%A1%20Multivisi",
       "_blank"
     );
   }

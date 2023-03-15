@@ -49,12 +49,7 @@ export default function Footer() {
             <p>Uberlândia</p>
             <p>São Paulo</p>
             <p>Belo Horizonte</p>
-            <p>Porto Alegre</p>
             <p>Rio de Janeiro</p>
-            <p>Curitiba</p>
-            <p>Cuiabá</p>            
-            <p>Belém</p>            
-            <p>Vila Velha</p>
           </div>
         </div>
       </footer>

@@ -44,13 +44,13 @@ export default function Footer() {
               <p>Máquinas</p>
             </Link>
           </div>
-          <div>
+          {/* <div>
             <p className={style.footer__title}>Showrooms</p>
             <p>Uberlândia</p>
             <p>São Paulo</p>
             <p>Belo Horizonte</p>
             <p>Rio de Janeiro</p>
-          </div>
+          </div> */}
         </div>
       </footer>
     </div>

@@ -5,7 +5,7 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
-import {AiOutlineClose, AiOutlineMenu} from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { ReactComponent as Logo } from "assets/imagens/logo-sorvetec.svg";
 import { Link } from "react-router-dom";
 import { memo, useState } from "react";
@@ -81,8 +81,7 @@ function Header() {
               color="inherit"
             >
               {/* <MenuIcon /> */}
-             {anchorElNav === null ?  <AiOutlineMenu /> : <AiOutlineClose/> }
-             
+              {anchorElNav === null ? <AiOutlineMenu /> : <AiOutlineClose />}
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -111,6 +110,14 @@ function Header() {
                   <MenuItem onClick={() => setQuery("")}>{page.name}</MenuItem>{" "}
                 </Link>
               ))}
+              <MenuItem>
+                <a
+                  href="http://e7da914.paginas.site/sorvetec-orcamento"
+                  style={{ textDecoration: "none", color: "#46474B" }}
+                >
+                  Orçamento
+                </a>
+              </MenuItem>
             </Menu>
           </Box>
 
@@ -137,6 +144,14 @@ function Header() {
                 <MenuItem onClick={() => setQuery("")}>{page.name}</MenuItem>{" "}
               </Link>
             ))}
+            <MenuItem>
+              <a
+                href="http://e7da914.paginas.site/sorvetec-orcamento" 
+                style={{ textDecoration: "none", color: "#fff" }}
+              >
+                Orçamento
+              </a>
+            </MenuItem>
           </Box>
           <InputSearch />
         </Toolbar>
